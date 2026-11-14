@@ -219,7 +219,7 @@ const P = (window.PRODUCTS||[]).filter(p=>p.images&&p.images.length&&p.variants&
   return {...p, price, sale, soldOut:inS.length===0, cname:CAT[p.cat]||p.cat,
     title:p.title.replace(/\s+/g,' ').trim()};
 });
-const fmt=n=>n.toFixed(2).replace('.',',')+' €';
+const fmt=n=>Math.floor(n+1e-9)+' €'; // ακέραιες τιμές, στρογγυλοποίηση προς τα κάτω (επιθυμία Μαρίας 14/11)
 const img=(p,i=0)=>p.images[i]||p.images[0];
 const app=document.getElementById('app');
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2600)}
