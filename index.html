@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mara's Boutique · Θήβα</title>
+<meta name="description" content="Mara's Boutique, Θήβα: γυναικεία ρούχα και αξεσουάρ. Νέες συλλογές, άμεση αποστολή σε 1–3 εργάσιμες, Klarna σε 3 άτοκες δόσεις.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf9f6; --surface:#fff; --ink:#1c1a17; --muted:#77706a; --line:#e7e1d9;
+  --accent:#8a6a4f; --sale:#9b2c2c; --sold:#1c1a17;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+@media(max-width:600px){.wrap{padding:0 16px}}
+
+/* top bar + header */
+.topbar{background:var(--ink);color:#f3eee8;text-align:center;font-size:12px;letter-spacing:.06em;padding:8px 16px}
+header{position:sticky;top:0;z-index:20;background:rgba(251,249,246,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo img{height:46px;width:auto}
+.logo-txt{font-family:var(--serif);font-style:italic;font-size:30px}
+nav.main{display:flex;gap:28px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+nav.main a{padding:6px 0;border-bottom:1px solid transparent}
+nav.main a:hover,nav.main a.on{border-color:var(--ink)}
+nav.main a.sale{color:var(--sale)}
+.icons{display:flex;gap:14px;align-items:center}
+.cart-btn{position:relative;padding:6px}
+.cart-btn span{position:absolute;top:-2px;right:-6px;background:var(--ink);color:#fff;border-radius:10px;font-size:10px;min-width:17px;height:17px;display:grid;place-items:center;padding:0 4px}
+.burger{display:none;padding:6px}
+@media(max-width:860px){
+  nav.main{display:none;position:absolute;top:72px;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 16px 16px;border-bottom:1px solid var(--line)}
+  nav.main.open{display:flex}
+  nav.main a{padding:12px 0;border-bottom:1px solid var(--line)}
+  .burger{display:block}
+}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:4px;height:min(78vh,720px)}
+.hero a{position:relative;overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.hero a:hover img{transform:scale(1.03)}
+.hero .cap{position:absolute;left:28px;bottom:28px;color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.35)}
+.hero .cap small{font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.hero .cap h2{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4.4vw,60px);line-height:1}
+@media(max-width:860px){.hero{grid-template-columns:1fr;height:auto}.hero a{height:62vh}.hero a:not(:first-child){display:none}}
+.btn{display:inline-block;border:1px solid var(--ink);padding:13px 26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:#fff;transition:.2s}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.hero .btn{margin-top:16px;background:#fff;color:var(--ink);border-color:#fff}
+
+section.block{padding:72px 0 24px}
+.sec-h{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px;gap:16px}
+.sec-h h2,.page-h h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.4vw,44px);line-height:1.05}
+.sec-h a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cats a{position:relative;aspect-ratio:3/4;overflow:hidden;background:#eee}
+.cats img{width:100%;height:100%;object-fit:cover}
+.cats span{position:absolute;inset:auto 0 0 0;padding:18px;color:#fff;font-family:var(--serif);font-size:26px;background:linear-gradient(transparent,rgba(0,0,0,.45))}
+@media(max-width:860px){.cats{grid-template-columns:repeat(2,1fr)}}
+
+/* product grid */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px 20px}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr);gap:28px 12px}}
+.card .ph{position:relative;aspect-ratio:550/668;background:#efebe5;overflow:hidden}
+.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.card .ph img.alt{opacity:0}
+.card:hover .ph img.alt{opacity:1}
+.badge{position:absolute;top:12px;left:12px;z-index:2;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;background:var(--sale);color:#fff}
+.card.sold .ph img{filter:grayscale(.5);opacity:.55}
+.card.sold .ph img.alt{display:none}
+.soldout{position:absolute;inset:0;z-index:3;display:grid;place-items:center;pointer-events:none}
+.soldout b{background:var(--sold);color:#fff;font-weight:500;font-size:12px;letter-spacing:.22em;text-transform:uppercase;padding:10px 18px}
+.card .info{padding-top:12px}
+.card .cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.card h3{font-weight:400;font-size:14px;margin:3px 0 4px;line-height:1.4}
+.price{font-weight:500}
+.price s{color:var(--muted);font-weight:400;margin-left:8px}
+.price .now{color:var(--sale)}
+.sizes{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.sizes i{font-style:normal;font-size:11px;color:var(--muted);border:1px solid var(--line);padding:1px 6px}
+.sizes i.out{text-decoration:line-through;opacity:.45}
+
+/* shop page */
+.page-h{padding:44px 0 20px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.page-h p{color:var(--muted);margin-top:6px}
+.shop{display:grid;grid-template-columns:230px 1fr;gap:40px;padding-bottom:80px}
+@media(max-width:860px){.shop{grid-template-columns:1fr;gap:16px}}
+.filters h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:22px 0 10px}
+.filters h4:first-child{margin-top:0}
+.filters label{display:flex;align-items:center;gap:8px;font-size:14px;padding:4px 0;cursor:pointer}
+.filters label em{font-style:normal;color:var(--muted);font-size:12px;margin-left:auto}
+.chip-row{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);padding:6px 12px;font-size:13px;background:var(--surface)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;gap:12px;flex-wrap:wrap}
+.toolbar select{font:inherit;border:1px solid var(--line);background:var(--surface);padding:8px 10px}
+.count{color:var(--muted);font-size:13px}
+.ftoggle{display:none}
+@media(max-width:860px){.filters{display:none;border:1px solid var(--line);padding:16px;background:var(--surface)}.filters.open{display:block}.ftoggle{display:inline-block}}
+.empty{padding:60px 0;color:var(--muted);text-align:center}
+
+/* product page */
+.pp{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;padding:36px 0 80px}
+@media(max-width:860px){.pp{grid-template-columns:1fr;gap:24px;padding-top:16px}}
+.gallery{display:grid;grid-template-columns:84px 1fr;gap:12px}
+.thumbs{display:flex;flex-direction:column;gap:10px}
+.thumbs img{aspect-ratio:550/668;object-fit:cover;cursor:pointer;opacity:.55;border:1px solid transparent}
+.thumbs img.on{opacity:1;border-color:var(--ink)}
+.mainimg{aspect-ratio:550/668;object-fit:cover;width:100%;background:#efebe5}
+@media(max-width:600px){.gallery{grid-template-columns:1fr}.thumbs{flex-direction:row;order:2;overflow-x:auto}.thumbs img{width:64px}}
+.crumbs{font-size:12px;color:var(--muted);margin-bottom:14px}
+.crumbs a:hover{text-decoration:underline}
+.pinfo h1{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3vw,38px);line-height:1.1;margin-bottom:12px}
+.pinfo .price{font-size:20px;margin-bottom:24px}
+.opt-h{font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;display:flex;justify-content:space-between}
+.opt-h b{font-weight:600}
+.szs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.sz{min-width:56px;padding:11px 14px;border:1px solid var(--line);background:var(--surface);font-size:14px}
+.sz.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.sz.out{color:#b9b2aa;text-decoration:line-through;background:transparent}
+.stock{font-size:13px;margin-bottom:22px;min-height:20px}
+.stock.ok{color:#2f6b3a}.stock.no{color:var(--sale)}
+.pinfo .btn{width:100%;text-align:center}
+.perks{margin:26px 0;border-top:1px solid var(--line)}
+.perks div{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}
+details{border-bottom:1px solid var(--line)}
+summary{padding:14px 0;cursor:pointer;font-size:13px;letter-spacing:.1em;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:'+'}
+details[open] summary::after{content:'–'}
+details ul{padding:0 0 16px 18px;color:#4a453f;font-size:14px}
+
+/* footer */
+footer{background:#f1ece5;border-top:1px solid var(--line);padding:56px 0 28px;margin-top:40px;font-size:14px}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+@media(max-width:860px){.ft{grid-template-columns:1fr 1fr}}
+footer h5{font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+footer li{list-style:none;padding:3px 0}
+footer a:hover{text-decoration:underline}
+.legal{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.ph-note{background:#fff7e0;border:1px dashed #d9b24a;padding:2px 6px;font-size:12px}
+
+/* toast + draft ribbon */
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:12px 20px;font-size:14px;transition:.3s;z-index:50}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.draft{position:fixed;right:-44px;top:22px;transform:rotate(45deg);background:#d9b24a;color:#1c1a17;font-size:11px;letter-spacing:.14em;padding:5px 50px;z-index:60;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="draft">ΔΕΙΓΜΑ</div>
+<div class="topbar">Klarna: πληρωμή σε 3 άτοκες δόσεις · Αποστολή σε 1–3 εργάσιμες</div>
+<header>
+  <div class="wrap hd">
+    <button class="burger" aria-label="Μενού" onclick="document.querySelector('nav.main').classList.toggle('open')">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+    </button>
+    <a class="logo" href="#/"><img src="assets/logo.png" alt="Mara's Boutique" onerror="this.outerHTML='<span class=logo-txt>Mara\'s</span>'"></a>
+    <nav class="main" id="nav"></nav>
+    <div class="icons">
+      <button class="cart-btn" aria-label="Καλάθι" onclick="toast('Το καλάθι είναι μέρος του επόμενου βήματος')">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7h12l-1 12H6L5 7Z"/><path d="M8 7a3 3 0 0 1 6 0"/></svg>
+        <span id="cartn">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="app"></main>
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <div class="logo-txt" style="font-size:34px">Mara's Boutique</div>
+        <p style="margin-top:10px">Επαμεινώνδα 12 &amp; Ετεοκλέους<br>Θήβα 322 00<br>Τηλ. 2262 023211<br>marasboutiqueboutique@gmail.com</p>
+      </div>
+      <div><h5>Κατάστημα</h5><ul id="fcats"></ul></div>
+      <div><h5>Εξυπηρέτηση</h5><ul>
+        <li><a href="#/info/shipping">Αποστολή &amp; κόστος</a></li>
+        <li><a href="#/info/returns">Επιστροφές &amp; αλλαγές</a></li>
+        <li><a href="#/info/sizes">Οδηγός μεγεθών</a></li>
+        <li><a href="#/info/payment">Τρόποι πληρωμής</a></li>
+        <li><a href="#/info/contact">Επικοινωνία</a></li>
+      </ul></div>
+      <div><h5>Ακολουθήστε μας</h5><ul>
+        <li><a href="https://www.instagram.com/maras_boutique_/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><span class="ph-note">Facebook: θέλει σωστό link</span></li>
+      </ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Mara's Boutique · <span class="ph-note">ΑΦΜ · ΓΕΜΗ</span></span>
+      <span><a href="#/info/terms">Όροι χρήσης</a> · <a href="#/info/privacy">Πολιτική απορρήτου</a> · <a href="#/info/cookies">Cookies</a></span>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script src="data/products.js"></script>
+<script>
+const CAT = {
+  'jacket-coat':'Πανωφόρια','blazer':'Σακάκια','dress':'Φορέματα','knits':'Πλεκτά','pants':'Παντελόνια',
+  'set':'Σετ','shirt':'Πουκάμισα','skirt':'Φούστες','special-occasion':'Special Occasion','top-blouse':'Τοπ',
+  'bag':'Τσάντες','accessories':'Αξεσουάρ','special-offer':'Προσφορές'
+};
+const P = (window.PRODUCTS||[]).filter(p=>p.images&&p.images.length&&p.variants&&p.variants.length).map(p=>{
+  const v=p.variants, inS=v.filter(x=>x.in_stock);
+  const price=Math.min(...v.map(x=>x.price)); const saleV=v.map(x=>x.sale).filter(x=>x>0);
+  const sale=saleV.length?Math.min(...saleV):0;
+  return {...p, price, sale, soldOut:inS.length===0, cname:CAT[p.cat]||p.cat,
+    title:p.title.replace(/\s+/g,' ').trim()};
+});
+const fmt=n=>n.toFixed(2).replace('.',',')+' €';
+const img=(p,i=0)=>p.images[i]||p.images[0];
+const app=document.getElementById('app');
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2600)}
+
+const catsPresent=[...new Set(P.map(p=>p.cat))].filter(c=>c!=='special-offer').sort((a,b)=>P.filter(p=>p.cat===b).length-P.filter(p=>p.cat===a).length);
+document.getElementById('nav').innerHTML =
+  `<a href="#/shop" data-n="shop">Νέα συλλογή</a>`+
+  catsPresent.slice(0,4).map(c=>`<a href="#/shop?cat=${c}" data-n="${c}">${CAT[c]||c}</a>`).join('')+
+  `<a href="#/shop?sale=1" class="sale" data-n="sale">Black Week</a>`;
+document.getElementById('fcats').innerHTML=catsPresent.map(c=>`<li><a href="#/shop?cat=${c}">${CAT[c]||c}</a></li>`).join('');
+
+function card(p){
+  const sizes=p.variants.map(v=>`<i class="${v.in_stock?'':'out'}">${v.size}</i>`).join('');
+  const pr=p.sale?`<span class="now">${fmt(p.sale)}</span><s>${fmt(p.price)}</s>`:fmt(p.price);
+  const off=p.sale?Math.round((1-p.sale/p.price)*100):0;
+  return `<a class="card ${p.soldOut?'sold':''}" href="#/p/${p.id}">
+    <div class="ph">
+      ${off&&!p.soldOut?`<span class="badge">-${off}%</span>`:''}
+      <img src="${img(p)}" alt="${p.title}" loading="lazy">
+      ${p.images[1]?`<img class="alt" src="${img(p,1)}" alt="" loading="lazy">`:''}
+      ${p.soldOut?'<div class="soldout"><b>Sold out</b></div>':''}
+    </div>
+    <div class="info"><div class="cat">${p.cname}</div><h3>${p.title}</h3><div class="price">${pr}</div><div class="sizes">${sizes}</div></div>
+  </a>`;
+}
+
+function home(){
+  const h=P.filter(p=>!p.soldOut).slice(0,3);
+  const best=P.filter(p=>!p.soldOut&&!p.sale).slice(0,8);
+  const sale=P.filter(p=>p.sale&&!p.soldOut).slice(0,4);
+  app.innerHTML=`
+  <section class="hero">
+    <a href="#/shop"><img src="${img(h[0]||P[0],0)}" alt=""><div class="cap"><small>Φθινόπωρο / Χειμώνας 26–27</small><h2>Νέα συλλογή</h2><span class="btn">Δείτε τη συλλογή</span></div></a>
+    <a href="#/shop"><img src="${img(h[1]||P[1],1)}" alt=""></a>
+    <a href="#/shop?sale=1"><img src="${img(h[2]||P[2],0)}" alt=""><div class="cap"><small>Black Week</small><h2>Προσφορές</h2></div></a>
+  </section>
+  <section class="block wrap">
+    <div class="sec-h"><h2>Κατηγορίες</h2><a href="#/shop">Όλα τα προϊόντα</a></div>
+    <div class="cats">${catsPresent.slice(0,4).map(c=>{const p=P.find(x=>x.cat===c);return `<a href="#/shop?cat=${c}"><img src="${img(p)}" alt="" loading="lazy"><span>${CAT[c]||c}</span></a>`}).join('')}</div>
+  </section>
+  <section class="block wrap">
+    <div class="sec-h"><h2>Νέες αφίξεις</h2><a href="#/shop">Δείτε όλα</a></div>
+    <div class="grid">${best.map(card).join('')}</div>
+  </section>
+  ${sale.length?`<section class="block wrap">
+    <div class="sec-h"><h2>Black Week</h2><a href="#/shop?sale=1">Όλες οι προσφορές</a></div>
+    <div class="grid">${sale.map(card).join('')}</div>
+  </section>`:''}`;
+}
+
+let F={cat:new Set(),size:new Set(),stock:false,sale:false,sort:'new'};
+function shop(q){
+  F={cat:new Set(q.get('cat')?[q.get('cat')]:[]),size:new Set(),stock:false,sale:q.get('sale')==='1',sort:'new'};
+  const sizes=[...new Set(P.flatMap(p=>p.variants.map(v=>v.size)))];
+  const order=['XS','S','S/M','M','M/L','L','XL','2XL','XXL','O/S'];
+  sizes.sort((a,b)=>(order.indexOf(a)+99)%999-(order.indexOf(b)+99)%999);
+  const title=F.sale?'Black Week':(F.cat.size?CAT[[...F.cat][0]]:'Όλα τα προϊόντα');
+  app.innerHTML=`<div class="wrap">
+   <div class="page-h"><h1>${title}</h1><p>Ό,τι έχει εξαντληθεί φαίνεται πάνω στη φωτογραφία.</p></div>
+   <div class="shop">
+    <aside class="filters" id="filters">
+      <h4>Κατηγορία</h4>${catsPresent.map(c=>`<label><input type="checkbox" data-f="cat" value="${c}" ${F.cat.has(c)?'checked':''}> ${CAT[c]||c}<em>${P.filter(p=>p.cat===c).length}</em></label>`).join('')}
+      <h4>Μέγεθος</h4><div class="chip-row">${sizes.map(s=>`<button class="chip" data-f="size" data-v="${s}">${s}</button>`).join('')}</div>
+      <h4>Διαθεσιμότητα</h4>
+      <label><input type="checkbox" data-f="stock"> Μόνο διαθέσιμα</label>
+      <label><input type="checkbox" data-f="sale" ${F.sale?'checked':''}> Σε προσφορά</label>
+    </aside>
+    <div>
+      <div class="toolbar">
+        <button class="btn ghost ftoggle" onclick="document.getElementById('filters').classList.toggle('open')">Φίλτρα</button>
+        <span class="count" id="count"></span>
+        <select id="sort"><option value="new">Νεότερα</option><option value="asc">Τιμή: χαμηλή → υψηλή</option><option value="desc">Τιμή: υψηλή → χαμηλή</option><option value="off">Μεγαλύτερη έκπτωση</option></select>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+   </div></div>`;
+  app.querySelectorAll('[data-f]').forEach(el=>el.addEventListener(el.tagName==='BUTTON'?'click':'change',()=>{
+    const f=el.dataset.f;
+    if(f==='size'){const v=el.dataset.v;F.size.has(v)?F.size.delete(v):F.size.add(v);el.classList.toggle('on')}
+    else if(f==='cat'){el.checked?F.cat.add(el.value):F.cat.delete(el.value)}
+    else F[f]=el.checked;
+    renderGrid();
+  }));
+  document.getElementById('sort').onchange=e=>{F.sort=e.target.value;renderGrid()};
+  renderGrid();
+}
+function renderGrid(){
+  let L=P.filter(p=>(!F.cat.size||F.cat.has(p.cat))&&(!F.sale||p.sale)&&(!F.stock||!p.soldOut)&&
+    (!F.size.size||p.variants.some(v=>F.size.has(v.size)&&(v.in_stock||!F.stock))));
+  const eff=p=>p.sale||p.price;
+  if(F.sort==='asc')L.sort((a,b)=>eff(a)-eff(b));
+  if(F.sort==='desc')L.sort((a,b)=>eff(b)-eff(a));
+  if(F.sort==='off')L.sort((a,b)=>(b.sale?1-b.sale/b.price:0)-(a.sale?1-a.sale/a.price:0));
+  L.sort((a,b)=>a.soldOut-b.soldOut); // τα εξαντλημένα πάντα στο τέλος
+  document.getElementById('count').textContent=L.length+' προϊόντα';
+  document.getElementById('grid').innerHTML=L.length?L.map(card).join(''):'<div class="empty">Δεν βρέθηκαν προϊόντα με αυτά τα φίλτρα.</div>';
+}
+
+function product(id){
+  const p=P.find(x=>String(x.id)===String(id)); if(!p){app.innerHTML='<div class="wrap empty">Το προϊόν δεν βρέθηκε.</div>';return}
+  let sel=p.variants.find(v=>v.in_stock)||p.variants[0];  // ανοίγει στο πρώτο ΔΙΑΘΕΣΙΜΟ νούμερο
+  const desc=(p.desc||'').split(/(?<=[a-zα-ωά-ώ%])\s(?=[Α-ΩΆ-Ώ0-9])/).filter(Boolean);
+  const rel=P.filter(x=>x.cat===p.cat&&x.id!==p.id&&!x.soldOut).slice(0,4);
+  app.innerHTML=`<div class="wrap">
+  <div class="pp">
+    <div class="gallery">
+      <div class="thumbs">${p.images.map((s,i)=>`<img src="${s}" data-i="${i}" class="${i?'':'on'}" alt="">`).join('')}</div>
+      <img class="mainimg" id="mainimg" src="${img(p)}" alt="${p.title}">
+    </div>
+    <div class="pinfo">
+      <div class="crumbs"><a href="#/">Αρχική</a> / <a href="#/shop?cat=${p.cat}">${p.cname}</a></div>
+      <h1>${p.title}</h1>
+      <div class="price" id="pprice"></div>
+      <div class="opt-h"><span>Μέγεθος: <b id="selname"></b></span><a href="#/info/sizes" style="text-transform:none;letter-spacing:0;text-decoration:underline">Οδηγός μεγεθών</a></div>
+      <div class="szs">${p.variants.map((v,i)=>`<button class="sz ${v.in_stock?'':'out'}" data-i="${i}" ${v.in_stock?'':'title="Εξαντλήθηκε"'}>${v.size}</button>`).join('')}</div>
+      <div class="stock" id="stock"></div>
+      <button class="btn" id="add">Προσθήκη στο καλάθι</button>
+      <div class="perks">
+        <div>🚚 <span>Παράδοση σε 1–3 εργάσιμες</span></div>
+        <div>💳 <span>Klarna: πληρωμή σε 3 άτοκες δόσεις</span></div>
+        <div>↺ <span>Αλλαγή ή επιστροφή <span class="ph-note">όροι από τη Μαρία</span></span></div>
+      </div>
+      <details open><summary>Περιγραφή &amp; υλικά</summary><ul>${desc.map(d=>`<li>${d}</li>`).join('')||'<li>—</li>'}</ul></details>
+      <details><summary>Αποστολή &amp; επιστροφές</summary><ul><li><span class="ph-note">Κείμενο από τη Μαρία</span></li></ul></details>
+    </div>
+  </div>
+  ${rel.length?`<section class="block" style="padding-top:0"><div class="sec-h"><h2>Μπορεί να σας αρέσει</h2></div><div class="grid">${rel.map(card).join('')}</div></section>`:''}
+  </div>`;
+  const upd=()=>{
+    app.querySelectorAll('.sz').forEach((b,i)=>b.classList.toggle('on',p.variants[i]===sel));
+    document.getElementById('selname').textContent=sel.size;
+    const pr=sel.sale||0;
+    document.getElementById('pprice').innerHTML=pr?`<span class="now">${fmt(pr)}</span><s>${fmt(sel.price)}</s>`:fmt(sel.price);
+    const st=document.getElementById('stock'), add=document.getElementById('add');
+    if(p.soldOut){st.className='stock no';st.textContent='Το προϊόν έχει εξαντληθεί σε όλα τα μεγέθη.';add.disabled=true;add.textContent='Sold out'}
+    else if(sel.in_stock){st.className='stock ok';st.textContent='✓ Διαθέσιμο στο '+sel.size;add.disabled=false;add.textContent='Προσθήκη στο καλάθι'}
+    else{const o=p.variants.filter(v=>v.in_stock).map(v=>v.size).join(', ');st.className='stock no';st.textContent=`Το ${sel.size} εξαντλήθηκε. Διαθέσιμο σε: ${o}`;add.disabled=true;add.textContent='Εξαντλήθηκε σε αυτό το μέγεθος'}
+  };
+  app.querySelectorAll('.sz').forEach(b=>b.onclick=()=>{sel=p.variants[+b.dataset.i];upd()});
+  app.querySelectorAll('.thumbs img').forEach(t=>t.onclick=()=>{document.getElementById('mainimg').src=t.src;app.querySelectorAll('.thumbs img').forEach(x=>x.classList.toggle('on',x===t))});
+  document.getElementById('add').onclick=()=>{const n=document.getElementById('cartn');n.textContent=+n.textContent+1;toast('Προστέθηκε: '+p.title+' · '+sel.size)};
+  upd();
+}
+
+const INFO={shipping:'Αποστολή & κόστος',returns:'Επιστροφές & αλλαγές',sizes:'Οδηγός μεγεθών',payment:'Τρόποι πληρωμής',terms:'Όροι χρήσης',privacy:'Πολιτική απορρήτου',cookies:'Cookies',contact:'Επικοινωνία'};
+function info(k){
+  app.innerHTML=`<div class="wrap" style="max-width:760px;padding-bottom:60px"><div class="page-h"><h1>${INFO[k]||''}</h1></div>
+  ${k==='contact'?`<p>Mara's Boutique<br>Επαμεινώνδα 12 &amp; Ετεοκλέους, Θήβα 322 00<br>Τηλ. 2262 023211<br>marasboutiqueboutique@gmail.com</p>`
+  :`<p><span class="ph-note">Η σελίδα υπάρχει στο νέο site. Το κείμενο θα το δώσει η Μαρία (ή ο λογιστής/δικηγόρος για τα νομικά).</span></p>`}</div>`;
+}
+
+function route(){
+  const h=location.hash.slice(1)||'/'; const [path,qs]=h.split('?'); const q=new URLSearchParams(qs||'');
+  const seg=path.split('/').filter(Boolean);
+  document.querySelectorAll('nav.main a').forEach(a=>a.classList.toggle('on',
+    (seg[0]==='shop'&&((q.get('cat')&&a.dataset.n===q.get('cat'))||(q.get('sale')&&a.dataset.n==='sale')||(!q.toString()&&a.dataset.n==='shop')))));
+  document.querySelector('nav.main').classList.remove('open');
+  if(!seg.length)home(); else if(seg[0]==='shop')shop(q); else if(seg[0]==='p')product(seg[1]); else if(seg[0]==='info')info(seg[1]); else home();
+  window.scrollTo(0,0);
+}
+addEventListener('hashchange',route); route();
+</script>
+</body>
+</html>
