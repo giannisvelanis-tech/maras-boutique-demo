@@ -24,10 +24,16 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @media(max-width:600px){.wrap{padding:0 16px}}
 
 /* top bar + header */
-.topbar{background:var(--ink);color:#f3eee8;text-align:center;font-size:12px;letter-spacing:.06em;padding:8px 16px}
+.topbar{background:#C0B4A8;color:#000;text-align:center;font-size:12px;letter-spacing:.06em;padding:8px 16px} /* χρώμα από teasfashion.com, επιλογή Μαρίας 14/11 */
+.dd{position:relative}
+.dd>a::after{content:' ▾';font-size:10px}
+.dd .menu{display:none;position:absolute;top:100%;left:-16px;background:var(--surface);border:1px solid var(--line);padding:8px 0;min-width:200px;z-index:30;text-transform:none;letter-spacing:0}
+.dd:hover .menu{display:block}
+.dd .menu a{display:block;padding:8px 16px;border:0;font-size:14px}
+.dd .menu a:hover{background:var(--bg)}
 header{position:sticky;top:0;z-index:20;background:rgba(251,249,246,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .hd{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
-.logo img{height:46px;width:auto}
+.logo img{height:58px;width:auto}
 .logo-txt{font-family:var(--serif);font-style:italic;font-size:30px}
 nav.main{display:flex;gap:28px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 nav.main a{padding:6px 0;border-bottom:1px solid transparent}
@@ -41,6 +47,9 @@ nav.main a.sale{color:var(--sale)}
   nav.main{display:none;position:absolute;top:72px;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 16px 16px;border-bottom:1px solid var(--line)}
   nav.main.open{display:flex}
   nav.main a{padding:12px 0;border-bottom:1px solid var(--line)}
+  .dd>a::after{content:''}
+  .dd .menu{display:block;position:static;border:0;padding:0 0 0 16px;background:transparent;min-width:0}
+  .dd .menu a{padding:10px 0;border-bottom:1px solid var(--line)}
   .burger{display:block}
 }
 
@@ -216,19 +225,25 @@ const P = (window.PRODUCTS||[]).filter(p=>p.images&&p.images.length&&p.variants&
   const v=p.variants, inS=v.filter(x=>x.in_stock);
   const price=Math.min(...v.map(x=>x.price)); const saleV=v.map(x=>x.sale).filter(x=>x>0);
   const sale=saleV.length?Math.min(...saleV):0;
-  return {...p, price, sale, soldOut:inS.length===0, cname:CAT[p.cat]||p.cat,
+  return {...p, price, sale, soldOut:inS.length===0, cname:CAT[p.cat]||p.cat, bw:!!p.sale_page,
     title:p.title.replace(/\s+/g,' ').trim()};
 });
-const fmt=n=>Math.floor(n+1e-9)+' €'; // ακέραιες τιμές, στρογγυλοποίηση προς τα κάτω (επιθυμία Μαρίας 14/11)
+// Τιμές: στρογγυλοποίηση προς τα κάτω στο μισό ευρώ (Μαρία, κλήση 14/11: 179,80 → 179,50 · 36,45 → 36)
+const fmt=n=>{const r=Math.floor(n*2+1e-9)/2; return (r%1?r.toFixed(2).replace('.',','):String(r))+' €'};
+// Οι κατηγορίες της Μαρίας, με τη σειρά του τωρινού της μενού. Τα ρούχα του BLACK WEEK (περσινά, με μεγάλη έκπτωση)
+// φαίνονται μόνο στο BLACK WEEK, όχι στις κατηγορίες, όπως στο τωρινό site (Μαρία, κλήση 14/11).
+const MENU=['special-occasion','top-blouse','pants','jacket-coat','set','blazer','knits','dress','shirt','skirt'];
+const inCat=(p,c)=>p.cat===c&&!p.bw;
 const img=(p,i=0)=>p.images[i]||p.images[0];
 const app=document.getElementById('app');
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2600)}
 
-const catsPresent=[...new Set(P.map(p=>p.cat))].filter(c=>c!=='special-offer').sort((a,b)=>P.filter(p=>p.cat===b).length-P.filter(p=>p.cat===a).length);
+const catsPresent=[...MENU,'bag'];
 document.getElementById('nav').innerHTML =
-  `<a href="#/shop" data-n="shop">Νέα συλλογή</a>`+
-  catsPresent.slice(0,4).map(c=>`<a href="#/shop?cat=${c}" data-n="${c}">${CAT[c]||c}</a>`).join('')+
-  `<a href="#/shop?sale=1" class="sale" data-n="sale">Black Week</a>`;
+  `<div class="dd"><a href="#/shop" data-n="shop">Shop</a><div class="menu">${MENU.map(c=>`<a href="#/shop?cat=${c}" data-n="${c}">${CAT[c]}</a>`).join('')}</div></div>`+
+  `<div class="dd"><a href="#/shop?cat=bag" data-n="bag">Αξεσουάρ</a><div class="menu"><a href="#/shop?cat=bag">Τσάντες</a></div></div>`+
+  `<a href="#/shop?bw=1" class="sale" data-n="bw">Black Week</a>`+
+  `<a href="#/info/contact" data-n="contact">Επικοινωνία</a>`;
 document.getElementById('fcats').innerHTML=catsPresent.map(c=>`<li><a href="#/shop?cat=${c}">${CAT[c]||c}</a></li>`).join('');
 
 function card(p){
@@ -247,41 +262,41 @@ function card(p){
 }
 
 function home(){
-  const h=P.filter(p=>!p.soldOut).slice(0,3);
-  const best=P.filter(p=>!p.soldOut&&!p.sale).slice(0,8);
-  const sale=P.filter(p=>p.sale&&!p.soldOut).slice(0,4);
+  const h=P.filter(p=>!p.soldOut&&!p.bw).slice(0,3);
+  const best=P.filter(p=>!p.soldOut&&!p.sale&&!p.bw).slice(0,8);
+  const sale=P.filter(p=>p.bw&&!p.soldOut).slice(0,4);
   app.innerHTML=`
   <section class="hero">
     <a href="#/shop"><img src="${img(h[0]||P[0],0)}" alt=""><div class="cap"><small>Φθινόπωρο / Χειμώνας 26–27</small><h2>Νέα συλλογή</h2><span class="btn">Δείτε τη συλλογή</span></div></a>
     <a href="#/shop"><img src="${img(h[1]||P[1],1)}" alt=""></a>
-    <a href="#/shop?sale=1"><img src="${img(h[2]||P[2],0)}" alt=""><div class="cap"><small>Black Week</small><h2>Προσφορές</h2></div></a>
+    <a href="#/shop?bw=1"><img src="${img([...P].filter(p=>p.bw&&!p.soldOut).sort((a,b)=>b.images.length-a.images.length)[0]||h[2]||P[2],0)}" alt=""><div class="cap"><small>Black Week</small><h2>Προσφορές</h2></div></a>
   </section>
   <section class="block wrap">
     <div class="sec-h"><h2>Κατηγορίες</h2><a href="#/shop">Όλα τα προϊόντα</a></div>
-    <div class="cats">${catsPresent.slice(0,4).map(c=>{const p=P.find(x=>x.cat===c);return `<a href="#/shop?cat=${c}"><img src="${img(p)}" alt="" loading="lazy"><span>${CAT[c]||c}</span></a>`}).join('')}</div>
+    <div class="cats">${catsPresent.filter(c=>P.some(p=>inCat(p,c))).sort((a,b)=>P.filter(p=>inCat(p,b)).length-P.filter(p=>inCat(p,a)).length).slice(0,4).map(c=>{const p=P.find(x=>inCat(x,c));return `<a href="#/shop?cat=${c}"><img src="${img(p)}" alt="" loading="lazy"><span>${CAT[c]||c}</span></a>`}).join('')}</div>
   </section>
   <section class="block wrap">
     <div class="sec-h"><h2>Νέες αφίξεις</h2><a href="#/shop">Δείτε όλα</a></div>
     <div class="grid">${best.map(card).join('')}</div>
   </section>
   ${sale.length?`<section class="block wrap">
-    <div class="sec-h"><h2>Black Week</h2><a href="#/shop?sale=1">Όλες οι προσφορές</a></div>
+    <div class="sec-h"><h2>Black Week</h2><a href="#/shop?bw=1">Όλες οι προσφορές</a></div>
     <div class="grid">${sale.map(card).join('')}</div>
   </section>`:''}`;
 }
 
 let F={cat:new Set(),size:new Set(),stock:false,sale:false,sort:'new'};
 function shop(q){
-  F={cat:new Set(q.get('cat')?[q.get('cat')]:[]),size:new Set(),stock:false,sale:q.get('sale')==='1',sort:'new'};
+  F={cat:new Set(q.get('cat')?[q.get('cat')]:[]),size:new Set(),stock:false,sale:q.get('sale')==='1',bw:q.get('bw')==='1',sort:'new'};
   const sizes=[...new Set(P.flatMap(p=>p.variants.map(v=>v.size)))];
   const order=['XS','S','S/M','M','M/L','L','XL','2XL','XXL','O/S'];
   sizes.sort((a,b)=>(order.indexOf(a)+99)%999-(order.indexOf(b)+99)%999);
-  const title=F.sale?'Black Week':(F.cat.size?CAT[[...F.cat][0]]:'Όλα τα προϊόντα');
+  const title=F.bw?'Black Week':F.sale?'Προσφορές':(F.cat.size?CAT[[...F.cat][0]]:'Όλα τα προϊόντα');
   app.innerHTML=`<div class="wrap">
    <div class="page-h"><h1>${title}</h1><p>Ό,τι έχει εξαντληθεί φαίνεται πάνω στη φωτογραφία.</p></div>
    <div class="shop">
     <aside class="filters" id="filters">
-      <h4>Κατηγορία</h4>${catsPresent.map(c=>`<label><input type="checkbox" data-f="cat" value="${c}" ${F.cat.has(c)?'checked':''}> ${CAT[c]||c}<em>${P.filter(p=>p.cat===c).length}</em></label>`).join('')}
+      <h4>Κατηγορία</h4>${catsPresent.map(c=>`<label><input type="checkbox" data-f="cat" value="${c}" ${F.cat.has(c)?'checked':''}> ${CAT[c]||c}<em>${P.filter(p=>F.bw?(p.bw&&p.cat===c):inCat(p,c)).length}</em></label>`).join('')}
       <h4>Μέγεθος</h4><div class="chip-row">${sizes.map(s=>`<button class="chip" data-f="size" data-v="${s}">${s}</button>`).join('')}</div>
       <h4>Διαθεσιμότητα</h4>
       <label><input type="checkbox" data-f="stock"> Μόνο διαθέσιμα</label>
@@ -307,7 +322,7 @@ function shop(q){
   renderGrid();
 }
 function renderGrid(){
-  let L=P.filter(p=>(!F.cat.size||F.cat.has(p.cat))&&(!F.sale||p.sale)&&(!F.stock||!p.soldOut)&&
+  let L=P.filter(p=>(F.bw?p.bw:!p.bw)&&(!F.cat.size||F.cat.has(p.cat))&&(!F.sale||p.sale)&&(!F.stock||!p.soldOut)&&
     (!F.size.size||p.variants.some(v=>F.size.has(v.size)&&(v.in_stock||!F.stock))));
   const eff=p=>p.sale||p.price;
   if(F.sort==='asc')L.sort((a,b)=>eff(a)-eff(b));
@@ -375,7 +390,7 @@ function route(){
   const h=location.hash.slice(1)||'/'; const [path,qs]=h.split('?'); const q=new URLSearchParams(qs||'');
   const seg=path.split('/').filter(Boolean);
   document.querySelectorAll('nav.main a').forEach(a=>a.classList.toggle('on',
-    (seg[0]==='shop'&&((q.get('cat')&&a.dataset.n===q.get('cat'))||(q.get('sale')&&a.dataset.n==='sale')||(!q.toString()&&a.dataset.n==='shop')))));
+    (seg[0]==='shop'&&((q.get('cat')&&a.dataset.n===q.get('cat'))||(q.get('bw')&&a.dataset.n==='bw')||(!q.toString()&&a.dataset.n==='shop')))));
   document.querySelector('nav.main').classList.remove('open');
   if(!seg.length)home(); else if(seg[0]==='shop')shop(q); else if(seg[0]==='p')product(seg[1]); else if(seg[0]==='info')info(seg[1]); else home();
   window.scrollTo(0,0);
