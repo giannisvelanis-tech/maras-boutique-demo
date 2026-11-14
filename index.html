@@ -333,11 +333,37 @@ function renderGrid(){
   document.getElementById('grid').innerHTML=L.length?L.map(card).join(''):'<div class="empty">Δεν βρέθηκαν προϊόντα με αυτά τα φίλτρα.</div>';
 }
 
+// «Ολοκληρώστε το σύνολο» (Μαρία, κλήση 14/11): κάτω από ένα ρούχο, πρώτα το κομμάτι του ίδιου σετ
+// (π.χ. κοτλέ παντελόνι Moutaki → κοτλέ πουκάμισο Moutaki στο ίδιο χρώμα). Ταίριασμα από το όνομα:
+// ίδια μάρκα/κωδικός σειράς + ίδιο ύφασμα/σχέδιο + ίδιο χρώμα, και το ένα να είναι πάνω, το άλλο κάτω.
+const TOP=new Set(['top-blouse','shirt','blazer','knits','jacket-coat']), BOT=new Set(['pants','skirt']);
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+  .replace(/[αβγδεζηθικλμνξοπρστυφχψω]/g,c=>({α:'a',β:'b',γ:'g',δ:'d',ε:'e',ζ:'z',η:'h',θ:'th',ι:'i',κ:'k',λ:'l',μ:'m',ν:'n',ξ:'x',ο:'o',π:'p',ρ:'r',σ:'s',τ:'t',υ:'y',φ:'f',χ:'ch',ψ:'ps',ω:'o'}[c]));
+const FABRIC=['kotle','beloydin','velvet','zakar','pagiet','saten','lurex','dantel','peplum','tweed','floral','checkered','rig','print','soyent','suede','dermat','psarokokal'];
+const COLOR=['ekroy','mple','chaki','mayr','black','kafe','mpez','krem','sokola','rust','mpornt','vanil','camel','lad','gkri','anthrak','taupe','off white','leyk','smoke'];
+const BRAND=['access','moutaki','lynne','combos','dolce'];
+function feats(p){const t=norm(p.title);const code=(t.match(/\b([a-z]{3,5})([a-z]{1,3})?0*(\d{1,3})\s*$/)||[]);
+  return {t,fab:FABRIC.filter(f=>t.includes(f)),col:COLOR.filter(c=>t.includes(c)),brand:BRAND.find(b=>t.startsWith(b)),
+    series:(t.match(/\b(acc|mat|mout|mou|fig|lam|pl|nub)[a-z]*?\d+\b/)||[])[1]||null, num:(t.match(/(\d{2,3})\s*$/)||[])[1]||null};}
+function setMatches(p){
+  const a=feats(p), up=TOP.has(p.cat), down=BOT.has(p.cat); if(!up&&!down) return [];
+  return P.filter(x=>x.id!==p.id&&x.bw===p.bw&&!x.soldOut&&(up?BOT.has(x.cat):TOP.has(x.cat))).map(x=>{
+    const b=feats(x); let s=0;
+    if(a.brand&&a.brand===b.brand) s+=2;
+    if(a.series&&a.series===b.series) s+=2;
+    if(a.series&&a.series===b.series&&a.num&&a.num===b.num) s+=2;
+    const fab=a.fab.filter(f=>b.fab.includes(f)).length; s+=3*fab;
+    s+=2*a.col.filter(c=>b.col.includes(c)).length;
+    return [fab?s:0,x];   // σετ μόνο αν μοιράζονται ύφασμα/σχέδιο
+  }).filter(([s])=>s>=6).sort((m,n)=>n[0]-m[0]).map(([,x])=>x);
+}
 function product(id){
   const p=P.find(x=>String(x.id)===String(id)); if(!p){app.innerHTML='<div class="wrap empty">Το προϊόν δεν βρέθηκε.</div>';return}
   let sel=p.variants.find(v=>v.in_stock)||p.variants[0];  // ανοίγει στο πρώτο ΔΙΑΘΕΣΙΜΟ νούμερο
   const desc=(p.desc||'').split(/(?<=[a-zα-ωά-ώ%])\s(?=[Α-ΩΆ-Ώ0-9])/).filter(Boolean);
-  const rel=P.filter(x=>x.cat===p.cat&&x.id!==p.id&&!x.soldOut).slice(0,4);
+  const set=setMatches(p);
+  const rel=P.filter(x=>x.cat===p.cat&&x.id!==p.id&&!x.soldOut&&x.bw===p.bw&&!set.includes(x)).slice(0,4);
+  const recs=[...set.slice(0,4),...rel];
   app.innerHTML=`<div class="wrap">
   <div class="pp">
     <div class="gallery">
@@ -361,7 +387,8 @@ function product(id){
       <details><summary>Αποστολή &amp; επιστροφές</summary><ul><li><span class="ph-note">Κείμενο από τη Μαρία</span></li></ul></details>
     </div>
   </div>
-  ${rel.length?`<section class="block" style="padding-top:0"><div class="sec-h"><h2>Μπορεί να σας αρέσει</h2></div><div class="grid">${rel.map(card).join('')}</div></section>`:''}
+  ${set.length?`<section class="block" style="padding-top:0"><div class="sec-h"><h2>Ολοκληρώστε το σύνολο</h2></div><div class="grid">${set.slice(0,4).map(card).join('')}</div></section>`:''}
+  ${rel.length?`<section class="block" style="padding-top:${set.length?'40px':'0'}"><div class="sec-h"><h2>Μπορεί να σας αρέσει</h2></div><div class="grid">${rel.map(card).join('')}</div></section>`:''}
   </div>`;
   const upd=()=>{
     app.querySelectorAll('.sz').forEach((b,i)=>b.classList.toggle('on',p.variants[i]===sel));
