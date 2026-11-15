@@ -288,7 +288,7 @@ function card(p){
 function home(){
   const h=P.filter(p=>!p.soldOut&&!p.bw).slice(0,3);
   const best=P.filter(p=>!p.soldOut&&!p.sale&&!p.bw).slice(0,8);
-  const sale=P.filter(p=>p.bw&&!p.soldOut).slice(0,4);
+  const sale=[167,336,284,173].map(id=>P.find(p=>p.id===id)).filter(Boolean); // επιλογή Μαρίας (email 15/11 13:50)
   app.innerHTML=`
   <section class="hero">
     <a class="h1" href="#/shop"><img src="assets/hero/1-nea-syllogi.jpg" alt="Νέα συλλογή Φθινόπωρο / Χειμώνας 26–27"><div class="cap"><small>Φθινόπωρο / Χειμώνας 26–27</small><h2>Νέα συλλογή</h2><span class="btn">Δείτε τη συλλογή</span></div></a>
