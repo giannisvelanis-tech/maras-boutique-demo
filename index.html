@@ -35,7 +35,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(251,249,246,.94);backdro
 .hd{display:flex;align-items:center;justify-content:space-between;height:80px;gap:16px}
 .logo{display:flex;flex-direction:column;align-items:center;line-height:1}
 .logo img{height:52px;width:auto}
-.logo small{font-family:'Poiret One',var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.3em;color:#5E544D;margin-top:2px;white-space:nowrap} /* γραμματοσειρά κοντά στην ταμπέλα· η σωστή όταν έρθει το PDF */
+.logo img.tag{height:10px;margin-top:4px} /* «Mara's» και «BOUTIQUE / CONCEPT STORE» από τα σχέδια της ταμπέλας (MARA LEFT/RIGHT.pdf, 15/11) */
 .logo-txt{font-family:var(--serif);font-style:italic;font-size:30px}
 nav.main{display:flex;align-items:center;gap:28px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 .dd>a{display:inline-block} /* Shop/Αξεσουάρ στην ίδια ευθεία με Black Week/Επικοινωνία (Μαρία 15/11) */
@@ -190,7 +190,7 @@ footer a:hover{text-decoration:underline}
     <button class="burger" aria-label="Μενού" onclick="document.querySelector('nav.main').classList.toggle('open')">
       <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
     </button>
-    <a class="logo" href="#/"><img src="assets/logo.png" alt="Mara's Boutique" onerror="this.outerHTML='<span class=logo-txt>Mara\'s</span>'"><small>BOUTIQUE &amp; CONCEPT STORE</small></a>
+    <a class="logo" href="#/"><img src="assets/logo-maras.svg" alt="Mara's Boutique" onerror="this.outerHTML='<span class=logo-txt>Mara\'s</span>'"><img class="tag" src="assets/logo-tagline.svg" alt="Boutique Concept Store"></a>
     <nav class="main" id="nav"></nav>
     <div class="icons">
       <button class="cart-btn" aria-label="Καλάθι" onclick="toast('Το καλάθι είναι μέρος του επόμενου βήματος')">
