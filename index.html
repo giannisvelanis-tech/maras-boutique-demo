@@ -260,7 +260,7 @@ const HOMECATS=[['#/shop?cat=jacket-coat','assets/cats/panoforia.jpg','Πανω�
 const MENU=['special-occasion','top-blouse','pants','jacket-coat','set','blazer','knits','dress','skirt'];
 const inCat=(p,c)=>p.cats.includes(c)&&!p.bw;
 // Χρώματα του ίδιου ρούχου (ίδιος κωδικός ACCESS): κυκλάκια στη σελίδα προϊόντος (Μαρία, κλήση 15/11 23:31)
-const COL={BLACK:'Μαύρο',COFFE:'Καφέ',GREY:'Γκρι',OFWHT:'Εκρού',BORDO:'Μπορντό',BLUE:'Μπλε',VANLA:'Βανίλια',OLIVE:'Λαδί',CAMEL:'Καμηλό',BEIGE:'Μπεζ',PLUM:'Δαμασκηνί',BROWN:'Καφέ',ZEBRA:'Ζέβρα',LATTE:'Λάτε',COAL:'Ανθρακί',CHOCO:'Σοκολατί',WHITE:'Λευκό',RUST:'Κεραμιδί',CHERRY:'Κερασί'};
+const COL={BLACK:'Μαύρο',COFFE:'Καφέ',GREY:'Γκρι',OFWHT:'Εκρού',BORDO:'Μπορντό',BLUE:'Μπλε',VANLA:'Βανίλια',OLIVE:'Λαδί',CAMEL:'Καμηλό',BEIGE:'Μπεζ',PLUM:'Δαμασκηνί',BROWN:'Καφέ',ZEBRA:'Ζέβρα',LATTE:'Λάτε',COAL:'Ανθρακί',CHOCO:'Σοκολατί',WHITE:'Λευκό',RUST:'Κεραμιδί',CHERRY:'Κερασί',SILVR:'Ασημί',LEOPAR:'Λεοπάρ'};
 const img=(p,i=0)=>p.images[i]||p.images[0];
 const app=document.getElementById('app');
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2600)}
