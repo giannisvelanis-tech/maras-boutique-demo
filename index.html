@@ -77,8 +77,8 @@ nav.main a.sale{color:var(--sale)}
 .hero .cap{position:absolute;left:28px;bottom:28px;color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.35)}
 .hero .cap small{font-size:12px;letter-spacing:.18em;text-transform:uppercase}
 .hero .cap h2{font-family:var(--serif);font-weight:500;font-size:clamp(19px,1.92vw,27px);line-height:1} /* μικρότερο, άλλο −20% (Μαρία 15/11, 13:19) */
-.hero .h2 .cap{text-shadow:none;left:auto;right:16px;bottom:16px}.hero .h2 .cap h2{background:#000;color:#fff;padding:7px 11px;font-size:clamp(14px,1.3vw,19px);line-height:1.1;text-align:right} /* μαύρο φόντο, λευκά γράμματα, μικρότερο, κάτω δεξιά (Μαρία 15/11 14:12, 14:28) */
-.hero .cta{position:absolute;right:20px;bottom:16px;background:#fff;color:#000;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:8px 14px} /* διακριτική προτροπή στο Lucky Friday (Μαρία 15/11) */
+.hero .h2 .cap{text-shadow:none;left:auto;right:16px;bottom:16px}.hero .h2 .cap h2{background:#000;color:#fff;padding:7px 11px;font-size:clamp(14px,1.3vw,19px);line-height:1.1;text-align:center;white-space:nowrap} /* μαύρο φόντο, λευκά γράμματα, μικρότερο, κάτω δεξιά (Μαρία 15/11 14:12, 14:28) */
+.hero .cta{position:absolute;left:50%;top:calc(61.5% + 38px);transform:translateX(-50%);white-space:nowrap;background:#fff;color:#000;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:8px 14px} /* διακριτική προτροπή στο Lucky Friday (Μαρία 15/11) */
 @media(max-width:860px){.hero{grid-template-columns:1fr}.hero .h1{aspect-ratio:auto;height:62vh;max-height:none}.hero .h1 img{object-position:51% 50%}.hero .h3{order:2}.hero .h2{order:3}} /* κινητό: Lucky Friday αμέσως κάτω από την κεντρική (Μαρία 15/11) */
 .btn{display:inline-block;border:1px solid var(--ink);padding:13px 26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:#fff;transition:.2s}
 .btn:hover{background:transparent;color:var(--ink)}
@@ -173,7 +173,7 @@ details ul{padding:0 0 16px 18px;color:#4a453f;font-size:14px}
 
 /* footer */
 footer{background:#f1ece5;border-top:1px solid var(--line);padding:56px 0 28px;margin-top:40px;font-size:14px}
-.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}.flogo{align-items:flex-start;width:max-content}.flogo small{margin-left:0}
 @media(max-width:860px){.ft{grid-template-columns:1fr 1fr}}
 footer h5{font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
 footer li{list-style:none;padding:3px 0}
@@ -189,7 +189,7 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 <div class="draft">ΔΕΙΓΜΑ</div>
-<div class="topbar"><img class="klarna" src="assets/klarna-badge.svg" alt="Klarna"> πληρωμή σε 3 άτοκες δόσεις · Δωρεάν αποστολή για αγορές άνω των 100€ · Αποστολή σε 1–3 εργάσιμες</div>
+<div class="topbar"><img class="klarna" src="assets/klarna-badge.svg" alt="Klarna"> πληρωμή σε 3 άτοκες δόσεις · Δωρεάν αποστολή για αγορές άνω των 100€</div>
 <header>
   <div class="wrap hd">
     <button class="burger" aria-label="Μενού" onclick="document.querySelector('nav.main').classList.toggle('open')">
@@ -210,10 +210,9 @@ footer a:hover{text-decoration:underline}
   <div class="wrap">
     <div class="ft">
       <div>
-        <div class="logo-txt" style="font-size:34px">Mara's Boutique</div>
+        <a class="logo flogo" href="#/"><img src="assets/logo-maras.svg" alt="Mara's Boutique"><small>BOUTIQUE &amp; CONCEPT STORE</small></a>
         <p style="margin-top:10px">Επαμεινώνδα 12 &amp; Ετεοκλέους<br>Θήβα 322 00<br>Τηλ. 2262 023211<br>marasboutiqueboutique@gmail.com</p>
       </div>
-      <div><h5>Κατάστημα</h5><ul id="fcats"></ul></div>
       <div><h5>Εξυπηρέτηση</h5><ul>
         <li><a href="#/info/shipping">Αποστολή &amp; κόστος</a></li>
         <li><a href="#/info/returns">Επιστροφές &amp; αλλαγές</a></li>
@@ -227,7 +226,7 @@ footer a:hover{text-decoration:underline}
       </ul></div>
     </div>
     <div class="legal">
-      <span>© 2026 Mara's Boutique · <span class="ph-note">ΑΦΜ · ΓΕΜΗ</span></span>
+      <span>© 2026 Mara's Boutique · ΑΦΜ 124145929 · <span class="ph-note">ΓΕΜΗ</span></span>
       <span><a href="#/info/terms">Όροι χρήσης</a> · <a href="#/info/privacy">Πολιτική απορρήτου</a> · <a href="#/info/cookies">Cookies</a></span>
     </div>
   </div>
@@ -239,14 +238,15 @@ footer a:hover{text-decoration:underline}
 <script>
 const CAT = {
   'jacket-coat':'Πανωφόρια','blazer':'Σακάκια','dress':'Φορέματα','knits':'Πλεκτά','pants':'Παντελόνια',
-  'set':'Σετ','shirt':'Πουκάμισα','skirt':'Φούστες','special-occasion':'Special Occasion','top-blouse':'Τοπ',
+  'set':'Σετ','skirt':'Φούστες','special-occasion':'Special Occasion','top-blouse':'Τοπ – Πουκάμισα',
   'bag':'Τσάντες','accessories':'Αξεσουάρ','special-offer':'Προσφορές'
 };
 const P = (window.PRODUCTS||[]).filter(p=>p.images&&p.images.length&&p.variants&&p.variants.length).map(p=>{
   const v=p.variants, inS=v.filter(x=>x.in_stock);
   const price=Math.min(...v.map(x=>x.price)); const saleV=v.map(x=>x.sale).filter(x=>x>0);
   const sale=saleV.length?Math.min(...saleV):0;
-  return {...p, price, sale, soldOut:inS.length===0, cname:CAT[p.cat]||p.cat, bw:!!p.sale_page,
+  const cat=p.cat==='shirt'?'top-blouse':p.cat; // Τοπ και Πουκάμισα μία κατηγορία (Μαρία 15/11 21:44)
+  return {...p, cat, price, sale, soldOut:inS.length===0, cname:CAT[cat]||cat, bw:!!p.sale_page,
     title:p.title.replace(/\s+/g,' ').trim()};
 });
 // Τιμές: στρογγυλοποίηση προς τα κάτω στο μισό ευρώ (Μαρία, κλήση 14/11: 179,80 → 179,50 · 36,45 → 36)
@@ -254,8 +254,8 @@ const fmt=n=>{const r=Math.floor(n*2+1e-9)/2; return (r%1?r.toFixed(2).replace('
 // Οι κατηγορίες της Μαρίας, με τη σειρά του τωρινού της μενού. Τα ρούχα του BLACK WEEK (περσινά, με μεγάλη έκπτωση)
 // φαίνονται μόνο στο BLACK WEEK, όχι στις κατηγορίες, όπως στο τωρινό site (Μαρία, κλήση 14/11).
 // Κατηγορίες αρχικής: φωτογραφίες και σειρά της Μαρίας (email 15/11 14:23 + κλήση), τσάντες τελευταίες
-const HOMECATS=[['#/shop?cat=jacket-coat','assets/cats/panoforia.jpg','Πανωφόρια'],['#/shop?cat=pants','assets/cats/pantelonia.jpg','Παντελόνια'],['#/shop?cat=top-blouse,shirt','assets/cats/top-poukamisa.jpg','Τοπ – Πουκάμισα'],['#/shop?cat=bag','assets/cats/tsantes.jpg','Τσάντες','prod']];
-const MENU=['special-occasion','top-blouse','pants','jacket-coat','set','blazer','knits','dress','shirt','skirt'];
+const HOMECATS=[['#/shop?cat=jacket-coat','assets/cats/panoforia.jpg','Πανωφόρια'],['#/shop?cat=pants','assets/cats/pantelonia.jpg','Παντελόνια'],['#/shop?cat=top-blouse','assets/cats/top-poukamisa.jpg','Τοπ – Πουκάμισα'],['#/shop?cat=bag','assets/cats/tsantes.jpg','Τσάντες','prod']];
+const MENU=['special-occasion','top-blouse','pants','jacket-coat','set','blazer','knits','dress','skirt'];
 const inCat=(p,c)=>p.cat===c&&!p.bw;
 const img=(p,i=0)=>p.images[i]||p.images[0];
 const app=document.getElementById('app');
@@ -272,7 +272,6 @@ document.querySelectorAll('nav.main .dd>a').forEach(a=>a.addEventListener('click
   if(!matchMedia('(max-width:860px)').matches) return;
   e.preventDefault(); a.parentElement.classList.toggle('open');
 }));
-document.getElementById('fcats').innerHTML=catsPresent.map(c=>`<li><a href="#/shop?cat=${c}">${CAT[c]||c}</a></li>`).join('');
 
 function card(p){
   const sizes=p.variants.map(v=>`<i class="${v.in_stock?'':'out'}">${v.size}</i>`).join('');
@@ -296,7 +295,7 @@ function home(){
   app.innerHTML=`
   <section class="hero">
     <a class="h1" href="#/shop"><img src="assets/hero/1-nea-syllogi.jpg" alt="Νέα συλλογή Φθινόπωρο / Χειμώνας 26–27"><div class="cap"><small>Φθινόπωρο / Χειμώνας 26–27</small><h2>Νέα συλλογή</h2><span class="btn">Δείτε τη συλλογή</span></div></a>
-    <a class="h2" href="#/shop?cat=special-occasion"><img src="assets/hero/2-forema.jpg" alt="Special Occasion" loading="lazy"><div class="cap"><h2>Special<br>Occasion</h2></div></a>
+    <a class="h2" href="#/shop?cat=special-occasion"><img src="assets/hero/2-forema.jpg" alt="Special Occasion" loading="lazy"><div class="cap"><h2>Special Occasion</h2></div></a>
     <a class="h3" href="#/shop?bw=1"><img src="assets/hero/3-lucky-friday.jpg" alt="Lucky Friday · Mara's Boutique" loading="lazy"><span class="cta">Έως -70% · Δες εδώ</span></a>
   </section>
   <section class="block wrap">
