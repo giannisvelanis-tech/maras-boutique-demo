@@ -24,6 +24,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @media(max-width:600px){.wrap{padding:0 16px}}
 
 /* top bar + header */
+.klarna{display:inline-block;background:#FFB3C7;color:#0B051D;font-weight:700;font-size:11px;letter-spacing:0;padding:1px 6px;border-radius:4px;margin-right:4px;vertical-align:1px} /* σήμα Klarna στην αρχή (Μαρία 15/11 14:28) */
 .topbar{background:#C0B4A8;color:#000;text-align:center;font-size:12px;letter-spacing:.06em;padding:8px 16px} /* χρώμα από teasfashion.com, επιλογή Μαρίας 14/11 */
 .dd{position:relative}
 .dd>a::after{content:' ▾';font-size:10px}
@@ -76,7 +77,7 @@ nav.main a.sale{color:var(--sale)}
 .hero .cap{position:absolute;left:28px;bottom:28px;color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.35)}
 .hero .cap small{font-size:12px;letter-spacing:.18em;text-transform:uppercase}
 .hero .cap h2{font-family:var(--serif);font-weight:500;font-size:clamp(19px,1.92vw,27px);line-height:1} /* μικρότερο, άλλο −20% (Μαρία 15/11, 13:19) */
-.hero .h2 .cap{text-shadow:none}.hero .h2 .cap h2{background:#000;color:#fff;padding:10px 16px} /* μαύρο φόντο, λευκά γράμματα (Μαρία 15/11 14:12) */
+.hero .h2 .cap{text-shadow:none;left:auto;right:16px;bottom:16px}.hero .h2 .cap h2{background:#000;color:#fff;padding:7px 11px;font-size:clamp(14px,1.3vw,19px);line-height:1.1;text-align:right} /* μαύρο φόντο, λευκά γράμματα, μικρότερο, κάτω δεξιά (Μαρία 15/11 14:12, 14:28) */
 .hero .cta{position:absolute;right:20px;bottom:16px;background:#fff;color:#000;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:8px 14px} /* διακριτική προτροπή στο Lucky Friday (Μαρία 15/11) */
 @media(max-width:860px){.hero{grid-template-columns:1fr}.hero .h1{aspect-ratio:auto;height:62vh;max-height:none}.hero .h1 img{object-position:51% 50%}.hero .h3{order:2}.hero .h2{order:3}} /* κινητό: Lucky Friday αμέσως κάτω από την κεντρική (Μαρία 15/11) */
 .btn{display:inline-block;border:1px solid var(--ink);padding:13px 26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:#fff;transition:.2s}
@@ -93,6 +94,7 @@ section.block{padding:72px 0 24px}
 .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .cats a{position:relative;aspect-ratio:3/4;overflow:hidden;background:#eee}
 .cats img{width:100%;height:100%;object-fit:cover}
+.cats a.prod{background:#fff}.cats a.prod img{object-fit:contain;padding:8% 6% 22%} /* φωτογραφία προϊόντος σε λευκό: ολόκληρη η τσάντα */
 .cats span{position:absolute;inset:auto 0 0 0;padding:18px;color:#fff;font-family:var(--serif);font-size:26px;background:linear-gradient(transparent,rgba(0,0,0,.45))}
 @media(max-width:860px){.cats{grid-template-columns:repeat(2,1fr)}}
 
@@ -187,7 +189,7 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 <div class="draft">ΔΕΙΓΜΑ</div>
-<div class="topbar">Klarna: πληρωμή σε 3 άτοκες δόσεις · Αποστολή σε 1–3 εργάσιμες</div>
+<div class="topbar"><span class="klarna" aria-label="Klarna">Klarna.</span> πληρωμή σε 3 άτοκες δόσεις · Δωρεάν αποστολή για αγορές άνω των 100€ · Αποστολή σε 1–3 εργάσιμες</div>
 <header>
   <div class="wrap hd">
     <button class="burger" aria-label="Μενού" onclick="document.querySelector('nav.main').classList.toggle('open')">
@@ -251,6 +253,8 @@ const P = (window.PRODUCTS||[]).filter(p=>p.images&&p.images.length&&p.variants&
 const fmt=n=>{const r=Math.floor(n*2+1e-9)/2; return (r%1?r.toFixed(2).replace('.',','):String(r))+' €'};
 // Οι κατηγορίες της Μαρίας, με τη σειρά του τωρινού της μενού. Τα ρούχα του BLACK WEEK (περσινά, με μεγάλη έκπτωση)
 // φαίνονται μόνο στο BLACK WEEK, όχι στις κατηγορίες, όπως στο τωρινό site (Μαρία, κλήση 14/11).
+// Κατηγορίες αρχικής: φωτογραφίες και σειρά της Μαρίας (email 15/11 14:23 + κλήση), τσάντες τελευταίες
+const HOMECATS=[['#/shop?cat=jacket-coat','assets/cats/panoforia.jpg','Πανωφόρια'],['#/shop?cat=pants','assets/cats/pantelonia.jpg','Παντελόνια'],['#/shop?cat=top-blouse,shirt','assets/cats/top-poukamisa.jpg','Τοπ – Πουκάμισα'],['#/shop?cat=bag','assets/cats/tsantes.jpg','Τσάντες','prod']];
 const MENU=['special-occasion','top-blouse','pants','jacket-coat','set','blazer','knits','dress','shirt','skirt'];
 const inCat=(p,c)=>p.cat===c&&!p.bw;
 const img=(p,i=0)=>p.images[i]||p.images[0];
@@ -292,12 +296,12 @@ function home(){
   app.innerHTML=`
   <section class="hero">
     <a class="h1" href="#/shop"><img src="assets/hero/1-nea-syllogi.jpg" alt="Νέα συλλογή Φθινόπωρο / Χειμώνας 26–27"><div class="cap"><small>Φθινόπωρο / Χειμώνας 26–27</small><h2>Νέα συλλογή</h2><span class="btn">Δείτε τη συλλογή</span></div></a>
-    <a class="h2" href="#/shop?cat=special-occasion"><img src="assets/hero/2-forema.jpg" alt="Special Occasion" loading="lazy"><div class="cap"><h2>Special Occasion</h2></div></a>
+    <a class="h2" href="#/shop?cat=special-occasion"><img src="assets/hero/2-forema.jpg" alt="Special Occasion" loading="lazy"><div class="cap"><h2>Special<br>Occasion</h2></div></a>
     <a class="h3" href="#/shop?bw=1"><img src="assets/hero/3-lucky-friday.jpg" alt="Lucky Friday · Mara's Boutique" loading="lazy"><span class="cta">Έως -70% · Δες εδώ</span></a>
   </section>
   <section class="block wrap">
     <div class="sec-h"><h2>Κατηγορίες</h2><a href="#/shop">Όλα τα προϊόντα</a></div>
-    <div class="cats">${catsPresent.filter(c=>P.some(p=>inCat(p,c))).sort((a,b)=>P.filter(p=>inCat(p,b)).length-P.filter(p=>inCat(p,a)).length).slice(0,4).map(c=>{const p=P.find(x=>inCat(x,c));return `<a href="#/shop?cat=${c}"><img src="${img(p)}" alt="" loading="lazy"><span>${CAT[c]||c}</span></a>`}).join('')}</div>
+    <div class="cats">${HOMECATS.map(([href,src,t,cls])=>`<a href="${href}"${cls?` class="${cls}"`:''}><img src="${src}" alt="${t}" loading="lazy"><span>${t}</span></a>`).join('')}</div>
   </section>
   <section class="block wrap">
     <div class="sec-h"><h2>Νέες αφίξεις</h2><a href="#/shop">Δείτε όλα</a></div>
@@ -311,11 +315,11 @@ function home(){
 
 let F={cat:new Set(),size:new Set(),stock:false,sale:false,sort:'new'};
 function shop(q){
-  F={cat:new Set(q.get('cat')?[q.get('cat')]:[]),size:new Set(),stock:false,sale:q.get('sale')==='1',bw:q.get('bw')==='1',sort:'new'};
+  F={cat:new Set(q.get('cat')?q.get('cat').split(','):[]),size:new Set(),stock:false,sale:q.get('sale')==='1',bw:q.get('bw')==='1',sort:'new'};
   const sizes=[...new Set(P.flatMap(p=>p.variants.map(v=>v.size)))];
   const order=['XS','S','S/M','M','M/L','L','XL','2XL','XXL','O/S'];
   sizes.sort((a,b)=>(order.indexOf(a)+99)%999-(order.indexOf(b)+99)%999);
-  const title=F.bw?'Black Week':F.sale?'Προσφορές':(F.cat.size?CAT[[...F.cat][0]]:'Όλα τα προϊόντα');
+  const title=F.bw?'Black Week':F.sale?'Προσφορές':(F.cat.size?[...F.cat].map(c=>CAT[c]||c).join(' – '):'Όλα τα προϊόντα');
   app.innerHTML=`<div class="wrap">
    <div class="page-h"><h1>${title}</h1><p>Ό,τι έχει εξαντληθεί φαίνεται πάνω στη φωτογραφία.</p></div>
    <div class="shop">
