@@ -211,7 +211,7 @@ footer a:hover{text-decoration:underline}
     <div class="ft">
       <div>
         <a class="logo flogo" href="#/"><img src="assets/logo-maras.svg" alt="Mara's Boutique"><small>BOUTIQUE &amp; CONCEPT STORE</small></a>
-        <p style="margin-top:10px">Επαμεινώνδα 12 &amp; Ετεοκλέους<br>Θήβα 322 00<br>Τηλ. 2262 023211<br>marasboutiqueboutique@gmail.com</p>
+        <p style="margin-top:10px">Επαμεινώνδα &amp; Ετεοκλέους<br>(Εμπορικό Κέντρο Θήβας)<br>Θήβα 322 00<br>Τηλ. 2262 023211<br>marasboutiqueboutique@gmail.com</p>
       </div>
       <div><h5>Εξυπηρέτηση</h5><ul>
         <li><a href="#/info/shipping">Αποστολή &amp; κόστος</a></li>
@@ -436,7 +436,7 @@ function product(id){
 const INFO={shipping:'Αποστολή & κόστος',returns:'Επιστροφές & αλλαγές',sizes:'Οδηγός μεγεθών',payment:'Τρόποι πληρωμής',terms:'Όροι χρήσης',privacy:'Πολιτική απορρήτου',cookies:'Cookies',contact:'Επικοινωνία'};
 function info(k){
   app.innerHTML=`<div class="wrap" style="max-width:760px;padding-bottom:60px"><div class="page-h"><h1>${INFO[k]||''}</h1></div>
-  ${k==='contact'?`<p>Mara's Boutique<br>Επαμεινώνδα 12 &amp; Ετεοκλέους, Θήβα 322 00<br>Τηλ. 2262 023211<br>marasboutiqueboutique@gmail.com</p>`
+  ${k==='contact'?`<p>Mara's Boutique<br>Επαμεινώνδα &amp; Ετεοκλέους (Εμπορικό Κέντρο Θήβας), Θήβα 322 00<br>Τηλ. 2262 023211<br>marasboutiqueboutique@gmail.com</p>`
   :(window.LEGAL&&LEGAL[k])?`<div class="legal-txt">${LEGAL[k]}</div>`
   :`<p><span class="ph-note">Η σελίδα υπάρχει στο νέο site. Το κείμενο θα το δώσει η Μαρία (ή ο λογιστής/δικηγόρος για τα νομικά).</span></p>`}</div>`;
 }
