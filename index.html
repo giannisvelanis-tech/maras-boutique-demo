@@ -35,7 +35,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(251,249,246,.94);backdro
 .hd{display:flex;align-items:center;justify-content:space-between;height:80px;gap:16px}
 .logo{display:flex;flex-direction:column;align-items:center;line-height:1}
 .logo img{height:52px;width:auto}
-.logo img.tag{height:10px;margin-top:4px} /* «Mara's» και «BOUTIQUE / CONCEPT STORE» από τα σχέδια της ταμπέλας (MARA LEFT/RIGHT.pdf, 15/11) */
+.logo small{font-family:'Poiret One',var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.3em;color:#5E544D;margin-top:2px;white-space:nowrap} /* «Mara's» από την ταμπέλα· η γραμμή με την προηγούμενη γραμματοσειρά, επιλογή Μαρίας 15/11 14:09 */
 .logo-txt{font-family:var(--serif);font-style:italic;font-size:30px}
 nav.main{display:flex;align-items:center;gap:28px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 .dd>a{display:inline-block} /* Shop/Αξεσουάρ στην ίδια ευθεία με Black Week/Επικοινωνία (Μαρία 15/11) */
@@ -76,8 +76,8 @@ nav.main a.sale{color:var(--sale)}
 .hero .cap{position:absolute;left:28px;bottom:28px;color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.35)}
 .hero .cap small{font-size:12px;letter-spacing:.18em;text-transform:uppercase}
 .hero .cap h2{font-family:var(--serif);font-weight:500;font-size:clamp(19px,1.92vw,27px);line-height:1} /* μικρότερο, άλλο −20% (Μαρία 15/11, 13:19) */
-.hero .h2 .cap{color:#1c1a17;text-shadow:none} /* ανοιχτό φόντο φωτογραφίας: σκούρα γράμματα */
-.hero .cta{position:absolute;right:20px;bottom:16px;color:rgba(255,255,255,.85);font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:2px} /* διακριτική προτροπή στο Lucky Friday (Μαρία 15/11) */
+.hero .h2 .cap{text-shadow:none}.hero .h2 .cap h2{background:#000;color:#fff;padding:10px 16px} /* μαύρο φόντο, λευκά γράμματα (Μαρία 15/11 14:12) */
+.hero .cta{position:absolute;right:20px;bottom:16px;background:#fff;color:#000;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:8px 14px} /* διακριτική προτροπή στο Lucky Friday (Μαρία 15/11) */
 @media(max-width:860px){.hero{grid-template-columns:1fr}.hero .h1{aspect-ratio:auto;height:62vh;max-height:none}.hero .h1 img{object-position:51% 50%}.hero .h3{order:2}.hero .h2{order:3}} /* κινητό: Lucky Friday αμέσως κάτω από την κεντρική (Μαρία 15/11) */
 .btn{display:inline-block;border:1px solid var(--ink);padding:13px 26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:#fff;transition:.2s}
 .btn:hover{background:transparent;color:var(--ink)}
@@ -193,7 +193,7 @@ footer a:hover{text-decoration:underline}
     <button class="burger" aria-label="Μενού" onclick="document.querySelector('nav.main').classList.toggle('open')">
       <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
     </button>
-    <a class="logo" href="#/"><img src="assets/logo-maras.svg" alt="Mara's Boutique" onerror="this.outerHTML='<span class=logo-txt>Mara\'s</span>'"><img class="tag" src="assets/logo-tagline.svg" alt="Boutique Concept Store"></a>
+    <a class="logo" href="#/"><img src="assets/logo-maras.svg" alt="Mara's Boutique" onerror="this.outerHTML='<span class=logo-txt>Mara\'s</span>'"><small>BOUTIQUE &amp; CONCEPT STORE</small></a>
     <nav class="main" id="nav"></nav>
     <div class="icons">
       <button class="cart-btn" aria-label="Καλάθι" onclick="toast('Το καλάθι είναι μέρος του επόμενου βήματος')">
