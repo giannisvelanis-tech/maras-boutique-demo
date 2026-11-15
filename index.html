@@ -432,7 +432,7 @@ function product(id){
     document.getElementById('pprice').innerHTML=pr?`<span class="now">${fmt(pr)}</span><s>${fmt(sel.price)}</s>`:fmt(sel.price);
     const st=document.getElementById('stock'), add=document.getElementById('add');
     if(p.soldOut){st.className='stock no';st.textContent='Το προϊόν έχει εξαντληθεί σε όλα τα μεγέθη.';add.disabled=true;add.textContent='Sold out'}
-    else if(sel.in_stock){st.className='stock ok';st.textContent='✓ Διαθέσιμο στο '+sel.size;add.disabled=false;add.textContent='Προσθήκη στο καλάθι'}
+    else if(sel.in_stock){st.className='stock ok';st.textContent='';/* χωρίς «Διαθέσιμο στο…» (Μαρία 16/11 00:15) */add.disabled=false;add.textContent='Προσθήκη στο καλάθι'}
     else{const o=p.variants.filter(v=>v.in_stock).map(v=>v.size).join(', ');st.className='stock no';st.textContent=`Το ${sel.size} εξαντλήθηκε. Διαθέσιμο σε: ${o}`;add.disabled=true;add.textContent='Εξαντλήθηκε σε αυτό το μέγεθος'}
   };
   app.querySelectorAll('.sz').forEach(b=>b.onclick=()=>{sel=p.variants[+b.dataset.i];upd()});
