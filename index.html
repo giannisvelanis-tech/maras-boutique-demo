@@ -24,7 +24,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @media(max-width:600px){.wrap{padding:0 16px}}
 
 /* top bar + header */
-.klarna{display:inline-block;background:#FFB3C7;color:#0B051D;font-weight:700;font-size:11px;letter-spacing:0;padding:1px 6px;border-radius:4px;margin-right:4px;vertical-align:1px} /* σήμα Klarna στην αρχή (Μαρία 15/11 14:28) */
+.klarna{display:inline-block;height:22px;width:auto;margin-right:6px;vertical-align:-7px} /* επίσημο σήμα Klarna (osm.klarnaservices.com/images/badges/klarna_badge_rectangle.svg, 15/11) */
 .topbar{background:#C0B4A8;color:#000;text-align:center;font-size:12px;letter-spacing:.06em;padding:8px 16px} /* χρώμα από teasfashion.com, επιλογή Μαρίας 14/11 */
 .dd{position:relative}
 .dd>a::after{content:' ▾';font-size:10px}
@@ -189,7 +189,7 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 <div class="draft">ΔΕΙΓΜΑ</div>
-<div class="topbar"><span class="klarna" aria-label="Klarna">Klarna.</span> πληρωμή σε 3 άτοκες δόσεις · Δωρεάν αποστολή για αγορές άνω των 100€ · Αποστολή σε 1–3 εργάσιμες</div>
+<div class="topbar"><img class="klarna" src="assets/klarna-badge.svg" alt="Klarna"> πληρωμή σε 3 άτοκες δόσεις · Δωρεάν αποστολή για αγορές άνω των 100€ · Αποστολή σε 1–3 εργάσιμες</div>
 <header>
   <div class="wrap hd">
     <button class="burger" aria-label="Μενού" onclick="document.querySelector('nav.main').classList.toggle('open')">
