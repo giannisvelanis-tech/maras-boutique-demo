@@ -67,7 +67,8 @@ nav.main a.sale{color:var(--sale)}
 .hero{display:grid;grid-template-columns:1033fr 2870fr;gap:4px}
 .hero a{position:relative;overflow:hidden}
 .hero img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
-.hero .h1{grid-column:1/-1;aspect-ratio:2/1;max-height:82vh}
+.hero .h1{grid-column:1/-1;width:100%;height:min(50vw,82vh)}
+.hero .h1 img{object-position:50% 15%} /* πάντα σε όλο το πλάτος· σε χαμηλές οθόνες κόβει λίγο πάνω-κάτω */
 .hero .h2{aspect-ratio:1033/1436}
 .hero .h3{aspect-ratio:2/1}
 .hero .h2 img,.hero .h3 img{position:absolute;inset:0}
