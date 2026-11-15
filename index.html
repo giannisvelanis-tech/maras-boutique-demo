@@ -164,6 +164,8 @@ section.block{padding:72px 0 24px}
 .stock.ok{color:#2f6b3a}.stock.no{color:var(--sale)}
 .pinfo .btn{width:100%;text-align:center}
 .perks{margin:26px 0;border-top:1px solid var(--line)}
+.sw{display:flex;gap:10px;margin:8px 0 18px}.sw a{width:46px;height:46px;border-radius:50%;overflow:hidden;border:1px solid var(--line);padding:2px;background:#fff}.sw a.on{border:1.5px solid var(--ink)}.sw img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;border-radius:50%}
+p.intro{margin:4px 0 10px;font-size:14px;line-height:1.6;color:var(--ink)}
 .perks div{display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}.perks .ico{width:22px;height:22px;flex:none;color:var(--ink)} /* μονόχρωμα εικονίδια, ροζ σήμα Klarna (Μαρία 15/11 22:29) */
 details{border-bottom:1px solid var(--line)}
 summary{padding:14px 0;cursor:pointer;font-size:13px;letter-spacing:.1em;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between}
@@ -232,20 +234,21 @@ footer a:hover{text-decoration:underline}
 </footer>
 <div class="toast" id="toast"></div>
 
-<script src="data/products.js?v=20261115b"></script>
-<script src="data/legal.js?v=20261115b"></script>
+<script src="data/products.js?v=20261116a"></script>
+<script src="data/legal.js?v=20261116a"></script>
 <script>
 const CAT = {
   'jacket-coat':'Πανωφόρια','blazer':'Σακάκια','dress':'Φορέματα','knits':'Πλεκτά','pants':'Παντελόνια',
   'set':'Σετ','skirt':'Φούστες','special-occasion':'Special Occasion','top-blouse':'Τοπ – Πουκάμισα',
-  'bag':'Τσάντες','accessories':'Αξεσουάρ','special-offer':'Προσφορές'
+  'bag':'Τσάντες','shoes':'Παπούτσια','accessories':'Αξεσουάρ','special-offer':'Προσφορές'
 };
 const P = (window.PRODUCTS||[]).filter(p=>p.images&&p.images.length&&p.variants&&p.variants.length).map(p=>{
   const v=p.variants, inS=v.filter(x=>x.in_stock);
   const price=Math.min(...v.map(x=>x.price)); const saleV=v.map(x=>x.sale).filter(x=>x>0);
   const sale=saleV.length?Math.min(...saleV):0;
   const cat=p.cat==='shirt'?'top-blouse':p.cat; // Τοπ και Πουκάμισα μία κατηγορία (Μαρία 15/11 21:44)
-  return {...p, cat, price, sale, soldOut:inS.length===0, cname:CAT[cat]||cat, bw:!!p.sale_page,
+  const cats=(p.cats||[p.cat]).map(c=>c==='shirt'?'top-blouse':c); // ένα προϊόν σε 2 κατηγορίες, π.χ. Special Occasion + Φορέματα (Μαρία 15/11 23:30)
+  return {...p, cat, cats, price, sale, soldOut:inS.length===0, cname:CAT[cat]||cat, bw:!!p.sale_page,
     title:p.title.replace(/\s+/g,' ').trim()};
 });
 // Τιμές: στρογγυλοποίηση προς τα κάτω στο μισό ευρώ (Μαρία, κλήση 14/11: 179,80 → 179,50 · 36,45 → 36)
@@ -255,15 +258,17 @@ const fmt=n=>{const r=Math.floor(n*2+1e-9)/2; return (r%1?r.toFixed(2).replace('
 // Κατηγορίες αρχικής: φωτογραφίες και σειρά της Μαρίας (email 15/11 14:23 + κλήση), τσάντες τελευταίες
 const HOMECATS=[['#/shop?cat=jacket-coat','assets/cats/panoforia.jpg','Πανωφόρια'],['#/shop?cat=pants','assets/cats/pantelonia.jpg','Παντελόνια'],['#/shop?cat=top-blouse','assets/cats/top-poukamisa.jpg','Τοπ – Πουκάμισα'],['#/shop?cat=bag','assets/cats/tsantes.jpg','Τσάντες','prod']];
 const MENU=['special-occasion','top-blouse','pants','jacket-coat','set','blazer','knits','dress','skirt'];
-const inCat=(p,c)=>p.cat===c&&!p.bw;
+const inCat=(p,c)=>p.cats.includes(c)&&!p.bw;
+// Χρώματα του ίδιου ρούχου (ίδιος κωδικός ACCESS): κυκλάκια στη σελίδα προϊόντος (Μαρία, κλήση 15/11 23:31)
+const COL={BLACK:'Μαύρο',COFFE:'Καφέ',GREY:'Γκρι',OFWHT:'Εκρού',BORDO:'Μπορντό',BLUE:'Μπλε',VANLA:'Βανίλια',OLIVE:'Λαδί',CAMEL:'Καμηλό',BEIGE:'Μπεζ',PLUM:'Δαμασκηνί',BROWN:'Καφέ',ZEBRA:'Ζέβρα',LATTE:'Λάτε',COAL:'Ανθρακί',CHOCO:'Σοκολατί',WHITE:'Λευκό',RUST:'Κεραμιδί',CHERRY:'Κερασί'};
 const img=(p,i=0)=>p.images[i]||p.images[0];
 const app=document.getElementById('app');
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2600)}
 
-const catsPresent=[...MENU,'bag'];
+const catsPresent=[...MENU,'bag',...['shoes','accessories'].filter(c=>P.some(p=>inCat(p,c)))];
 document.getElementById('nav').innerHTML =
   `<div class="dd"><a href="#/shop" data-n="shop">Shop</a><div class="menu"><a class="all" href="#/shop">Όλα τα προϊόντα</a>${MENU.map(c=>`<a href="#/shop?cat=${c}" data-n="${c}">${CAT[c]}</a>`).join('')}</div></div>`+
-  `<div class="dd"><a href="#/shop?cat=bag" data-n="bag">Αξεσουάρ</a><div class="menu"><a href="#/shop?cat=bag">Τσάντες</a></div></div>`+
+  `<div class="dd"><a href="#/shop?cat=bag" data-n="bag">Αξεσουάρ</a><div class="menu"><a href="#/shop?cat=bag">Τσάντες</a>${['shoes','accessories'].filter(c=>P.some(p=>inCat(p,c))).map(c=>`<a href="#/shop?cat=${c}">${CAT[c]}</a>`).join('')}</div></div>`+
   `<a href="#/shop?bw=1" class="sale" data-n="bw">Black Week</a>`+
   `<a href="#/info/contact" data-n="contact">Επικοινωνία</a>`;
 // Κινητό: το πάτημα σε Shop / Αξεσουάρ ανοίγει τις κατηγορίες αντί να φεύγει από τη σελίδα (Μαρία 15/11)
@@ -315,14 +320,15 @@ let F={cat:new Set(),size:new Set(),stock:false,sale:false,sort:'new'};
 function shop(q){
   F={cat:new Set(q.get('cat')?q.get('cat').split(','):[]),size:new Set(),stock:false,sale:q.get('sale')==='1',bw:q.get('bw')==='1',sort:'new'};
   const sizes=[...new Set(P.flatMap(p=>p.variants.map(v=>v.size)))];
-  const order=['XS','S','S/M','M','M/L','L','XL','2XL','XXL','O/S'];
-  sizes.sort((a,b)=>(order.indexOf(a)+99)%999-(order.indexOf(b)+99)%999);
+  const order=['XS','S','S/M','M','M/L','L','XL','2XL','XXL','3XL','O/S'];
+  const rk=x=>order.includes(x)?order.indexOf(x):(/^\d+$/.test(x)?100+ +x:90); // γράμματα πρώτα, μετά νούμερα παπουτσιών
+  sizes.sort((a,b)=>rk(a)-rk(b));
   const title=F.bw?'Black Week':F.sale?'Προσφορές':(F.cat.size?[...F.cat].map(c=>CAT[c]||c).join(' – '):'Όλα τα προϊόντα');
   app.innerHTML=`<div class="wrap">
    <div class="page-h"><h1>${title}</h1><p>Ό,τι έχει εξαντληθεί φαίνεται πάνω στη φωτογραφία.</p></div>
    <div class="shop">
     <aside class="filters" id="filters">
-      <h4>Κατηγορία</h4>${catsPresent.map(c=>`<label><input type="checkbox" data-f="cat" value="${c}" ${F.cat.has(c)?'checked':''}> ${CAT[c]||c}<em>${P.filter(p=>F.bw?(p.bw&&p.cat===c):inCat(p,c)).length}</em></label>`).join('')}
+      <h4>Κατηγορία</h4>${catsPresent.map(c=>`<label><input type="checkbox" data-f="cat" value="${c}" ${F.cat.has(c)?'checked':''}> ${CAT[c]||c}<em>${P.filter(p=>F.bw?(p.bw&&p.cats.includes(c)):inCat(p,c)).length}</em></label>`).join('')}
       <h4>Μέγεθος</h4><div class="chip-row">${sizes.map(s=>`<button class="chip" data-f="size" data-v="${s}">${s}</button>`).join('')}</div>
       <h4>Διαθεσιμότητα</h4>
       <label><input type="checkbox" data-f="stock"> Μόνο διαθέσιμα</label>
@@ -348,7 +354,7 @@ function shop(q){
   renderGrid();
 }
 function renderGrid(){
-  let L=P.filter(p=>(F.bw?p.bw:!p.bw)&&(!F.cat.size||F.cat.has(p.cat))&&(!F.sale||p.sale)&&(!F.stock||!p.soldOut)&&
+  let L=P.filter(p=>(F.bw?p.bw:!p.bw)&&(!F.cat.size||p.cats.some(c=>F.cat.has(c)))&&(!F.sale||p.sale)&&(!F.stock||!p.soldOut)&&
     (!F.size.size||p.variants.some(v=>F.size.has(v.size)&&(v.in_stock||!F.stock))));
   const eff=p=>p.sale||p.price;
   if(F.sort==='asc')L.sort((a,b)=>eff(a)-eff(b));
@@ -386,9 +392,10 @@ function setMatches(p){
 function product(id){
   const p=P.find(x=>String(x.id)===String(id)); if(!p){app.innerHTML='<div class="wrap empty">Το προϊόν δεν βρέθηκε.</div>';return}
   let sel=p.variants.find(v=>v.in_stock)||p.variants[0];  // ανοίγει στο πρώτο ΔΙΑΘΕΣΙΜΟ νούμερο
-  const desc=(p.desc||'').split(/(?<=[a-zα-ωά-ώ%])\s(?=[Α-ΩΆ-Ώ0-9])/).filter(Boolean);
+  const sib=p.base?P.filter(x=>x.base===p.base&&x.bw===p.bw):[];
+  const desc=p.desc_list&&p.desc_list.length?p.desc_list:(p.desc||'').split(/(?<=[a-zα-ωά-ώ%])\s(?=[Α-ΩΆ-Ώ0-9])/).filter(Boolean);
   const set=setMatches(p);
-  const rel=P.filter(x=>x.cat===p.cat&&x.id!==p.id&&!x.soldOut&&x.bw===p.bw&&!set.includes(x)).slice(0,4);
+  const rel=P.filter(x=>x.cat===p.cat&&x.id!==p.id&&(!p.base||x.base!==p.base)&&!x.soldOut&&x.bw===p.bw&&!set.includes(x)).slice(0,4);
   const recs=[...set.slice(0,4),...rel];
   app.innerHTML=`<div class="wrap">
   <div class="pp">
@@ -400,6 +407,7 @@ function product(id){
       <div class="crumbs"><a href="#/">Αρχική</a> / <a href="#/shop?cat=${p.cat}">${p.cname}</a></div>
       <h1>${p.title}</h1>
       <div class="price" id="pprice"></div>
+      ${sib.length>1?`<div class="opt-h"><span>Χρώμα: <b>${COL[p.color]||''}</b></span></div><div class="sw">${sib.map(x=>`<a href="#/p/${x.id}" class="${x.id===p.id?'on':''}" title="${COL[x.color]||''}"><img src="${img(x)}" alt="${COL[x.color]||''}"></a>`).join('')}</div>`:''}
       <div class="opt-h"><span>Μέγεθος: <b id="selname"></b></span><a href="#/info/sizes" style="text-transform:none;letter-spacing:0;text-decoration:underline">Οδηγός μεγεθών</a></div>
       <div class="szs">${p.variants.map((v,i)=>`<button class="sz ${v.in_stock?'':'out'}" data-i="${i}" ${v.in_stock?'':'title="Εξαντλήθηκε"'}>${v.size}</button>`).join('')}</div>
       <div class="stock" id="stock"></div>
@@ -409,7 +417,7 @@ function product(id){
         <div><img class="klarna" src="assets/klarna-badge.svg" alt="Klarna" style="margin-right:0"> <span>πληρωμή σε 3 άτοκες δόσεις</span></div>
         <div>↺ <span>Αλλαγή ή επιστροφή <span class="ph-note">όροι από τη Μαρία</span></span></div>
       </div>
-      <details open><summary>Περιγραφή &amp; υλικά</summary><ul>${desc.map(d=>`<li>${d}</li>`).join('')||'<li>—</li>'}</ul></details>
+      <details open><summary>Περιγραφή &amp; υλικά</summary>${p.intro?`<p class="intro">${p.intro}</p>`:''}<ul>${desc.map(d=>`<li>${d}</li>`).join('')||'<li>—</li>'}</ul></details>
       <details><summary>Αποστολή &amp; επιστροφές</summary><ul><li><span class="ph-note">Κείμενο από τη Μαρία</span></li></ul></details>
     </div>
   </div>
