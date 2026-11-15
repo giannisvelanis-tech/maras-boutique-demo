@@ -75,7 +75,9 @@ nav.main a.sale{color:var(--sale)}
 .hero a:hover img{transform:scale(1.03)}
 .hero .cap{position:absolute;left:28px;bottom:28px;color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.35)}
 .hero .cap small{font-size:12px;letter-spacing:.18em;text-transform:uppercase}
-.hero .cap h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.4vw,34px);line-height:1} /* μικρότερο (Μαρία 15/11) */
+.hero .cap h2{font-family:var(--serif);font-weight:500;font-size:clamp(19px,1.92vw,27px);line-height:1} /* μικρότερο, άλλο −20% (Μαρία 15/11, 13:19) */
+.hero .h2 .cap{color:#1c1a17;text-shadow:none} /* ανοιχτό φόντο φωτογραφίας: σκούρα γράμματα */
+.hero .cta{position:absolute;right:20px;bottom:16px;color:rgba(255,255,255,.85);font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:2px} /* διακριτική προτροπή στο Lucky Friday (Μαρία 15/11) */
 @media(max-width:860px){.hero{grid-template-columns:1fr}.hero .h1{aspect-ratio:auto;height:62vh;max-height:none}.hero .h1 img{object-position:51% 50%}.hero .h3{order:2}.hero .h2{order:3}} /* κινητό: Lucky Friday αμέσως κάτω από την κεντρική (Μαρία 15/11) */
 .btn{display:inline-block;border:1px solid var(--ink);padding:13px 26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:#fff;transition:.2s}
 .btn:hover{background:transparent;color:var(--ink)}
@@ -86,7 +88,7 @@ nav.main a.sale{color:var(--sale)}
 
 section.block{padding:72px 0 24px}
 .sec-h{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px;gap:16px}
-.sec-h h2,.page-h h1{font-family:var(--serif);font-weight:500;font-size:clamp(21px,1.9vw,27px);line-height:1.1} /* μικρότερο (Μαρία 15/11) */
+.sec-h h2,.page-h h1{font-family:var(--serif);font-weight:500;font-size:clamp(17px,1.52vw,22px);line-height:1.1} /* μικρότερο, άλλο −20% (Μαρία 15/11, 13:19) */
 .sec-h a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid}
 .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .cats a{position:relative;aspect-ratio:3/4;overflow:hidden;background:#eee}
@@ -288,8 +290,8 @@ function home(){
   app.innerHTML=`
   <section class="hero">
     <a class="h1" href="#/shop"><img src="assets/hero/1-nea-syllogi.jpg" alt="Νέα συλλογή Φθινόπωρο / Χειμώνας 26–27"><div class="cap"><small>Φθινόπωρο / Χειμώνας 26–27</small><h2>Νέα συλλογή</h2><span class="btn">Δείτε τη συλλογή</span></div></a>
-    <a class="h2" href="#/shop?bw=1"><img src="assets/hero/2-forema.jpg" alt="" loading="lazy"><div class="cap"><small>Black Week</small><h2>Προσφορές</h2></div></a>
-    <a class="h3" href="#/shop?bw=1"><img src="assets/hero/3-lucky-friday.jpg" alt="Lucky Friday · Mara's Boutique" loading="lazy"></a>
+    <a class="h2" href="#/shop?cat=special-occasion"><img src="assets/hero/2-forema.jpg" alt="Special Occasion" loading="lazy"><div class="cap"><h2>Special Occasion</h2></div></a>
+    <a class="h3" href="#/shop?bw=1"><img src="assets/hero/3-lucky-friday.jpg" alt="Lucky Friday · Mara's Boutique" loading="lazy"><span class="cta">Έως -70% · Δες εδώ</span></a>
   </section>
   <section class="block wrap">
     <div class="sec-h"><h2>Κατηγορίες</h2><a href="#/shop">Όλα τα προϊόντα</a></div>
