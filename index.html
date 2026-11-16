@@ -259,7 +259,8 @@ footer a:hover{text-decoration:underline}
 </div></div>
 
 
-<script src="data/products.js?v=20261116k"></script>
+<div class="sgm" id="sgm2" onclick="if(event.target===this)closeSG()"><div class="sgb" role="dialog" aria-label="Οδηγός μεγεθών MINUETO"><button class="sgx" onclick="closeSG()" aria-label="Κλείσιμο">×</button><h2>Οδηγός μεγεθών MINUETO</h2><div id="sg2m"></div><h3>Αντιστοιχία μεγεθών</h3><div class="sgt"><table><tr><th>MINUETO</th><th>Ισπανία</th><th>Ευρώπη</th><th>Ηνωμένο Βασίλειο</th><th>Ιταλία</th></tr><tr><td>XS</td><td>34</td><td>36</td><td>6</td><td>38</td></tr><tr><td>S</td><td>36</td><td>38</td><td>8</td><td>40</td></tr><tr><td>M</td><td>38</td><td>40</td><td>10</td><td>42</td></tr><tr><td>L</td><td>40</td><td>42</td><td>12</td><td>44</td></tr><tr><td>XL</td><td>42</td><td>44</td><td>14</td><td>46</td></tr><tr><td>XXL</td><td>44</td><td>46</td><td>16</td><td>48</td></tr></table></div><p class="sgn">Πηγή: οδηγός μεγεθών της Minueto για το συγκεκριμένο ρούχο.</p></div></div>
+<script src="data/products.js?v=20261116m"></script>
 <script src="data/legal.js?v=20261116a"></script>
 <script>
 const CAT = {
@@ -285,10 +286,10 @@ const HOMECATS=[['#/shop?cat=jacket-coat','assets/cats/panoforia.jpg','Πανω�
 const MENU=['special-occasion','top-blouse','pants','jacket-coat','set','blazer','knits','dress','skirt'];
 const inCat=(p,c)=>p.cats.includes(c)&&!p.bw;
 // Χρώματα του ίδιου ρούχου (ίδιος κωδικός ACCESS): κυκλάκια στη σελίδα προϊόντος (Μαρία, κλήση 15/11 23:31)
-const COL={BLACK:'Μαύρο',COFFE:'Καφέ',GREY:'Γκρι',OFWHT:'Εκρού',BORDO:'Μπορντό',BLUE:'Μπλε',VANLA:'Βανίλια',OLIVE:'Λάδι',KHAKI:'Χακί',GREEN:'Πράσινο',SAND:'Μπεζ',PRINT:'Εμπριμέ',CAMEL:'Καμηλό',BEIGE:'Μπεζ',PLUM:'Δαμασκηνί',BROWN:'Καφέ',ZEBRA:'Ζέβρα',LATTE:'Λάτε',COAL:'Ανθρακί',CHOCO:'Σοκολατί',WHITE:'Λευκό',RUST:'Κεραμιδί',CHERRY:'Κερασί',SILVR:'Ασημί',LEOPAR:'Λεοπάρ'};
+const COL={BLACK:'Μαύρο',COFFE:'Καφέ',GREY:'Γκρι',OFWHT:'Εκρού',BORDO:'Μπορντό',BLUE:'Μπλε',VANLA:'Βανίλια',OLIVE:'Λάδι',KHAKI:'Χακί',GREEN:'Πράσινο',SAND:'Μπεζ',PRINT:'Εμπριμέ',CAMEL:'Καμηλό',BEIGE:'Μπεζ',PLUM:'Δαμασκηνί',BROWN:'Καφέ',ZEBRA:'Ζέβρα',LATTE:'Λάτε',COAL:'Ανθρακί',CHOCO:'Σοκολατί',WHITE:'Λευκό',RUST:'Κεραμιδί',CHERRY:'Κερασί',SILVR:'Ασημί',LEOPAR:'Λεοπάρ',TURQUOISE:'Τιρκουάζ',CINNAMON:'Κανελί'};
 const img=(p,i=0)=>p.images[i]||p.images[0];
 const app=document.getElementById('app');
-function openSG(){document.getElementById('sgm').classList.add('open')}function closeSG(){document.getElementById('sgm').classList.remove('open')}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSG()});window.addEventListener('hashchange',closeSG);
+function openSG(){document.getElementById('sgm').classList.add('open')}function closeSG(){document.getElementById('sgm').classList.remove('open');const m=document.getElementById('sgm2');if(m)m.classList.remove('open')}function openSG2(id){const p=PRODUCTS.find(x=>x.id===id),r=(p&&p.sg&&p.sg.rows)||[];document.getElementById('sg2m').innerHTML=r.length?'<h3>Μετρήσεις του ρούχου (cm)</h3><div class="sgt"><table><tr><th>Μέγεθος</th>'+['XS','S','M','L','XL','XXL'].map(s=>'<th>'+s+'</th>').join('')+'</tr>'+r.map(x=>'<tr><td>'+x[0]+'</td>'+x[1].map(v=>'<td>'+v+'</td>').join('')+'</tr>').join('')+'</table></div><p class="sgn" style="margin-top:8px">Οι μετρήσεις είναι του ίδιου του ρούχου (περίμετρος), με απόκλιση περίπου 1 cm.</p>':'<p class="sgn">Για αυτό το ρούχο η Minueto δεν δίνει μετρήσεις, μόνο την αντιστοιχία μεγεθών.</p>';document.getElementById('sgm2').classList.add('open')}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSG()});window.addEventListener('hashchange',closeSG);
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2600)}
 
 const catsPresent=[...MENU,'bag',...['shoes','accessories'].filter(c=>P.some(p=>inCat(p,c)))];
@@ -434,7 +435,7 @@ function product(id){
       <h1>${p.title}</h1>
       <div class="price" id="pprice"></div>
       ${sib.length>1?`<div class="opt-h"><span>Χρώμα: <b>${COL[p.color]||''}</b></span></div><div class="sw">${sib.map(x=>`<a href="#/p/${x.id}" class="${x.id===p.id?'on':''}" title="${COL[x.color]||''}"><img src="${img(x)}" alt="${COL[x.color]||''}"></a>`).join('')}</div>`:''}
-      <div class="opt-h"><span>Μέγεθος: <b id="selname"></b></span>${/^access/i.test(p.title)&&p.cat!=='shoes'?'<a href="javascript:void 0" onclick="openSG()"':'<a href="#/info/sizes"'} style="text-transform:none;letter-spacing:0;text-decoration:underline">Οδηγός μεγεθών</a></div>
+      <div class="opt-h"><span>Μέγεθος: <b id="selname"></b></span>${p.sg?'<a href="javascript:void 0" onclick="openSG2('+p.id+')"':/^access/i.test(p.title)&&p.cat!=='shoes'?'<a href="javascript:void 0" onclick="openSG()"':'<a href="#/info/sizes"'} style="text-transform:none;letter-spacing:0;text-decoration:underline">Οδηγός μεγεθών</a></div>
       <div class="szs">${p.variants.map((v,i)=>`<button class="sz ${v.in_stock?'':'out'}" data-i="${i}" ${v.in_stock?'':'title="Εξαντλήθηκε"'}>${v.size}</button>`).join('')}</div>
       <div class="stock" id="stock"></div>
       <button class="btn" id="add">Προσθήκη στο καλάθι</button>
