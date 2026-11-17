@@ -116,6 +116,18 @@
     tg.textContent = 'Φίλτρα';
     tg.onclick = function () { document.body.classList.toggle('neo-fopen'); };
     bar.appendChild(tg);
+    var ps = c.querySelector('.addon-root-easystore-common-paginationstatus');
+    var tot = ps && ps.querySelector('[x-text="pagination.total"]');
+    if (ps) ps.style.display = 'none';
+    if (tot) {
+      var n = parseInt(txt(tot).replace(/\D/g, ''), 10);
+      if (!isNaN(n)) {
+        var cnt = document.createElement('span');
+        cnt.className = 'neo-count';
+        cnt.textContent = n + (n === 1 ? ' προϊόν' : ' προϊόντα');
+        bar.appendChild(cnt);
+      }
+    }
     bar.appendChild(w);
     col.insertBefore(bar, col.firstChild);
     if (sec && !sec.querySelector('.easystore-product-filter, .sppb-collection-item')) sec.style.display = 'none';
