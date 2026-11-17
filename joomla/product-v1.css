@@ -127,3 +127,12 @@
 .neo-allsold .addon-root-easystore-single-addtocart button{background:#1c1a17 !important;border-color:#1c1a17 !important;color:transparent !important;position:relative;cursor:not-allowed}
 .neo-allsold .addon-root-easystore-single-addtocart button *{visibility:hidden}
 .neo-allsold .addon-root-easystore-single-addtocart button::after{content:"SOLD OUT";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;letter-spacing:.14em}
+/* κινητό: η κύρια στήλη στο πλάτος της οθόνης (αλλιώς απλώνεται όσο όλες οι μικρογραφίες) */
+@media (max-width:991px){
+  .neo-prod #sp-component{flex:0 0 100% !important;width:100% !important;max-width:100% !important}
+  .neo-prod #sp-component .sppb-section,.neo-prod #sp-component .sppb-row-container{max-width:100% !important}
+  .neo-prod .addon-root-easystore-single-gallery{overflow-x:auto}
+}
+/* «SOLD OUT»: πάνω από το στυλ του απενεργοποιημένου κουμπιού */
+body.neo-allsold.neo-prod .addon-root-easystore-single-addtocart button,body.neo-allsold.neo-prod .addon-root-easystore-single-addtocart button[disabled]{background:#1c1a17 !important;border-color:#1c1a17 !important;color:transparent !important;opacity:1 !important}
+body.neo-allsold.neo-prod .addon-root-easystore-single-addtocart button::after{position:absolute !important;left:0 !important;right:0 !important;top:0 !important;bottom:0 !important;width:auto !important}
