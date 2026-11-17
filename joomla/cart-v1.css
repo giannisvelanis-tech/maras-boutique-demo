@@ -58,3 +58,4 @@
 .easystore-cart-quantity-selector{border:0 !important;background:transparent !important;width:auto !important}
 .easystore-quantity-selector .easystore-product-quantity{border:0 !important;box-shadow:none !important}
 .easystore-drawer .easystore-drawer-footer .easystore-cart-clear{display:none !important}
+@media (max-width:991px){.view-checkout .easystore-checkout-steps-wrapper{margin-top:28px !important}}
