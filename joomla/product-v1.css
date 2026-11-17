@@ -76,7 +76,7 @@
 .neo-rel-grid{display:grid !important;grid-template-columns:repeat(4,1fr);column-gap:20px;row-gap:36px}
 
 @media (max-width:991px){
-  .neo-prod #sp-main-body > .container,.neo-prod #sp-main-body .container-inner{max-width:none !important;padding-left:0 !important;padding-right:0 !important}
+  .neo-prod #sp-main-body > .container,.neo-prod #sp-main-body .container-inner{max-width:100% !important;width:100% !important;padding-left:0 !important;padding-right:0 !important}
   .neo-prod #sp-main-body .row{margin-left:0 !important;margin-right:0 !important}
   .neo-prod #sp-component{padding-left:0 !important;padding-right:0 !important}
   .neo-prod #sp-component .sppb-section > .sppb-row-container{padding:0 16px !important}
