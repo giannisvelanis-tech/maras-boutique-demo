@@ -53,3 +53,10 @@
 @media (max-width:991px){
   #sp-logo #offcanvas-toggler{top:50% !important;transform:translateY(-50%) !important;left:1px !important}
 }
+/* μενού κινητού με το ύφος του demo: κεφαλαία 13px, γραμμές, BLACK WEEK κόκκινο */
+.offcanvas-menu{background:#fbf9f6 !important}
+.offcanvas-menu .offcanvas-inner{padding:0 16px 16px !important}
+.offcanvas-menu .menu > li > a,.offcanvas-menu .menu > li > span{font-family:Inter,sans-serif !important;font-size:13px !important;letter-spacing:.08em !important;text-transform:uppercase !important;color:#1c1a17 !important;padding:12px 0 !important;border-bottom:1px solid #e7e1d9 !important;display:block}
+.offcanvas-menu .menu > li > a[href^="/special-offer"]{color:#9b2c2c !important}
+.offcanvas-menu .menu li ul a{font-family:Inter,sans-serif !important;font-size:14px !important;letter-spacing:0 !important;text-transform:none !important;color:#1c1a17 !important;padding:9px 0 9px 12px !important}
+.offcanvas-menu .menu .menu-toggler,.offcanvas-menu .menu .menu-toggler::after{color:#1c1a17 !important}
