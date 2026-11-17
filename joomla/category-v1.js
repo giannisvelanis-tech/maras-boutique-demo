@@ -11,7 +11,7 @@
     ['Σακάκια', '/shop/blazer'],
     ['Πλεκτά', '/shop/knits'],
     ['Φορέματα', '/shop/dress'],
-    ['Πουκάμισα', '/shop/shirt'],
+    ['Τοπ – Πουκάμισα', '/shop/shirt'],
     ['Φούστες', '/shop/skirt'],
     ['Τσάντες', '/accessories/bag'],
     ['Παπούτσια', '/accessories/shoes'],
