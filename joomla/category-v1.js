@@ -333,6 +333,19 @@
     var sec = wrap.closest('section.sppb-section');
     if (!k) { if (sec) sec.style.display = 'none'; return; }
     var me = location.pathname.replace(/\/+$/, '');
+    var relIds = (window.NEO_D && NEO_D.REL || {})[me];
+    if (relIds && relIds.length) {
+      Promise.all(relIds.map(function (id) { return quick(id).catch(function () { return null; }); })).then(function (qs) {
+        var ok = qs.filter(function (q) { return q && q.href && !q.sold; }).slice(0, 4);
+        if (!ok.length) { if (sec) sec.style.display = 'none'; return; }
+        var g = document.createElement('div');
+        g.className = 'sppb-collection-addon neo-rel-grid';
+        ok.forEach(function (q) { g.appendChild(makeCard(q)); });
+        rel.innerHTML = '';
+        rel.appendChild(g);
+      });
+      return;
+    }
     var gi = NEO_SWM[me], sibs = {};
     if (gi !== undefined) NEO_SWG[gi].forEach(function (x) { sibs[x[0]] = 1; });
     var setIds = {};
