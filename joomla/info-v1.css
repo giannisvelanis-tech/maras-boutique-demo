@@ -1,0 +1,16 @@
+/* ===== MARA'S NEO — σελίδες πληροφοριών (άρθρα) όπως στο demo (17/11/2026) =====
+   Στήλη 760px στο κέντρο, τίτλος Cormorant 22px με γραμμή, υπότιτλοι 12px κεφαλαία, κείμενο 14px. */
+.com-content.view-article #sp-main-body{padding-top:0 !important;padding-bottom:60px !important}
+.com-content.view-article #sp-component .article-details{max-width:760px;margin:0 auto;padding:0 24px;font-family:Inter,sans-serif;color:#3a3530}
+.com-content.view-article .neo-page-head{max-width:712px;margin:0 auto 24px;padding:44px 0 20px;border-bottom:1px solid #e7e1d9}
+.com-content.view-article .article-details p,.com-content.view-article .article-details li,.com-content.view-article .article-details td{font-size:14px !important;line-height:1.7 !important;color:#3a3530 !important}
+.com-content.view-article .article-details p{margin:0 0 12px !important}
+.com-content.view-article .article-details ul,.com-content.view-article .article-details ol{margin:0 0 12px !important;padding-left:18px !important}
+.com-content.view-article .article-details li{margin:0 0 8px !important}
+.com-content.view-article .article-details h2,.com-content.view-article .article-details h3,.com-content.view-article .article-details h4{font-family:Inter,sans-serif !important;font-size:12px !important;font-weight:700 !important;letter-spacing:.1em !important;text-transform:uppercase !important;line-height:1.7 !important;color:#1c1a17 !important;margin:22px 0 8px !important}
+.com-content.view-article .article-details a{color:#3a3530 !important;text-decoration:none !important;border-bottom:1px solid #3a3530}
+.com-content.view-article .article-details strong,.com-content.view-article .article-details b{color:#1c1a17}
+@media (max-width:991px){
+  .com-content.view-article #sp-component .article-details{padding:0 16px}
+  .com-content.view-article .neo-page-head{margin:0 16px 20px;padding:28px 0 16px}
+}

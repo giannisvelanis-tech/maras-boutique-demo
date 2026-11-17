@@ -462,6 +462,17 @@
       else if (t === 'color' || t === 'colour') k.textContent = 'Χρώμα:';
       else if (t === 'βάρος' || t === 'weight') { var it = k.closest('.easystore-metadata-item'); if (it) it.style.display = 'none'; }
     });
+    if (document.body.classList.contains('com-content') && document.body.classList.contains('view-article')) {
+      var ad = document.querySelector('#sp-component .article-details');
+      if (ad && !document.querySelector('.neo-page-head')) {
+        var hd = document.createElement('div');
+        hd.className = 'neo-page-head';
+        var h1 = document.createElement('h1');
+        h1.textContent = (document.title || '').split('|')[0].trim();
+        hd.appendChild(h1);
+        ad.parentNode.insertBefore(hd, ad);
+      }
+    }
     if (document.body.classList.contains('view-cart')) {
       var c = document.querySelector('#sp-component');
       if (c && !c.querySelector('.neo-page-head')) {
