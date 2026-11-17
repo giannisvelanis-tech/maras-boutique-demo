@@ -454,7 +454,26 @@
     return true;
   }
 
+  /* Καλάθι/ταμείο: «Μέγεθος» αντί για SIZE, τίτλος στη σελίδα καλαθιού */
+  function cartBits() {
+    [].slice.call(document.querySelectorAll('.easystore-metadata-key')).forEach(function (k) {
+      var t = txt(k).replace(/:$/, '').toLowerCase();
+      if (t === 'size') k.textContent = 'Μέγεθος:';
+      else if (t === 'color' || t === 'colour') k.textContent = 'Χρώμα:';
+    });
+    if (document.body.classList.contains('view-cart')) {
+      var c = document.querySelector('#sp-component');
+      if (c && !c.querySelector('.neo-page-head')) {
+        var d = document.createElement('div');
+        d.className = 'neo-page-head';
+        d.innerHTML = '<h1>Καλάθι</h1>';
+        c.insertBefore(d, c.firstChild);
+      }
+    }
+  }
+
   function run() {
+    cartBits();
     var pc = document.querySelector('#sp-component');
     if (pc && product(pc)) return;
     var c = root();
@@ -469,7 +488,6 @@
   function later() { if (busy) return; busy = true; setTimeout(function () { busy = false; run(); }, 60); }
   document.addEventListener('DOMContentLoaded', function () {
     run();
-    var c = document.querySelector('#sp-component');
-    if (c && window.MutationObserver) new MutationObserver(later).observe(c, { childList: true, subtree: true });
+    if (window.MutationObserver) new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
   });
 })();

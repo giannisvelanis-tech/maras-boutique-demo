@@ -1,0 +1,51 @@
+/* ===== MARA'S NEO — καλάθι και ταμείο με το ύφος του demo (17/11/2026) =====
+   Το demo δεν έχει σχεδιασμένο καλάθι («μέρος του επόμενου βήματος»), οπότε εδώ εφαρμόζεται το ίδιο ύφος:
+   Inter, μαύρα τετράγωνα κουμπιά, γραμμές #e7e1d9, χωρίς στρογγυλέματα και μπλε του template. */
+
+/* --- Συρτάρι καλαθιού --- */
+.easystore-drawer{background:#fbf9f6 !important;font-family:Inter,sans-serif;color:#1c1a17}
+.easystore-drawer-header{border-bottom:1px solid #e7e1d9 !important;padding:18px 20px !important}
+.easystore-drawer-header > span{font-family:'Cormorant Garamond',Georgia,serif !important;font-size:22px !important;font-weight:500 !important}
+.easystore-drawer-close-button{font-size:26px !important;color:#1c1a17 !important;background:none !important}
+.easystore-mini-cart-item{border-bottom:1px solid #e7e1d9 !important;padding:16px 20px !important}
+.easystore-min-cart-thumbnail{border-radius:0 !important;width:72px !important;height:auto !important;aspect-ratio:550/668;object-fit:cover;background:#efebe5}
+.easystore-drawer .easystore-cart-item-title,.easystore-cart .easystore-cart-item-title,.easystore-checkout-item .easystore-cart-item-title,.easystore-checkout-item h3,.easystore-checkout-item h4{font-family:Inter,sans-serif !important;font-size:13px !important;font-weight:400 !important;line-height:1.4 !important;color:#1c1a17 !important;letter-spacing:0 !important}
+.easystore-metadata-key{font-size:11px !important;letter-spacing:.1em !important;text-transform:uppercase !important;color:#77706a !important;font-weight:400 !important}
+.easystore-metadata-value{font-size:13px !important;color:#1c1a17 !important}
+.easystore-quantity-selector,.easystore-cart-quantity-selector{border:1px solid #e7e1d9 !important;border-radius:0 !important;background:#fff !important}
+.easystore-drawer-footer{display:flex !important;flex-direction:column !important;gap:8px !important;padding:16px 20px 20px !important;border-top:1px solid #e7e1d9 !important;background:#fbf9f6 !important}
+.easystore-drawer-footer .easystore-cart-clear{display:none !important}
+.easystore-drawer-footer .btn,.easystore-cart-summary .btn,.view-checkout #sp-component .btn-primary{width:100% !important;height:47px;display:flex !important;align-items:center;justify-content:center;border-radius:0 !important;font-family:Inter,sans-serif !important;font-size:12px !important;font-weight:400 !important;letter-spacing:.14em !important;text-transform:uppercase !important;box-shadow:none !important;margin:0 !important;padding:0 16px !important;line-height:1.2 !important}
+.easystore-drawer-footer .easystore-cart-checkout,.easystore-cart-summary .btn-primary,.easystore-cart-summary .btn-secondary,.view-checkout #sp-component .btn-primary{order:1;background:#1c1a17 !important;border:1px solid #1c1a17 !important;color:#fff !important}
+.easystore-drawer-footer .easystore-cart-visit{order:2;background:transparent !important;border:1px solid #1c1a17 !important;color:#1c1a17 !important}
+.view-checkout #sp-component .btn-primary:disabled,.view-checkout #sp-component .btn-primary.disabled{background:#e7e1d9 !important;border-color:#e7e1d9 !important;color:#77706a !important;opacity:1 !important}
+.easystore-cart-empty-state .btn{border-radius:0 !important;border:1px solid #1c1a17 !important;color:#1c1a17 !important;background:transparent !important;font-size:12px !important;letter-spacing:.14em;text-transform:uppercase}
+.easystore-cart-empty-state h2{font-family:'Cormorant Garamond',Georgia,serif !important;font-size:22px !important;font-weight:500 !important}
+
+/* --- Σελίδα καλαθιού --- */
+.neo-page-head{max-width:1232px;margin:0 auto 24px;padding:44px 0 20px;border-bottom:1px solid #e7e1d9}
+.neo-page-head h1{font-family:'Cormorant Garamond',Georgia,serif !important;font-weight:500 !important;font-size:22px !important;margin:0 !important;color:#1c1a17}
+.easystore-cart{font-family:Inter,sans-serif;color:#1c1a17}
+.easystore-cart-table{border:0 !important;border-radius:0 !important;background:transparent !important}
+.easystore-cart-table thead,.easystore-cart-table thead th,.easystore-cart-table .easystore-cart-table-head,.easystore-cart-table > div:first-child{background:transparent !important}
+.easystore-cart-table th{font-size:11px !important;font-weight:600 !important;letter-spacing:.12em !important;text-transform:uppercase !important;color:#1c1a17 !important;border-bottom:1px solid #e7e1d9 !important;padding:12px 0 !important}
+.easystore-cart-item{border-bottom:1px solid #e7e1d9 !important}
+.easystore-cart-item td{padding:16px 0 !important;border:0 !important;background:transparent !important}
+.easystore-cart-item-thumbnail img{border-radius:0 !important;width:88px !important;height:auto !important;aspect-ratio:550/668;object-fit:cover;background:#efebe5}
+.easystore-cart-item-price,.easystore-cart-item-total,.easystore-cart-item-subtotal{font-size:14px !important;color:#1c1a17 !important}
+.easystore-cart-remove-item{font-size:12px !important;color:#77706a !important;text-decoration:underline !important}
+.easystore-cart-summary{background:#fff !important;border:1px solid #e7e1d9 !important;border-radius:0 !important;padding:24px !important;font-size:14px}
+.easystore-cart-summary a:not(.btn){display:block;text-align:center;margin-top:14px;font-size:12px !important;letter-spacing:.12em;text-transform:uppercase;color:#1c1a17 !important;text-decoration:underline !important}
+
+/* --- Ταμείο --- */
+.view-checkout #sp-component{font-family:Inter,sans-serif;color:#1c1a17}
+.view-checkout .easystore-checkout-title,.view-checkout #sp-component h2,.view-checkout #sp-component h3.easystore-h3{font-family:'Cormorant Garamond',Georgia,serif !important;font-weight:500 !important;font-size:22px !important;color:#1c1a17 !important}
+.easystore-checkout-item-thumbnail img{border-radius:0 !important;aspect-ratio:550/668;object-fit:cover;background:#efebe5}
+.easystore-checkout-shipping__weight{display:none !important}
+.view-checkout #sp-component input[type=text],.view-checkout #sp-component input[type=email],.view-checkout #sp-component input[type=tel],.view-checkout #sp-component select,.view-checkout #sp-component textarea{border:1px solid #e7e1d9 !important;border-radius:0 !important;background:#fff !important;box-shadow:none !important;font-size:14px !important}
+.view-checkout #sp-component input:focus,.view-checkout #sp-component select:focus,.view-checkout #sp-component textarea:focus{border-color:#1c1a17 !important;outline:0 !important}
+.easystore-shipping-methods,.easystore-payment-methods{border-radius:0 !important;border-color:#e7e1d9 !important}
+.easystore-shipping-methods li,.easystore-payment-methods li{border-radius:0 !important;border-color:#e7e1d9 !important;background:#fff !important}
+.easystore-shipping-methods li.is-active,.easystore-payment-methods li.is-active{background:#fbf9f6 !important;border-color:#1c1a17 !important}
+.view-checkout #sp-component input[type=radio],.view-checkout #sp-component input[type=checkbox]{accent-color:#1c1a17}
+.view-checkout #sp-component a:not(.btn),.com-content #sp-component .article-details a,.com-content #sp-component .article-body a,.com-content #sp-component [itemprop=articleBody] a{color:#1c1a17 !important;text-decoration:underline !important}
