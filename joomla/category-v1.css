@@ -44,7 +44,7 @@ h1,h2,h3,.sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !impor
 .neo-cats a.on::before{background:#1c1a17;border-color:#1c1a17;box-shadow:inset 0 0 0 2px #fff}
 .neo-cats a:hover{color:#8a6a4f !important}
 /* Μεγέθη σε κουτάκια */
-.neo-sizes .easystore-filter-list{display:flex !important;flex-wrap:wrap;gap:6px !important}
+.neo-sizes .easystore-filter-list{display:flex !important;flex-direction:row !important;flex-wrap:wrap !important;gap:6px !important}
 .neo-sizes .easystore-filter-list-item{margin:0 !important}
 .neo-sizes .easystore-checkbox-label{position:relative;padding:0 !important}
 .neo-sizes .easystore-checkbox-label input{position:absolute;opacity:0;pointer-events:none}
@@ -96,4 +96,11 @@ h1,h2,h3,.sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !impor
   .neo-toolbar{justify-content:space-between;gap:12px}
   .neo-toolbar .neo-ftoggle{margin:0 0 22px}
   .neo-cat select[name="filter_sortby"]{min-width:0}
+}
+@media (max-width:991px){
+  .neo-cat #sp-main-body > .container,.neo-cat #sp-main-body .container-inner{max-width:none !important;padding-left:0 !important;padding-right:0 !important}
+  .neo-cat #sp-main-body .row{margin-left:0 !important;margin-right:0 !important}
+  .neo-cat #sp-component{padding-left:0 !important;padding-right:0 !important}
+  .neo-cat [id^="column-wrap-id-3a32cb07"],.neo-cat [id^="column-wrap-id-afbd2d5a"]{padding-left:0 !important;padding-right:0 !important}
+  .neo-ftoggle,.neo-toolbar .neo-ftoggle{height:38px;padding:0 22px;line-height:36px}
 }
