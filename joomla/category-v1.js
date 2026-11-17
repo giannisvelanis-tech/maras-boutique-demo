@@ -29,7 +29,7 @@
   var NEO_MIN_HTML = "<div class=\"sgm\" id=\"neo-sgm2\" ><div class=\"sgb\" role=\"dialog\" aria-label=\"Οδηγός μεγεθών MINUETO\"><button class=\"sgx\"  aria-label=\"Κλείσιμο\">×</button><h2>Οδηγός μεγεθών MINUETO</h2><div id=\"neo-sg2m\"></div><h3>Αντιστοιχία μεγεθών</h3><div class=\"sgt\"><table><tr><th>MINUETO</th><th>Ισπανία</th><th>Ευρώπη</th><th>Ηνωμένο Βασίλειο</th><th>Ιταλία</th></tr><tr><td>XS</td><td>34</td><td>36</td><td>6</td><td>38</td></tr><tr><td>S</td><td>36</td><td>38</td><td>8</td><td>40</td></tr><tr><td>M</td><td>38</td><td>40</td><td>10</td><td>42</td></tr><tr><td>L</td><td>40</td><td>42</td><td>12</td><td>44</td></tr><tr><td>XL</td><td>42</td><td>44</td><td>14</td><td>46</td></tr><tr><td>XXL</td><td>44</td><td>46</td><td>16</td><td>48</td></tr></table></div><p class=\"sgn\">Πηγή: οδηγός μεγεθών της Minueto για το συγκεκριμένο ρούχο.</p></div></div>";
 
   /* Δεύτερες κατηγορίες από το demo (17/11/2026): κατηγορία → id προϊόντων EasyStore */
-  var NEO_EXTRA = {"/shop/special-occasion":[702,703,644,645,559,560,563,564,565,569,573,574,575,581,584,612,613,624,636,637,638],"/shop/dress":[588,593,596,542,543,544,545],"/shop/knits":[638,639],"/shop/top-blouse":[400]};
+  var NEO_EXTRA = {"/shop/special-occasion":[702,703,644,645,559,560,563,564,565,569,573,574,575,581,584,612,613,624,636,637,638],"/shop/dress":[588,593,596,542,543,544,545],"/shop/knits":[638,639],"/shop/top-blouse":[400,693,696,519,518,516]};
 
   function txt(el) { return (el && el.textContent || '').replace(/\s+/g, ' ').trim(); }
   function root() { return document.querySelector('#sp-component .addon-root-easystore-list-filter') ? document.querySelector('#sp-component') : null; }
@@ -57,6 +57,7 @@
     box.className = 'neo-cats';
     box.innerHTML = '<h4>Κατηγορία</h4>';
     CATS.forEach(function (x) {
+      if (x[1] === '/shop/shirt') return;
       var a = document.createElement('a');
       a.href = x[1];
       a.textContent = x[0];
@@ -250,6 +251,7 @@
     var r = null;
     CATS.forEach(function (x) { if (x[1] === base) r = x; });
     if (!r && base === '/special-offer') r = ['Black Week', '/special-offer'];
+    if (base === '/shop/shirt') r = ['Τοπ – Πουκάμισα', '/shop/top-blouse'];
     return r;
   }
 
@@ -531,6 +533,8 @@
     var rng = ps && txt(ps.querySelector('[x-text="pagination.range"]'));
     var tot = ps && parseInt(txt(ps.querySelector('[x-text="pagination.total"]')).replace(/\D/g, ''), 10);
     var end = rng ? parseInt((rng.split('-')[1] || '').replace(/\D/g, ''), 10) : NaN;
+    var cnt0 = c.querySelector('.neo-count');
+    if (cnt0 && !isNaN(tot) && !cnt0.dataset.neoEx) { var n0 = tot + ids.length; cnt0.textContent = n0 + ' προϊόντα'; cnt0.dataset.neoEx = '1'; }
     if (!isNaN(tot) && !isNaN(end) && end < tot) return;
     grid.dataset.neoEx = '1';
     var have = {};
@@ -589,8 +593,6 @@
             if (ph) { var so = document.createElement('div'); so.className = 'neo-soldout'; so.innerHTML = '<b>Sold out</b>'; ph.appendChild(so); }
           }
           added++;
-          var cnt = c.querySelector('.neo-count');
-          if (cnt && !isNaN(tot)) { var n = tot + added; cnt.textContent = n + (n === 1 ? ' προϊόν' : ' προϊόντα'); }
         })
         .catch(function () {})
         .then(function () { act--; if (q.length) one(q.shift()); });
