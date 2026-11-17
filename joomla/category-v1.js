@@ -138,13 +138,94 @@
     });
   }
 
+  /* Sold out πάνω στη φωτογραφία: το EasyStore απενεργοποιεί το κουμπί όταν όλα τα μεγέθη έχουν εξαντληθεί */
+  function pid(it) {
+    var b = it.querySelector('[class*="easystore-btn-add-to-cart"]');
+    if (!b) return null;
+    for (var i = 0; i < b.attributes.length; i++) {
+      var m = b.attributes[i].name.match(/^add-to-cart-button-(\d+)$/);
+      if (m) return { id: m[1], b: b, variants: /openQuickAddModal/.test(b.getAttribute('@click') || '') };
+    }
+    return null;
+  }
+
+  function sold(c) {
+    [].slice.call(c.querySelectorAll('.sppb-collection-item')).forEach(function (it) {
+      if (it.dataset.neoSold) return;
+      var p = pid(it);
+      it.dataset.neoSold = '1';
+      if (!p || !p.b.disabled) return;
+      it.classList.add('neo-sold');
+      var ph = it.querySelector('.easystore-product-image');
+      if (ph && !ph.querySelector('.neo-soldout')) {
+        var d = document.createElement('div');
+        d.className = 'neo-soldout';
+        d.innerHTML = '<b>Sold out</b>';
+        ph.appendChild(d);
+      }
+    });
+  }
+
+  /* Μεγέθη στην κάρτα, από τις παραλλαγές του EasyStore (με τα εξαντλημένα διαγραμμένα) */
+  var queue = [], active = 0;
+  function cacheGet(id) { try { var v = JSON.parse(sessionStorage.getItem('neo_v_' + id) || 'null'); return v && Date.now() - v.t < 600000 ? v.d : null; } catch (e) { return null; } }
+  function cacheSet(id, d) { try { sessionStorage.setItem('neo_v_' + id, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {} }
+  function paint(it, list) {
+    if (!list || !list.length || it.querySelector('.neo-card-sizes')) return;
+    list.sort(function (a, b) {
+      var i = ORDER.indexOf(a[0]), j = ORDER.indexOf(b[0]);
+      return (i < 0 ? 99 : i) - (j < 0 ? 99 : j);
+    });
+    var d = document.createElement('div');
+    d.className = 'neo-card-sizes';
+    list.forEach(function (x) {
+      var i = document.createElement('i');
+      i.textContent = x[0];
+      if (!x[1]) i.className = 'out';
+      d.appendChild(i);
+    });
+    var pr = it.querySelector('.addon-root-easystore-list-price') || it.lastElementChild;
+    pr.parentNode.insertBefore(d, pr.nextSibling);
+  }
+  function pump() {
+    while (active < 4 && queue.length) {
+      (function (job) {
+        active++;
+        var base = (window.Joomla && Joomla.getOptions && Joomla.getOptions('easystore.base')) || '';
+        fetch(base + '/index.php?option=com_easystore&task=product.quickAddModal&id=' + job.id, { credentials: 'same-origin' })
+          .then(function (r) { return r.json(); })
+          .then(function (j) {
+            var doc = new DOMParser().parseFromString(j.data || '', 'text/html');
+            var t = doc.querySelector('[x-ref^="product_variants_"]');
+            var v = t ? JSON.parse(t.value || '[]') : [];
+            var list = v.filter(function (x) { return x.visibility !== false; }).map(function (x) { return [String(x.combination).replace(/\\\//g, '/'), !!x.inventory_status]; });
+            cacheSet(job.id, list);
+            paint(job.it, list);
+          })
+          .catch(function () {})
+          .then(function () { active--; pump(); });
+      })(queue.shift());
+    }
+  }
+  function sizesOnCards(c) {
+    [].slice.call(c.querySelectorAll('.sppb-collection-item')).forEach(function (it) {
+      if (it.dataset.neoSz) return;
+      it.dataset.neoSz = '1';
+      var p = pid(it);
+      if (!p || !p.variants) return;
+      var cached = cacheGet(p.id);
+      if (cached) paint(it, cached); else queue.push({ id: p.id, it: it });
+    });
+    pump();
+  }
+
   function run() {
     var c = root();
     if (!c) return;
     document.body.classList.add('neo-cat');
     var fw = c.querySelector('[id^="column-id-afbd2d5a"] .addon-root-easystore-list-filter');
     if (fw) fw.classList.add('neo-filters');
-    head(c); cats(c); sizes(c); avail(c); sort(c); toolbar(c); badges(c);
+    head(c); cats(c); sizes(c); avail(c); sort(c); toolbar(c); badges(c); sold(c); sizesOnCards(c);
   }
 
   var busy = false;
