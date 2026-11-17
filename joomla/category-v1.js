@@ -573,6 +573,17 @@
   }
 
   /* Τιμές όπως στο demo: «189 €», «75,50 €» */
+  function priceText() {
+    var roots = document.querySelectorAll('.easystore-cart, .easystore-drawer, .view-checkout #sp-component');
+    [].slice.call(roots).forEach(function (r) {
+      var w = document.createTreeWalker(r, NodeFilter.SHOW_TEXT, null), n, list = [];
+      while ((n = w.nextNode())) if (/\d,\d\d\s?€/.test(n.nodeValue)) list.push(n);
+      list.forEach(function (t) {
+        var v = t.nodeValue.replace(/(\d[\d.]*),00\s?€/g, '$1 €').replace(/(\d[\d.]*,\d\d)€/g, '$1 €');
+        if (v !== t.nodeValue) t.nodeValue = v;
+      });
+    });
+  }
   function prices() {
     [].slice.call(document.querySelectorAll('.easystore-price-decimal')).forEach(function (d) {
       if (d.dataset.neo) return;
@@ -790,6 +801,7 @@
     footer();
     cartBits();
     prices();
+    priceText();
     sortLinks();
     drawerWatch();
     var pc = document.querySelector('#sp-component');
