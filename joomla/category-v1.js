@@ -102,6 +102,19 @@
     s.dataset.neo = '1';
   }
 
+  function toolbar(c) {
+    var s = c.querySelector('select[name="filter_sortby"]');
+    var col = c.querySelector('[id^="column-id-3a32cb07"] .sppb-column-addons');
+    if (!s || !col || c.querySelector('.neo-toolbar')) return;
+    var w = s.closest('.sppb-addon-wrapper');
+    var sec = w && w.closest('section.sppb-section');
+    var bar = document.createElement('div');
+    bar.className = 'neo-toolbar';
+    bar.appendChild(w);
+    col.insertBefore(bar, col.firstChild);
+    if (sec && !sec.querySelector('.easystore-product-filter, .sppb-collection-item')) sec.style.display = 'none';
+  }
+
   function badges(c) {
     [].slice.call(c.querySelectorAll('.sppb-collection-item')).forEach(function (it) {
       var b = it.querySelector('.easystore-badge.is-sale');
@@ -119,7 +132,7 @@
     document.body.classList.add('neo-cat');
     var fw = c.querySelector('[id^="column-id-afbd2d5a"] .addon-root-easystore-list-filter');
     if (fw) fw.classList.add('neo-filters');
-    head(c); cats(c); sizes(c); avail(c); sort(c); badges(c);
+    head(c); cats(c); sizes(c); avail(c); sort(c); toolbar(c); badges(c);
   }
 
   var busy = false;

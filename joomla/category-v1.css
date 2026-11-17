@@ -8,7 +8,11 @@ h1,h2,h3,.sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !impor
 .neo-cat #sp-component .sppb-section{padding-top:0 !important;padding-bottom:0 !important;margin:0 !important}
 
 /* Τίτλος κατηγορίας */
-.neo-cat-head{max-width:1280px;margin:0 auto;padding:44px 24px 34px}
+.neo-cat-head{max-width:1232px;margin:0 auto 24px;padding:44px 0 20px;border-bottom:1px solid #e7e1d9}
+.neo-cat [id^="sppb-addon-28b3de30"]{background:transparent !important;padding:0 !important}
+.neo-cat [id^="sppb-addon-a52ada7f"]{padding:0 !important}
+.neo-toolbar{display:flex;justify-content:flex-end;align-items:center}
+.neo-toolbar .sppb-addon-wrapper,.neo-toolbar .sppb-addon-wrapper > div{margin:0 !important;padding:0 !important}
 .neo-cat-head h1{font-family:'Cormorant Garamond',Georgia,serif !important;font-weight:500 !important;font-size:22px !important;line-height:1.1 !important;margin:0 0 6px !important;color:#1c1a17}
 .neo-cat-head p{font-family:Inter,sans-serif;font-size:15px;color:#77706a;margin:0}
 
@@ -69,7 +73,7 @@ h1,h2,h3,.sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !impor
 
 /* Κινητό: φίλτρα πάνω, προϊόντα από κάτω σε 2 στήλες */
 @media (max-width:991px){
-  .neo-cat-head{padding:28px 16px 18px}
+  .neo-cat-head{margin:0 16px 20px;padding:28px 0 16px}
   .neo-cat #sp-component .sppb-section > .sppb-row-container{padding:0 16px !important}
   .neo-cats{display:flex;flex-wrap:wrap;gap:6px 14px}
   .neo-cats h4{flex:0 0 100%}

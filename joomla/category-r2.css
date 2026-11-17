@@ -1,0 +1,83 @@
+/* ===== MARA'S NEO — βήμα 3: σελίδα κατηγορίας όπως στο demo (17/11/2026) ===== */
+/* Γραμματοσειρά τίτλων όπως στο demo: Cormorant Garamond (ο τίτλος προϊόντος μένει Noto Serif Display) */
+h1,h2,h3,.sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !important}
+.neo-home{--serif:'Cormorant Garamond',Georgia,serif !important}
+
+/* Πλάτος σελίδας όπως στο demo */
+.neo-cat #sp-component .sppb-section > .sppb-row-container{max-width:1280px !important;padding:0 24px !important;margin:0 auto}
+.neo-cat #sp-component .sppb-section{padding-top:0 !important;padding-bottom:0 !important;margin:0 !important}
+
+/* Τίτλος κατηγορίας */
+.neo-cat-head{max-width:1232px;margin:0 auto 24px;padding:44px 0 20px;border-bottom:1px solid #e7e1d9}
+.neo-cat [id^="sppb-addon-28b3de30"]{background:transparent !important;padding:0 !important}
+.neo-cat [id^="sppb-addon-a52ada7f"]{padding:0 !important}
+.neo-toolbar{display:flex;justify-content:flex-end;align-items:center}
+.neo-toolbar .sppb-addon-wrapper,.neo-toolbar .sppb-addon-wrapper > div{margin:0 !important;padding:0 !important}
+.neo-cat-head h1{font-family:'Cormorant Garamond',Georgia,serif !important;font-weight:500 !important;font-size:22px !important;line-height:1.1 !important;margin:0 0 6px !important;color:#1c1a17}
+.neo-cat-head p{font-family:Inter,sans-serif;font-size:15px;color:#77706a;margin:0}
+
+/* Δύο στήλες: φίλτρα 230px, προϊόντα με απόσταση 40px */
+@media (min-width:992px){
+  .neo-cat [id^="column-wrap-id-afbd2d5a"],.neo-cat [id^="column-wrap-id-34f545a6"]{flex:0 0 230px !important;max-width:230px !important;width:230px !important;padding:0 !important}
+  .neo-cat [id^="column-wrap-id-3a32cb07"],.neo-cat [id^="column-wrap-id-5078952d"]{flex:1 1 0 !important;max-width:none !important;width:auto !important;padding:0 0 0 40px !important}
+}
+/* Γραμμή ταξινόμησης δεξιά πάνω από τα προϊόντα */
+.neo-cat [id^="column-wrap-id-5078952d"] .sppb-row{justify-content:flex-end;margin:0 !important}
+.neo-cat [id^="column-wrap-id-5078952d"] .sppb-row-column:has(.neo-cat-title){display:none !important}
+.neo-cat [id^="column-wrap-id-5078952d"] .sppb-row-column{flex:0 0 auto !important;width:auto !important;max-width:none !important;padding:0 !important}
+.neo-cat select[name="filter_sortby"]{font-family:Inter,sans-serif;font-size:15px;color:#000;background-color:#fff;border:1px solid #e7e1d9 !important;border-radius:0 !important;padding:8px 32px 8px 10px !important;height:38px !important;min-width:203px;box-shadow:none !important;margin-bottom:22px}
+
+/* Φίλτρα */
+.neo-filters,.neo-filters *{font-family:Inter,sans-serif}
+.neo-filters .easystore-product-filter{border:0 !important;padding:0 !important;margin:0 0 26px !important}
+.neo-filters .easystore-filter-header{margin:0 0 10px !important;padding:0 !important}
+.neo-filters .easystore-filter-header .easystore-svg,.neo-filters [easystore-filter-reset]{display:none !important}
+.neo-filters .easystore-filter-title,.neo-cats h4{font-family:Inter,sans-serif !important;font-size:12px !important;font-weight:700 !important;letter-spacing:.12em !important;text-transform:uppercase !important;color:#1c1a17 !important;margin:0 !important}
+.neo-filters .easystore-filter-item-count{display:none !important}
+.neo-filters .easystore-filter-list{gap:0 !important;margin:0 !important;padding:0 !important}
+.neo-filters .easystore-checkbox-label{font-size:14px !important;color:#1c1a17 !important;padding:4px 0 !important}
+.neo-filters .easystore-filter-content,.neo-filters .easystore-filter-list{display:block}
+.neo-cats{margin:0 0 26px}
+.neo-cats h4{margin:0 0 10px !important}
+.neo-cats a{display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px;padding:4px 0;color:#1c1a17 !important;text-decoration:none !important}
+.neo-cats a::before{content:"";flex:0 0 13px;height:13px;border:1px solid #77706a;border-radius:2px;background:#fff}
+.neo-cats a.on::before{background:#1c1a17;border-color:#1c1a17;box-shadow:inset 0 0 0 2px #fff}
+.neo-cats a:hover{color:#8a6a4f !important}
+/* Μεγέθη σε κουτάκια */
+.neo-sizes .easystore-filter-list{display:flex !important;flex-wrap:wrap;gap:6px !important}
+.neo-sizes .easystore-filter-list-item{margin:0 !important}
+.neo-sizes .easystore-checkbox-label{position:relative;padding:0 !important}
+.neo-sizes .easystore-checkbox-label input{position:absolute;opacity:0;pointer-events:none}
+.neo-sizes .easystore-checkbox-checkmark{display:none !important}
+.neo-sizes .easystore-filter-item-name{display:inline-block;min-width:38px;text-align:center;border:1px solid #e7e1d9;background:#fff;padding:6px 8px;font-size:12px;line-height:1.2;cursor:pointer}
+.neo-sizes input:checked ~ .easystore-filter-item-label .easystore-filter-item-name{background:#1c1a17;color:#fff;border-color:#1c1a17}
+
+/* Κάρτες προϊόντων όπως στο demo */
+.neo-plist .sppb-collection-addon{column-gap:20px !important;row-gap:36px !important}
+.neo-plist .easystore-product-image{aspect-ratio:550/668;background:#efebe5;overflow:hidden;border-radius:0 !important}
+.neo-plist .easystore-product-image img{width:100% !important;height:100% !important;object-fit:cover !important;border-radius:0 !important}
+.neo-plist .addon-root-easystore-list-addtocart{display:none !important}
+.neo-plist .easystore-product-category{padding:12px 0 0 !important;margin:0 !important}
+.neo-plist .addon-root-easystore-list-category > div{padding:0 !important;margin:0 !important}
+.neo-plist .easystore-product-category a{font-family:Inter,sans-serif !important;font-size:11px !important;letter-spacing:.12em !important;text-transform:uppercase !important;color:#77706a !important}
+.neo-plist .easystore-product-title{font-family:Inter,system-ui,sans-serif !important;font-size:12px !important;font-weight:400 !important;line-height:1.4 !important;margin:3px 0 4px !important;padding:0 !important}
+.neo-plist .easystore-product-title a{color:#1c1a17 !important}
+.neo-plist .addon-root-easystore-list-title > div,.neo-plist .addon-root-easystore-list-price > div{padding:0 !important;margin:0 !important}
+.neo-plist .easystore-product-price-block{font-family:Inter,sans-serif;font-size:15px;font-weight:500;gap:8px;align-items:baseline}
+.neo-plist .easystore-price-current,.neo-plist .easystore-price-current span{font-size:15px !important;font-weight:500 !important;color:#1c1a17}
+.neo-plist .easystore-product-price-block:has(.easystore-price-original) .easystore-price-current,.neo-plist .easystore-product-price-block:has(.easystore-price-original) .easystore-price-current span{color:#9b2c2c !important}
+.neo-plist .easystore-price-original,.neo-plist .easystore-price-original span{font-size:15px !important;font-weight:400 !important;color:#77706a !important}
+.neo-plist .easystore-badge.is-sale{background:#9b2c2c !important;color:#fff !important;border-radius:0 !important;font-family:Inter,sans-serif;font-size:11px !important;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px !important;line-height:1.2 !important}
+.neo-plist .easystore-badge::after{content:none !important;display:none !important}
+.neo-plist .addon-root-easystore-list-badge .sppb-positioned-addon{top:12px !important;left:12px !important}
+
+/* Κινητό: φίλτρα πάνω, προϊόντα από κάτω σε 2 στήλες */
+@media (max-width:991px){
+  .neo-cat-head{margin:0 16px 20px;padding:28px 0 16px}
+  .neo-cat #sp-component .sppb-section > .sppb-row-container{padding:0 16px !important}
+  .neo-cats{display:flex;flex-wrap:wrap;gap:6px 14px}
+  .neo-cats h4{flex:0 0 100%}
+  .neo-cats a::before{display:none}
+  .neo-cats a.on{text-decoration:underline !important}
+  .neo-plist .sppb-collection-addon{column-gap:12px !important;row-gap:28px !important}
+}
