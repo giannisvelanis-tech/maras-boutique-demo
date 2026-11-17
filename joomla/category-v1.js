@@ -232,7 +232,118 @@
     pump();
   }
 
+  /* ===== Βήμα 4: σελίδα προϊόντος όπως στο demo ===== */
+  function catOfPath() {
+    var parts = location.pathname.replace(/\/+$/, '').split('/');
+    var base = parts.slice(0, -1).join('/');
+    var r = null;
+    CATS.forEach(function (x) { if (x[1] === base) r = x; });
+    if (!r && base === '/special-offer') r = ['Black Week', '/special-offer'];
+    return r;
+  }
+
+  function preselect(c) {
+    var w = c.querySelector('.easystore-product-variants');
+    if (!w || w.dataset.neo) return;
+    w.dataset.neo = '1';
+    [].slice.call(w.querySelectorAll('.easystore-product-variant')).forEach(function (g) {
+      var opts = [].slice.call(g.querySelectorAll('.easystore-variant-option'));
+      var chk = g.querySelector('input:checked');
+      var cur = chk && chk.closest('.easystore-variant-option');
+      if (cur && !cur.classList.contains('disabled')) return;
+      var ok = opts.filter(function (o) { return !o.classList.contains('disabled'); })[0];
+      var inp = ok && ok.querySelector('input');
+      if (inp) inp.click();
+    });
+    [].slice.call(w.querySelectorAll('.easystore-option-name')).forEach(function (n) {
+      var t = txt(n).toLowerCase();
+      if (t === 'size') n.textContent = 'Μέγεθος';
+      else if (t === 'color' || t === 'colour') n.textContent = 'Χρώμα';
+    });
+  }
+
+  function crumbs(c) {
+    var t = c.querySelector('.addon-root-easystore-single-title');
+    if (!t || c.querySelector('.neo-crumbs')) return;
+    var k = catOfPath();
+    var d = document.createElement('div');
+    d.className = 'neo-crumbs';
+    var a = document.createElement('a'); a.href = '/'; a.textContent = 'Αρχική'; d.appendChild(a);
+    if (k) {
+      d.appendChild(document.createTextNode(' / '));
+      var b = document.createElement('a'); b.href = k[1]; b.textContent = k[0]; d.appendChild(b);
+    }
+    t.parentNode.insertBefore(d, t);
+  }
+
+  function perks(c) {
+    var atc = c.querySelector('.addon-root-easystore-single-addtocart');
+    if (!atc || c.querySelector('.neo-perks')) return;
+    var box = document.createElement('div');
+    box.className = 'neo-pextra';
+    box.innerHTML =
+      '<div class="neo-perks">' +
+        '<div><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h14v11H1zM15 9h4l4 4v3h-8z"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="18.5" cy="18" r="1.8"/></svg><span>Παράδοση σε 1–3 εργάσιμες</span></div>' +
+        '<div><img class="neo-klarna" src="https://osm.klarnaservices.com/images/badges/klarna_badge_rectangle.svg" alt="Klarna"><span>Πληρωμή σε 3 άτοκες δόσεις</span></div>' +
+        '<div><span class="neo-ret">↺</span><span>Αλλαγή ή επιστροφή εντός 14 ημερών · <a href="/epistrofes-allages">Όροι</a></span></div>' +
+      '</div>';
+    atc.parentNode.insertBefore(box, atc.nextSibling);
+    var d = c.querySelector('.neo-desc');
+    var dw = d && d.closest('.sppb-addon-wrapper');
+    var det = document.createElement('details');
+    det.className = 'neo-acc';
+    det.open = true;
+    det.innerHTML = '<summary>Περιγραφή &amp; υλικά</summary><div class="neo-acc-body"></div>';
+    if (dw) { det.querySelector('.neo-acc-body').appendChild(dw); }
+    box.appendChild(det);
+    var sh = document.createElement('details');
+    sh.className = 'neo-acc';
+    sh.innerHTML = '<summary>Αποστολή &amp; επιστροφές</summary><div class="neo-acc-body"><ul>' +
+      '<li>Αποστολή με SPEEDEX· οι παραγγελίες ετοιμάζονται σε 1–3 εργάσιμες ημέρες.</li>' +
+      '<li>Δωρεάν αποστολή για αγορές άνω των 100 €· κάτω από 100 € το κόστος είναι 3 €.</li>' +
+      '<li>Αλλαγή ή επιστροφή εντός 14 ημερολογιακών ημερών από την παραλαβή.</li>' +
+      '<li><a href="/apostoli-kostos">Αποστολή &amp; κόστος</a> · <a href="/epistrofes-allages">Επιστροφές &amp; αλλαγές</a> · <a href="/tropoi-pliromis">Τρόποι πληρωμής</a></li>' +
+      '</ul></div>';
+    box.appendChild(sh);
+  }
+
+  function related(c) {
+    var rel = c.querySelector('.neo-rel');
+    if (!rel || rel.dataset.neo) return;
+    rel.dataset.neo = '1';
+    var wrap = rel.closest('.sppb-addon-wrapper') || rel;
+    wrap.classList.add('neo-plist');
+    if (rel.querySelector('.sppb-collection-item')) { sold(wrap); sizesOnCards(wrap); return; }
+    var k = catOfPath();
+    var sec = wrap.closest('section.sppb-section');
+    if (!k) { if (sec) sec.style.display = 'none'; return; }
+    var me = location.pathname.replace(/\/+$/, '');
+    fetch(k[1], { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (h) {
+      var doc = new DOMParser().parseFromString(h, 'text/html');
+      var items = [].slice.call(doc.querySelectorAll('#sp-component .sppb-collection-item')).filter(function (it) {
+        var a = it.querySelector('.easystore-product-title a');
+        return a && a.getAttribute('href').replace(/\/+$/, '') !== me;
+      }).slice(0, 4);
+      if (!items.length) { if (sec) sec.style.display = 'none'; return; }
+      var g = document.createElement('div');
+      g.className = 'sppb-collection-addon neo-rel-grid';
+      items.forEach(function (it) { g.appendChild(document.importNode(it, true)); });
+      rel.innerHTML = '';
+      rel.appendChild(g);
+      badges(wrap); sold(wrap); sizesOnCards(wrap);
+    }).catch(function () { if (sec) sec.style.display = 'none'; });
+  }
+
+  function product(c) {
+    if (!c.querySelector('.addon-root-easystore-single-title')) return false;
+    document.body.classList.add('neo-prod');
+    preselect(c); crumbs(c); perks(c); related(c);
+    return true;
+  }
+
   function run() {
+    var pc = document.querySelector('#sp-component');
+    if (pc && product(pc)) return;
     var c = root();
     if (!c) return;
     document.body.classList.add('neo-cat');

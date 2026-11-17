@@ -1,0 +1,86 @@
+/* ===== MARA'S NEO — βήμα 4: σελίδα προϊόντος όπως στο demo (17/11/2026) ===== */
+.neo-prod #sp-component .sppb-section > .sppb-row-container{max-width:1280px !important;padding:0 24px !important;margin:0 auto}
+.neo-prod #sp-component .sppb-section > .sppb-row-container > .sppb-row{margin-left:0 !important;margin-right:0 !important}
+.neo-prod #sp-main-body{padding-top:36px !important}
+
+/* Διάταξη: μικρογραφίες 84px · φωτογραφία · πληροφορίες 535px */
+@media (min-width:992px){
+  .neo-prod [id^="column-wrap-id-7fc02f09"]{flex:1 1 0 !important;max-width:none !important;width:auto !important;padding:0 56px 0 0 !important}
+  .neo-prod [id^="column-wrap-id-18513f57"]{flex:0 0 535px !important;max-width:535px !important;width:535px !important;padding:0 !important}
+  .neo-prod [id^="column-wrap-id-fd4c3c5e"]{flex:0 0 96px !important;max-width:96px !important;width:96px !important;padding:0 12px 0 0 !important}
+  .neo-prod [id^="column-wrap-id-96cc508a"]{flex:1 1 0 !important;max-width:none !important;width:auto !important;padding:0 !important}
+}
+.neo-prod .addon-root-easystore-single-gallery img{border:1px solid transparent;border-radius:0 !important;aspect-ratio:84/102;object-fit:cover;width:100%;height:auto}
+.neo-prod .addon-root-easystore-single-gallery .active img,.neo-prod .addon-root-easystore-single-gallery [class*=active] img{border-color:#1c1a17 !important}
+.neo-prod .addon-root-easystore-single-thumbnail img{border-radius:0 !important;background:#efebe5}
+.neo-prod .addon-root-easystore-single-thumbnail *{border-radius:0 !important}
+
+/* Πληροφορίες */
+.neo-prod [id^="column-wrap-id-18513f57"] .addon-root-empty-space{display:none !important}
+.neo-crumbs{font-family:Inter,sans-serif;font-size:12px;color:#77706a;margin:0 0 14px}
+.neo-crumbs a{color:#77706a !important;text-decoration:none !important}
+.neo-crumbs a:hover{color:#1c1a17 !important}
+.neo-prod .easystore-product-title,.neo-prod .addon-root-easystore-single-title h1,.neo-prod .addon-root-easystore-single-title h2{font-family:'Noto Serif Display',Georgia,serif !important;font-weight:400 !important;font-size:38px !important;line-height:1.1 !important;margin:0 0 12px !important;color:#1c1a17 !important}
+.neo-prod .addon-root-easystore-single-title > div,.neo-prod .addon-root-easystore-single-price > div{margin:0 !important;padding:0 !important}
+.neo-prod .addon-root-easystore-single-price .easystore-product-price-block{font-family:Inter,sans-serif;align-items:baseline;gap:10px;margin:0 0 24px}
+.neo-prod .addon-root-easystore-single-price .easystore-price-current,.neo-prod .addon-root-easystore-single-price .easystore-price-current span{font-size:20px !important;font-weight:500 !important;color:#1c1a17}
+.neo-prod .addon-root-easystore-single-price .easystore-product-price-block:has(.easystore-price-original) .easystore-price-current,.neo-prod .addon-root-easystore-single-price .easystore-product-price-block:has(.easystore-price-original) .easystore-price-current span{color:#9b2c2c !important}
+.neo-prod .addon-root-easystore-single-price .easystore-price-original,.neo-prod .addon-root-easystore-single-price .easystore-price-original span{font-size:16px !important;font-weight:400 !important;color:#77706a !important}
+
+/* Μεγέθη σε τετράγωνα */
+.neo-prod .easystore-variant-title{font-family:Inter,sans-serif !important;font-size:12px !important;letter-spacing:.12em !important;text-transform:uppercase !important;color:#1c1a17 !important;margin:0 0 10px !important;font-weight:400 !important}
+.neo-prod .easystore-option-value-name{font-weight:600}
+.neo-prod .easystore-variant-options{display:flex !important;flex-wrap:wrap;gap:8px !important;margin:0 0 10px}
+.neo-prod .easystore-variant-option{margin:0 !important}
+.neo-prod .easystore-variant-option label{margin:0 !important;cursor:pointer}
+.neo-prod .easystore-variant-option input{position:absolute;opacity:0;pointer-events:none}
+.neo-prod .easystore-variant-option-value{display:flex !important;align-items:center;justify-content:center;min-width:56px;height:46px;padding:0 14px !important;border:1px solid #e7e1d9 !important;border-radius:0 !important;background:#fff !important;color:#1c1a17 !important;font-family:Inter,sans-serif;font-size:14px !important;font-weight:400 !important;box-shadow:none !important}
+.neo-prod .easystore-variant-option-value::before,.neo-prod .easystore-variant-option-value::after{display:none !important}
+.neo-prod .easystore-variant-option.disabled .easystore-variant-option-value{color:#b9b2aa !important;background:transparent !important;text-decoration:line-through}
+.neo-prod .easystore-variant-option input:checked + .easystore-variant-option-value{background:#1c1a17 !important;border-color:#1c1a17 !important;color:#fff !important;text-decoration:none}
+.neo-prod .easystore-variant-option.disabled input:checked + .easystore-variant-option-value{background:#e7e1d9 !important;color:#77706a !important;border-color:#e7e1d9 !important;text-decoration:line-through}
+
+/* Χωρίς ποσότητα (όπως στο demo· μένει 1) */
+.neo-prod .addon-root-easystore-single-quantity{display:none !important}
+
+/* Κουμπί καλαθιού */
+.neo-prod .addon-root-easystore-single-addtocart{margin-top:30px !important}
+.neo-prod .addon-root-easystore-single-addtocart .btn,.neo-prod .addon-root-easystore-single-addtocart button{width:100% !important;height:47px;border-radius:0 !important;background:#1c1a17 !important;border:1px solid #1c1a17 !important;color:#fff !important;font-family:Inter,sans-serif !important;font-size:12px !important;font-weight:400 !important;letter-spacing:.14em !important;text-transform:uppercase !important;box-shadow:none !important}
+.neo-prod .addon-root-easystore-single-addtocart .btn:hover{background:#3a352f !important}
+.neo-prod .addon-root-easystore-single-addtocart button[disabled],.neo-prod .addon-root-easystore-single-addtocart .btn.disabled{background:#e7e1d9 !important;border-color:#e7e1d9 !important;color:#77706a !important;opacity:1 !important}
+
+/* Πλεονεκτήματα και ενότητες */
+.neo-pextra{font-family:Inter,sans-serif;color:#1c1a17}
+.neo-perks{border-top:1px solid #e7e1d9;margin:26px 0}
+.neo-perks > div{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #e7e1d9;font-size:14px}
+.neo-perks svg{flex:0 0 20px}
+.neo-perks .neo-klarna{height:18px;width:auto}
+.neo-perks .neo-ret{display:inline-block;width:20px;text-align:center;font-size:16px}
+.neo-perks a{color:#1c1a17 !important;text-decoration:underline !important}
+.neo-acc{border-bottom:1px solid #e7e1d9}
+.neo-acc summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between}
+.neo-acc summary::-webkit-details-marker{display:none}
+.neo-acc summary::after{content:"+";font-size:16px;line-height:1}
+.neo-acc[open] summary::after{content:"–"}
+.neo-acc-body{padding:0 0 14px;font-size:14px;line-height:1.55;color:#4a453f}
+.neo-acc-body ul{margin:0;padding-left:18px}
+.neo-acc-body li{margin:0 0 4px}
+.neo-acc-body a{color:#1c1a17 !important;text-decoration:underline !important}
+.neo-acc-body .sppb-addon-wrapper,.neo-acc-body .sppb-addon-wrapper > div{margin:0 !important;padding:0 !important}
+.neo-acc-body .easystore-product-description,.neo-acc-body .easystore-product-description *{font-family:Inter,sans-serif !important;font-size:14px !important;color:#4a453f !important;line-height:1.55 !important}
+.neo-acc-body .easystore-product-description h1,.neo-acc-body .easystore-product-description h2,.neo-acc-body .easystore-product-description h3{font-weight:500 !important;color:#1c1a17 !important;margin:10px 0 4px !important}
+
+/* Μπορεί να σας αρέσει */
+.neo-prod .addon-root-text-block .sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !important;font-weight:500 !important;font-size:22px !important;text-transform:none !important;letter-spacing:normal !important;color:#1c1a17 !important;text-align:left !important;margin:0 0 6px !important}
+.neo-prod .addon-root-text-block .sppb-addon-content:empty{display:none}
+.neo-rel-grid{display:grid !important;grid-template-columns:repeat(4,1fr);column-gap:20px;row-gap:36px}
+
+@media (max-width:991px){
+  .neo-prod #sp-main-body > .container,.neo-prod #sp-main-body .container-inner{max-width:none !important;padding-left:0 !important;padding-right:0 !important}
+  .neo-prod #sp-main-body .row{margin-left:0 !important;margin-right:0 !important}
+  .neo-prod #sp-component{padding-left:0 !important;padding-right:0 !important}
+  .neo-prod #sp-component .sppb-section > .sppb-row-container{padding:0 16px !important}
+  .neo-prod .easystore-product-title,.neo-prod .addon-root-easystore-single-title h1{font-size:28px !important}
+  .neo-prod [id^="column-wrap-id-18513f57"]{margin-top:20px}
+  .neo-rel-grid{grid-template-columns:repeat(2,1fr);column-gap:12px;row-gap:28px}
+}
