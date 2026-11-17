@@ -93,3 +93,25 @@
 .neo-prod .addon-root-text-block h1,.neo-prod .addon-root-text-block h2,.neo-prod .addon-root-text-block h3,.neo-prod .addon-root-text-block .sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !important;font-weight:500 !important;font-size:22px !important;text-transform:none !important;letter-spacing:normal !important;color:#1c1a17 !important;margin:0 0 28px !important}
 .neo-prod .neo-plist .easystore-product-title{font-family:Inter,system-ui,sans-serif !important;font-size:12px !important;font-weight:400 !important;line-height:1.4 !important;margin:3px 0 4px !important}
 .neo-prod [id^="column-wrap-id-119f3ee0"]{padding-left:0 !important;padding-right:0 !important}
+/* Χρώματα (κυκλάκια) και οδηγός μεγεθών, όπως στο demo */
+.neo-opt-h{font-family:Inter,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#1c1a17;margin:0 0 10px}
+.neo-opt-h b{font-weight:600}
+.neo-sw{display:flex;gap:10px;margin:8px 0 18px}
+.neo-sw a{width:46px;height:46px;border-radius:50%;overflow:hidden;border:1px solid #e7e1d9;padding:2px;background:#fff;display:block}
+.neo-sw a.on{border:1.5px solid #1c1a17}
+.neo-sw img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;border-radius:50%;display:block;background:#efebe5}
+.neo-prod .easystore-variant-title.neo-opt-row{display:flex !important;justify-content:space-between;align-items:baseline}
+.neo-sg{font-size:12px;letter-spacing:0;text-transform:none;text-decoration:underline !important;color:#1c1a17 !important;margin-left:auto}
+.neo-sgmod{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:9999;align-items:center;justify-content:center;padding:16px}
+.neo-sgmod.open{display:flex}
+.neo-sgmod .sgb{background:#fbf9f6;width:100%;max-width:900px;max-height:90vh;overflow:auto;padding:28px 24px;position:relative;font-family:Inter,sans-serif;color:#1c1a17}
+.neo-sgmod .sgb h2{font-family:'Noto Serif Display',Georgia,serif !important;font-weight:400 !important;font-size:24px !important;margin:0 0 6px !important}
+.neo-sgmod .sgb h3{font-family:Inter,sans-serif !important;font-size:11px !important;font-weight:600 !important;letter-spacing:.12em;text-transform:uppercase;margin:18px 0 6px !important}
+.neo-sgmod .sgt{overflow-x:auto}
+.neo-sgmod table{border-collapse:collapse;width:100%;font-size:13px}
+.neo-sgmod th,.neo-sgmod td{padding:8px 7px;border-bottom:1px solid #e7e1d9;text-align:center;white-space:nowrap}
+.neo-sgmod th{font-weight:600}
+.neo-sgmod th:first-child,.neo-sgmod td:first-child{text-align:left}
+.neo-sgmod .sgx{position:absolute;top:10px;right:14px;background:none;border:0;font-size:28px;line-height:1;cursor:pointer;color:#1c1a17}
+.neo-sgmod .sgn{font-size:12px;color:#7a706a;margin-top:16px}
+@media(max-width:600px){.neo-sgmod .sgb{padding:24px 16px}.neo-sgmod table{font-size:12px}}

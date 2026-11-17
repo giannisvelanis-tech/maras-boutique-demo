@@ -20,6 +20,14 @@
   var ORDER = ['XS', 'S', 'S/M', 'M', 'M/L', 'L', 'XL', '2XL', 'XXL', 'XXXL', 'O/S', '36', '37', '38', '39', '40', '41'];
   var SORT = { best_selling: 'Προτεινόμενα', 'created-desc': 'Νεότερα', 'price-asc': 'Τιμή: χαμηλή → υψηλή', 'price-desc': 'Τιμή: υψηλή → χαμηλή' };
 
+  /* Δεδομένα από το demo (17/11/2026): χρώματα ίδιου ρούχου και οδηγοί μεγεθών */
+  var NEO_SWG = [[["/shop/knits/64-8043-black","Μαύρο"],["/shop/knits/64-8043-coffe","Καφέ"]],[["/shop/top-blouse/64-2074-black","Μαύρο"],["/shop/top-blouse/64-2074-camel","Καμηλό"]],[["/shop/pants/64-5094-coffe","Καφέ"],["/shop/pants/64-5094-black","Μαύρο"]],[["/shop/bag/nali-kamilo-tsanta-pougki-melanie","Καμηλό"],["/shop/bag/nali-mavri-tsanta-pougki-melanie","Μαύρο"],["/shop/bag/nali-skoura-kafe-tsanta-pougki-melanie","Σκούρο καφέ"]],[["/shop/bag/nali-kokkini-tsanta-pougki-lana","Κόκκινο"],["/shop/bag/nali-mavri-tsanta-pougki-lana","Μαύρο"]],[["/shop/jewelry/nali-mavra-skoularikia-luna","Μαύρο"],["/shop/jewelry/nali-mporonto-skoularikia-luna","Μπορντό"]],[["/shop/jewelry/nali-kafe-zoni-sierra","Καφέ"],["/shop/jewelry/nali-mavri-zoni-sierra","Μαύρο"]],[["/shop/jacket-coat/moutaki-sokolati-gouna-2606114","Σοκολατί"],["/shop/jacket-coat/moutaki-xaki-gouna-2606114","Χακί"]],[["/shop/pants/moutaki-anthraki-psilomeso-panteloni-barrel-2603114","Ανθρακί"],["/shop/pants/moutaki-camel-psilomeso-panteloni-barrel-2603114","Καμηλό"]],[["/shop/pants/moutaki-stone-panteloni-opsis-dermatos-2603118","Μπεζ"],["/shop/pants/moutaki-mple-panteloni-opsis-dermatos-2603118","Μπλε"]],[["/shop/bag/via-mail-bag-kafe-tsanta-pougki-coral-z01","Καφέ"],["/shop/bag/via-mail-bag-mpez-tsanta-pougki-coral-z02","Μπεζ"],["/shop/bag/via-mail-bag-mpornto-tsanta-pougki-coral-z04","Μπορντό"]],[["/shop/pants/moutaki-xaki-psilomeso-panteloni-barrel-opsis-suede-2603107","Χακί"],["/shop/pants/moutaki-mpez-psilomeso-panteloni-barrel-opsis-suede-2603107","Μπεζ"]],[["/shop/blazer/64-1029-black","Μαύρο"],["/shop/blazer/64-1029-ofwht","Εκρού"]],[["/shop/top-blouse/64-2003-black","Μαύρο"],["/shop/top-blouse/64-2003-ofwht","Εκρού"]],[["/shop/top-blouse/64-2037-bordo","Μπορντό"],["/shop/top-blouse/64-2037-olive","Λάδι"]],[["/shop/top-blouse/64-2040-black","Μαύρο"],["/shop/top-blouse/64-2040-coffe","Καφέ"]],[["/shop/top-blouse/64-2071-black","Μαύρο"],["/shop/top-blouse/64-2071-coffe","Καφέ"]],[["/shop/top-blouse/64-2100-beige","Μπεζ"],["/shop/top-blouse/64-2100-coffe","Καφέ"]],[["/shop/top-blouse/64-2226-coffe","Καφέ"],["/shop/top-blouse/64-2226-ofwht","Εκρού"]],[["/shop/dress/64-3302-black","Μαύρο"],["/shop/dress/64-3302-bordo","Μπορντό"]],[["/shop/dress/64-3303-black","Μαύρο"],["/shop/dress/64-3303-grey","Γκρι"]],[["/shop/dress/64-3308-blue","Μπλε"],["/shop/dress/64-3308-bordo","Μπορντό"]],[["/shop/pants/64-5070-black","Μαύρο"],["/shop/pants/64-5070-coffe","Καφέ"]],[["/shop/pants/64-5072-black","Μαύρο"],["/shop/pants/64-5072-plum","Δαμασκηνί"]],[["/shop/pants/64-5075-black","Μαύρο"],["/shop/pants/64-5075-ofwht","Εκρού"]],[["/shop/pants/64-5083-black","Μαύρο"],["/shop/pants/64-5083-coffe","Καφέ"]],[["/shop/skirt/64-6039-black","Μαύρο"],["/shop/skirt/64-6039-choco","Σοκολατί"]],[["/shop/top-blouse/64-7021-black","Μαύρο"],["/shop/top-blouse/64-7021-white","Λευκό"]],[["/shop/jacket-coat/64-9154-black","Μαύρο"],["/shop/jacket-coat/access-tzaket-opsis-dermatos-me-zoni","Καφέ"]],[["/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mayro-64-3038","Μαύρο"],["/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mporntw-64-3038","Μπορντό"],["/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mple-64-3038","Μπλε"]],[["/shop/jacket-coat/access-ekroy-tzaket-me-synthetiki-goyna-kai-koukoyla","Βανίλια"],["/shop/jacket-coat/access-kafe-tzaket-me-synthetiki-goyna-kai-koukoyla","Καφέ"]],[["/shop/jacket-coat/access-boufan-kafe-me-zoni-kai-goynino-giaka","Καφέ"],["/shop/jacket-coat/access-boufan-mayro-me-zoni-kai-goynino-giaka","Μαύρο"]],[["/shop/jacket-coat/access-tzaket-bez-me-peplum-kai-relia","Μπεζ"],["/shop/jacket-coat/access-tzaket-bomber-plekto-me-lurex","Καφέ"]],[["/special-offer/kafe-bloyza-me-soyra-accbl031","Καφέ"],["/special-offer/mayri-bloyza-me-soyra-accbl030","Μαύρο"]],[["/special-offer/bloyza-krouaze-xroma-mayro-accbl026","Μαύρο"],["/special-offer/bloyza-krouaze-xroma-vanila-accbl025","Βανίλια"]]];
+  var NEO_SWM = {"/shop/knits/64-8043-black":0,"/shop/knits/64-8043-coffe":0,"/shop/top-blouse/64-2074-black":1,"/shop/top-blouse/64-2074-camel":1,"/shop/pants/64-5094-coffe":2,"/shop/pants/64-5094-black":2,"/shop/bag/nali-kamilo-tsanta-pougki-melanie":3,"/shop/bag/nali-mavri-tsanta-pougki-melanie":3,"/shop/bag/nali-skoura-kafe-tsanta-pougki-melanie":3,"/shop/bag/nali-kokkini-tsanta-pougki-lana":4,"/shop/bag/nali-mavri-tsanta-pougki-lana":4,"/shop/jewelry/nali-mavra-skoularikia-luna":5,"/shop/jewelry/nali-mporonto-skoularikia-luna":5,"/shop/jewelry/nali-kafe-zoni-sierra":6,"/shop/jewelry/nali-mavri-zoni-sierra":6,"/shop/jacket-coat/moutaki-sokolati-gouna-2606114":7,"/shop/jacket-coat/moutaki-xaki-gouna-2606114":7,"/shop/pants/moutaki-anthraki-psilomeso-panteloni-barrel-2603114":8,"/shop/pants/moutaki-camel-psilomeso-panteloni-barrel-2603114":8,"/shop/pants/moutaki-stone-panteloni-opsis-dermatos-2603118":9,"/shop/pants/moutaki-mple-panteloni-opsis-dermatos-2603118":9,"/shop/bag/via-mail-bag-kafe-tsanta-pougki-coral-z01":10,"/shop/bag/via-mail-bag-mpez-tsanta-pougki-coral-z02":10,"/shop/bag/via-mail-bag-mpornto-tsanta-pougki-coral-z04":10,"/shop/pants/moutaki-xaki-psilomeso-panteloni-barrel-opsis-suede-2603107":11,"/shop/pants/moutaki-mpez-psilomeso-panteloni-barrel-opsis-suede-2603107":11,"/shop/blazer/64-1029-black":12,"/shop/blazer/64-1029-ofwht":12,"/shop/top-blouse/64-2003-black":13,"/shop/top-blouse/64-2003-ofwht":13,"/shop/top-blouse/64-2037-bordo":14,"/shop/top-blouse/64-2037-olive":14,"/shop/top-blouse/64-2040-black":15,"/shop/top-blouse/64-2040-coffe":15,"/shop/top-blouse/64-2071-black":16,"/shop/top-blouse/64-2071-coffe":16,"/shop/top-blouse/64-2100-beige":17,"/shop/top-blouse/64-2100-coffe":17,"/shop/top-blouse/64-2226-coffe":18,"/shop/top-blouse/64-2226-ofwht":18,"/shop/dress/64-3302-black":19,"/shop/dress/64-3302-bordo":19,"/shop/dress/64-3303-black":20,"/shop/dress/64-3303-grey":20,"/shop/dress/64-3308-blue":21,"/shop/dress/64-3308-bordo":21,"/shop/pants/64-5070-black":22,"/shop/pants/64-5070-coffe":22,"/shop/pants/64-5072-black":23,"/shop/pants/64-5072-plum":23,"/shop/pants/64-5075-black":24,"/shop/pants/64-5075-ofwht":24,"/shop/pants/64-5083-black":25,"/shop/pants/64-5083-coffe":25,"/shop/skirt/64-6039-black":26,"/shop/skirt/64-6039-choco":26,"/shop/top-blouse/64-7021-black":27,"/shop/top-blouse/64-7021-white":27,"/shop/jacket-coat/64-9154-black":28,"/shop/jacket-coat/access-tzaket-opsis-dermatos-me-zoni":28,"/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mayro-64-3038":29,"/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mporntw-64-3038":29,"/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mple-64-3038":29,"/shop/jacket-coat/access-ekroy-tzaket-me-synthetiki-goyna-kai-koukoyla":30,"/shop/jacket-coat/access-kafe-tzaket-me-synthetiki-goyna-kai-koukoyla":30,"/shop/jacket-coat/access-boufan-kafe-me-zoni-kai-goynino-giaka":31,"/shop/jacket-coat/access-boufan-mayro-me-zoni-kai-goynino-giaka":31,"/shop/jacket-coat/access-tzaket-bez-me-peplum-kai-relia":32,"/shop/jacket-coat/access-tzaket-bomber-plekto-me-lurex":32,"/special-offer/kafe-bloyza-me-soyra-accbl031":33,"/special-offer/mayri-bloyza-me-soyra-accbl030":33,"/special-offer/bloyza-krouaze-xroma-mayro-accbl026":34,"/special-offer/bloyza-krouaze-xroma-vanila-accbl025":34};
+  var NEO_SG = {"/shop/knits/minueto-kafe-pleketo-poulover-romvoi":[["Στήθος",["94","98","102","106","112","118"]],["Μήκος",["61","62","63","64","65","66"]]],"/shop/skirt/minueto-mporonto-pleketi-midi-fousta-animal-print":[["Μέση",["68","72","76","80","86","92"]],["Περιφέρεια",["90","94","98","102","108","114"]],["Μήκος",["78","79","80","81","82","83"]]],"/shop/knits/minueto-mporonto-pleketi-zaketa-animal-print":[["Στήθος",["92","96","100","104","110","116"]],["Μέση",["84","88","92","96","102","108"]],["Μήκος",["56","57","58","59","60","61"]]],"/shop/knits/minueto-ekrou-pleketo-poulover-me-schedio":[["Στήθος",["96","100","104","108","114","120"]],["Μήκος",["60","61","62","63","64","65"]]],"/shop/knits/minueto-tirkouaz-pleketo-poulover-psilos-laimos":[["Στήθος",["86","90","94","98","104","110"]],["Μήκος",["53","54","55","56","57","58"]]],"/shop/knits/minueto-mavro-pleketo-poulover-animal-print":[["Στήθος",["86","90","94","98","104","110"]],["Μήκος",["55","56","57","58","59","60"]]],"/shop/knits/minueto-mporonto-pleketo-poulover-poua":[["Στήθος",["90","94","98","102","108","114"]],["Μήκος",["60","61","62","63","64","65"]]],"/shop/knits/minueto-mporonto-pleketo-poulover-me-volan":[["Στήθος",["86","90","94","98","104","110"]],["Μήκος",["58","59","60","61","62","63"]]],"/shop/knits/minueto-kaneli-pleketo-poulover-plexouda":[["Στήθος",["88","92","96","100","106","112"]],["Μήκος",["58","59","60","61","62","63"]]],"/shop/knits/minueto-mavro-poulover-me-kentima":[["Στήθος",["86","90","94","98","104","110"]],["Μήκος",["57","58","59","60","61","62"]]],"/shop/jacket-coat/minueto-mavro-makry-palto-me-trouks":[["Στήθος",["100","104","108","112","118","124"]],["Μήκος",["110","112","114","116","118","120"]]],"/shop/jacket-coat/minueto-kafe-gouna-animal-print":[["Στήθος",["104","108","112","116","122","128"]],["Μήκος",["86","88","90","92","94","96"]]],"/shop/shirt/minueto-mple-tzin-poukamiso-me-trouks":[["Στήθος",["100","104","108","112","118","124"]],["Μέση",["98","102","106","110","116","122"]],["Μήκος",["65","66","67","68","69","70"]]],"/shop/top-blouse/minueto-kafe-fouter-me-paggietes":[["Στήθος",["102","106","110","114","120","126"]],["Μήκος",["59","60","61","62","63","64"]]],"/shop/dress/minueto-gkri-konto-forema-me-trouks":[["Στήθος",["100","104","108","112","118","124"]],["Μέση",["94","98","102","106","112","118"]],["Μήκος",["86","88","90","92","94","96"]]],"/shop/shirt/minueto-lefko-poukamiso-me-fiogko":[["Στήθος",["116","120","124","128","134","140"]],["Μήκος",["61","62","63","64","65","66"]]],"/shop/skirt/minueto-mavri-midi-fousta-chrysa-koumpia":[["Μέση",["68","72","76","80","86","92"]],["Περιφέρεια",["90","94","98","102","108","114"]],["Μήκος",["73","74","75","76","77","78"]]],"/shop/dress/minueto-mavro-emprime-konto-forema-kampana-manikia":[["Στήθος",["87","91","95","99","105","111"]],["Μέση",["90","94","98","102","108","114"]],["Περιφέρεια",["96","100","104","108","114","120"]],["Μήκος",["86","88","90","92","94","96"]]],"/shop/dress/minueto-mavro-konto-forema-fouskota-manikia":[["Στήθος",["121","125","129","133","139","145"]],["Μέση",["87","91","95","99","105","111"]],["Περιφέρεια",["97","101","105","109","115","121"]],["Μήκος",["86","88","90","92","94","96"]]],"/shop/top-blouse/minueto-emprime-saten-mplouza-me-volan":[["Στήθος",["95","99","103","107","113","119"]],["Μήκος",["53","54","55","56","57","58"]]],"/shop/dress/minueto-emprime-konto-forema-v-laimokopsi":[["Στήθος",["97","101","105","109","115","121"]],["Μέση",["68","72","76","80","86","92"]],["Περιφέρεια",["94","98","102","106","112","118"]],["Μήκος",["93","95","97","99","101","103"]]]};
+  var NEO_SGM = ["/shop/knits/minueto-kafe-pleketo-poulover-romvoi","/shop/skirt/minueto-mporonto-pleketi-midi-fousta-animal-print","/shop/knits/minueto-mporonto-pleketi-zaketa-animal-print","/shop/knits/minueto-ekrou-pleketo-poulover-me-schedio","/shop/knits/minueto-tirkouaz-pleketo-poulover-psilos-laimos","/shop/knits/minueto-mavro-pleketo-poulover-animal-print","/shop/knits/minueto-mavro-pleketo-zivago-chrysa-koumpia","/shop/knits/minueto-mporonto-pleketo-poulover-poua","/shop/knits/minueto-mporonto-pleketo-poulover-me-volan","/shop/knits/minueto-kaneli-pleketo-poulover-plexouda","/shop/knits/minueto-mavro-poulover-me-kentima","/shop/jacket-coat/minueto-mavro-makry-palto-me-trouks","/shop/jacket-coat/minueto-kafe-gouna-animal-print","/shop/shirt/minueto-mple-tzin-poukamiso-me-trouks","/shop/top-blouse/minueto-kafe-fouter-me-paggietes","/shop/dress/minueto-gkri-konto-forema-me-trouks","/shop/shirt/minueto-lefko-poukamiso-me-fiogko","/shop/skirt/minueto-mavri-midi-fousta-chrysa-koumpia","/shop/dress/minueto-mavro-emprime-konto-forema-kampana-manikia","/shop/dress/minueto-mavro-konto-forema-fouskota-manikia","/shop/top-blouse/minueto-emprime-saten-mplouza-me-volan","/shop/dress/minueto-emprime-konto-forema-v-laimokopsi"];
+  var NEO_ACC_HTML = "<div class=\"sgm\" id=\"neo-sgm\" ><div class=\"sgb\" role=\"dialog\" aria-label=\"Οδηγός μεγεθών ACCESS\">\n<button class=\"sgx\"  aria-label=\"Κλείσιμο\">×</button>\n<h2>Οδηγός μεγεθών ACCESS</h2>\n<h3>Αντιστοιχία μεγεθών</h3>\n<div class=\"sgt\"><table><tr><th>ACCESS</th><th>XS (42)</th><th>S (44)</th><th>M (46)</th><th>L (48)</th><th>XL (50)</th><th>XXL (52)</th><th>XXXL (54)</th></tr>\n<tr><td>Ευρώπη</td><td>36</td><td>38</td><td>40</td><td>42</td><td>44</td><td>46</td><td>48</td></tr>\n<tr><td>Ιταλία</td><td>40</td><td>42</td><td>44</td><td>46</td><td>48</td><td>50</td><td>52</td></tr>\n<tr><td>Ηνωμένο Βασίλειο</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td><td>18</td></tr>\n<tr><td>Ισπανία</td><td>34</td><td>36</td><td>38</td><td>40</td><td>42</td><td>44</td><td>46</td></tr></table></div>\n<h3>Μετρήσεις σώματος (cm)</h3>\n<div class=\"sgt\"><table><tr><th>ACCESS</th><th>XS (42)</th><th>S (44)</th><th>M (46)</th><th>L (48)</th><th>XL (50)</th><th>XXL (52)</th><th>XXXL (54)</th><th>S/M</th><th>M/L</th><th>One size</th></tr>\n<tr><td>Στήθος</td><td>84-88</td><td>88-92</td><td>92-96</td><td>96-100</td><td>100-104</td><td>104-108</td><td>108-112</td><td>84-98</td><td>98-112</td><td>84-104</td></tr>\n<tr><td>Μέση</td><td>64-68</td><td>68-72</td><td>72-76</td><td>76-80</td><td>80-84</td><td>84-88</td><td>88-92</td><td>64-78</td><td>78-92</td><td>64-84</td></tr>\n<tr><td>Περιφέρεια</td><td>92-96</td><td>96-100</td><td>100-104</td><td>104-108</td><td>108-112</td><td>112-116</td><td>116-120</td><td>92-106</td><td>106-120</td><td>92-122</td></tr></table></div>\n<p class=\"sgn\">Πηγή: οδηγός μεγεθών της ACCESS Fashion.</p>\n</div></div>";
+  var NEO_MIN_HTML = "<div class=\"sgm\" id=\"neo-sgm2\" ><div class=\"sgb\" role=\"dialog\" aria-label=\"Οδηγός μεγεθών MINUETO\"><button class=\"sgx\"  aria-label=\"Κλείσιμο\">×</button><h2>Οδηγός μεγεθών MINUETO</h2><div id=\"neo-sg2m\"></div><h3>Αντιστοιχία μεγεθών</h3><div class=\"sgt\"><table><tr><th>MINUETO</th><th>Ισπανία</th><th>Ευρώπη</th><th>Ηνωμένο Βασίλειο</th><th>Ιταλία</th></tr><tr><td>XS</td><td>34</td><td>36</td><td>6</td><td>38</td></tr><tr><td>S</td><td>36</td><td>38</td><td>8</td><td>40</td></tr><tr><td>M</td><td>38</td><td>40</td><td>10</td><td>42</td></tr><tr><td>L</td><td>40</td><td>42</td><td>12</td><td>44</td></tr><tr><td>XL</td><td>42</td><td>44</td><td>14</td><td>46</td></tr><tr><td>XXL</td><td>44</td><td>46</td><td>16</td><td>48</td></tr></table></div><p class=\"sgn\">Πηγή: οδηγός μεγεθών της Minueto για το συγκεκριμένο ρούχο.</p></div></div>";
+
   function txt(el) { return (el && el.textContent || '').replace(/\s+/g, ' ').trim(); }
   function root() { return document.querySelector('#sp-component .addon-root-easystore-list-filter') ? document.querySelector('#sp-component') : null; }
 
@@ -339,10 +347,94 @@
     }).catch(function () { if (sec) sec.style.display = 'none'; });
   }
 
+  /* Χρώματα του ίδιου ρούχου: κυκλάκια με φωτογραφία, όπως στο demo */
+  function imgOf(path, cb) {
+    try { var v = sessionStorage.getItem('neo_img_' + path); if (v) return cb(v); } catch (e) {}
+    fetch(path, { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (h) {
+      var d = new DOMParser().parseFromString(h, 'text/html');
+      var m = d.querySelector('meta[property="og:image"]');
+      var i = d.querySelector('.addon-root-easystore-single-thumbnail img, .easystore-product-image img');
+      var u = (i && (i.getAttribute('data-src') || i.getAttribute('src'))) || (m && m.getAttribute('content')) || '';
+      try { if (u) sessionStorage.setItem('neo_img_' + path, u); } catch (e) {}
+      cb(u);
+    }).catch(function () { cb(''); });
+  }
+  function swatches(c) {
+    var vs = c.querySelector('.addon-root-easystore-single-variants');
+    if (!vs || c.querySelector('.neo-sw')) return;
+    var me = location.pathname.replace(/\/+$/, '');
+    var gi = NEO_SWM[me];
+    if (gi === undefined) return;
+    var list = NEO_SWG[gi];
+    var cur = list.filter(function (x) { return x[0] === me; })[0];
+    var box = document.createElement('div');
+    box.className = 'neo-colors';
+    box.innerHTML = '<div class="neo-opt-h">Χρώμα: <b></b></div><div class="neo-sw"></div>';
+    box.querySelector('b').textContent = cur ? cur[1] : '';
+    var sw = box.querySelector('.neo-sw');
+    var mine = c.querySelector('.addon-root-easystore-single-thumbnail img');
+    list.forEach(function (x) {
+      var a = document.createElement('a');
+      a.href = x[0]; a.title = x[1];
+      if (x[0] === me) a.className = 'on';
+      var im = document.createElement('img');
+      im.alt = x[1];
+      a.appendChild(im);
+      sw.appendChild(a);
+      if (x[0] === me && mine) im.src = mine.getAttribute('src') || mine.getAttribute('data-src');
+      else imgOf(x[0], function (u) { if (u) im.src = u; });
+    });
+    vs.parentNode.insertBefore(box, vs);
+  }
+
+  /* Οδηγός μεγεθών: ACCESS (γενικός) και MINUETO (ανά ρούχο), όπως στο demo */
+  function closeSG() { [].slice.call(document.querySelectorAll('.neo-sgmod.open')).forEach(function (m) { m.classList.remove('open'); }); }
+  function modal(id, html) {
+    var m = document.getElementById(id);
+    if (m) return m;
+    var t = document.createElement('div');
+    t.innerHTML = html;
+    m = t.firstElementChild;
+    m.classList.add('neo-sgmod');
+    m.addEventListener('click', function (e) { if (e.target === m || (e.target.classList && e.target.classList.contains('sgx'))) closeSG(); });
+    document.body.appendChild(m);
+    return m;
+  }
+  function sizeGuide(c) {
+    var t = c.querySelector('.easystore-variant-title');
+    if (!t || t.querySelector('.neo-sg')) return;
+    var me = location.pathname.replace(/\/+$/, '');
+    var title = txt(c.querySelector('.addon-root-easystore-single-title'));
+    var kind = NEO_SGM.indexOf(me) >= 0 ? 'min' : (/^access/i.test(title) && me.indexOf('/accessories/shoes') !== 0 ? 'acc' : '');
+    if (!kind) return;
+    var a = document.createElement('a');
+    a.href = 'javascript:void 0';
+    a.className = 'neo-sg';
+    a.textContent = 'Οδηγός μεγεθών';
+    a.addEventListener('click', function () {
+      var m;
+      if (kind === 'acc') m = modal('neo-sgm', NEO_ACC_HTML);
+      else {
+        m = modal('neo-sgm2', NEO_MIN_HTML);
+        var r = NEO_SG[me] || [];
+        var S = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+        m.querySelector('#neo-sg2m').innerHTML = r.length
+          ? '<h3>Μετρήσεις του ρούχου (cm)</h3><div class="sgt"><table><tr><th>Μέγεθος</th>' + S.map(function (s) { return '<th>' + s + '</th>'; }).join('') + '</tr>' +
+            r.map(function (x) { return '<tr><td>' + x[0] + '</td>' + x[1].map(function (v) { return '<td>' + v + '</td>'; }).join('') + '</tr>'; }).join('') +
+            '</table></div><p class="sgn" style="margin-top:8px">Οι μετρήσεις είναι του ίδιου του ρούχου (περίμετρος), με απόκλιση περίπου 1 cm.</p>'
+          : '<p class="sgn">Για αυτό το ρούχο η Minueto δεν δίνει μετρήσεις, μόνο την αντιστοιχία μεγεθών.</p>';
+      }
+      m.classList.add('open');
+    });
+    t.classList.add('neo-opt-row');
+    t.appendChild(a);
+  }
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSG(); });
+
   function product(c) {
     if (!c.querySelector('.addon-root-easystore-single-title')) return false;
     document.body.classList.add('neo-prod');
-    preselect(c); crumbs(c); perks(c); related(c);
+    preselect(c); crumbs(c); swatches(c); sizeGuide(c); perks(c); related(c);
     return true;
   }
 
