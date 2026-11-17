@@ -49,3 +49,11 @@
 .easystore-shipping-methods li.is-active,.easystore-payment-methods li.is-active{background:#fbf9f6 !important;border-color:#1c1a17 !important}
 .view-checkout #sp-component input[type=radio],.view-checkout #sp-component input[type=checkbox]{accent-color:#1c1a17}
 .view-checkout #sp-component a:not(.btn),.com-content #sp-component .article-details a,.com-content #sp-component .article-body a,.com-content #sp-component [itemprop=articleBody] a{color:#1c1a17 !important;text-decoration:underline !important}
+/* πίνακας καλαθιού: χωρίς γκρι, στο πλάτος των 1232px */
+.view-cart .easystore-cart{max-width:1232px;margin:0 auto}
+.view-cart .easystore-cart table tr{background:transparent !important;border:0 !important}
+.view-cart .easystore-cart table tr:first-child{border-bottom:1px solid #e7e1d9 !important}
+.view-cart .easystore-cart table tr.easystore-cart-item{border-bottom:1px solid #e7e1d9 !important}
+.view-cart .easystore-cart table,.view-cart .easystore-cart table th,.view-cart .easystore-cart table td{border-left:0 !important;border-right:0 !important;border-top:0 !important}
+.easystore-cart-quantity-selector{border:0 !important;background:transparent !important;width:auto !important}
+.easystore-quantity-selector .easystore-product-quantity{border:0 !important;box-shadow:none !important}
