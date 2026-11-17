@@ -36,3 +36,9 @@
 @media (min-width:992px){
   .body-innerwrapper > #sp-carouselslider .sppb-row-container,.body-innerwrapper > #sp-carouselslider .container{padding-top:8px !important;padding-bottom:8px !important}
 }
+@media (min-width:992px){
+  #sp-menu .sp-megamenu-parent > li > a,#sp-menu .sp-megamenu-parent > li > span{margin:0 !important}
+  #sp-menu .sp-megamenu-parent > li.sp-has-child > a::after,#sp-menu .sp-megamenu-parent > li.sp-has-child > span::after{content:"\00a0▾" !important}
+  body .body-innerwrapper > #sp-logo .row,body .body-innerwrapper > #sp-section-3 .row{margin:0 !important}
+  body .body-innerwrapper > #sp-logo [class*=col-],body .body-innerwrapper > #sp-logo .sp-column,body .body-innerwrapper > #sp-logo .logo,body .body-innerwrapper > #sp-section-3 [class*=col-],body .body-innerwrapper > #sp-section-3 .sp-column{padding-left:0 !important;padding-right:0 !important}
+}
