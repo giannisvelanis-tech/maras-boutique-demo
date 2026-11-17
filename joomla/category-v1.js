@@ -212,7 +212,8 @@
       if (it.dataset.neoSz) return;
       it.dataset.neoSz = '1';
       var p = pid(it);
-      if (!p || !p.variants) return;
+      if (!p) return;
+      if (!p.variants) { paint(it, [['O/S', !p.b.disabled]]); return; }
       var cached = cacheGet(p.id);
       if (cached) paint(it, cached); else queue.push({ id: p.id, it: it });
     });
