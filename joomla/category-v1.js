@@ -315,7 +315,6 @@
     if (!rel || wrap.dataset.neo) return;
     wrap.dataset.neo = '1';
     wrap.classList.add('neo-plist');
-    if (rel.querySelector('.sppb-collection-item')) { sold(wrap); sizesOnCards(wrap); return; }
     var k = catOfPath();
     var sec = wrap.closest('section.sppb-section');
     if (!k) { if (sec) sec.style.display = 'none'; return; }
