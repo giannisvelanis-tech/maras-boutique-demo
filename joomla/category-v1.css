@@ -81,3 +81,8 @@ h1,h2,h3,.sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !impor
   .neo-cats a.on{text-decoration:underline !important}
   .neo-plist .sppb-collection-addon{column-gap:12px !important;row-gap:28px !important}
 }
+/* ευθυγράμμιση με τον τίτλο */
+.neo-cat #sp-component .sppb-section > .sppb-row-container > .sppb-row{margin-left:0 !important;margin-right:0 !important}
+.neo-toolbar *:not(select){margin-top:0 !important;padding-top:0 !important}
+.neo-toolbar .easystore-product-filter{display:block !important;gap:0 !important}
+.neo-toolbar .easystore-filter-header{display:none !important}

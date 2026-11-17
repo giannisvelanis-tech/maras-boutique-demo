@@ -115,12 +115,18 @@
     if (sec && !sec.querySelector('.easystore-product-filter, .sppb-collection-item')) sec.style.display = 'none';
   }
 
+  function num(it, sel) {
+    var w = txt(it.querySelector(sel + ' .easystore-price-whole')).replace(/\D/g, '');
+    var d = txt(it.querySelector(sel + ' .easystore-price-decimal')).replace(/\D/g, '');
+    return parseFloat(w + '.' + (d || '0'));
+  }
+
   function badges(c) {
     [].slice.call(c.querySelectorAll('.sppb-collection-item')).forEach(function (it) {
       var b = it.querySelector('.easystore-badge.is-sale');
       if (!b || b.dataset.neo) return;
-      var now = parseFloat(txt(it.querySelector('.easystore-price-current .easystore-price-whole')) + txt(it.querySelector('.easystore-price-current .easystore-price-decimal')));
-      var was = parseFloat(txt(it.querySelector('.easystore-price-original .easystore-price-whole')) + txt(it.querySelector('.easystore-price-original .easystore-price-decimal')));
+      var now = num(it, '.easystore-price-current');
+      var was = num(it, '.easystore-price-original');
       if (now > 0 && was > now) b.textContent = '-' + Math.round((1 - now / was) * 100) + '%';
       b.dataset.neo = '1';
     });
