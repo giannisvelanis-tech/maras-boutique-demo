@@ -115,3 +115,8 @@
 .neo-sgmod .sgx{position:absolute;top:10px;right:14px;background:none;border:0;font-size:28px;line-height:1;cursor:pointer;color:#1c1a17}
 .neo-sgmod .sgn{font-size:12px;color:#7a706a;margin-top:16px}
 @media(max-width:600px){.neo-sgmod .sgb{padding:24px 16px}.neo-sgmod table{font-size:12px}}
+/* αποστάσεις όπως στο demo: τιμή → 24px → χρώμα/μέγεθος */
+.neo-prod .addon-root-easystore-single-price .easystore-product-price{margin:0 0 24px !important}
+.neo-prod .addon-root-easystore-single-price .easystore-product-price-block{margin:0 !important}
+.neo-prod .easystore-variant-title.neo-opt-row{justify-content:flex-start !important}
+.neo-prod .easystore-option-name-separator{margin:0 !important}
