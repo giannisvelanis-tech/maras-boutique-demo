@@ -110,6 +110,8 @@
       if (SORT[o.value]) o.text = SORT[o.value];
       else if (!o.selected) o.remove();
     });
+    var nw = s.querySelector('option[value="created-desc"]');
+    if (nw && s.options[0] !== nw) s.insertBefore(nw, s.options[0]);
     s.dataset.neo = '1';
   }
 

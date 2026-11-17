@@ -17,7 +17,7 @@
   #sp-menu .sp-megamenu-parent > li > a:hover,#sp-menu .sp-megamenu-parent > li.active > a{border-bottom-color:#1c1a17 !important}
   #sp-menu .sp-megamenu-parent > li > a::before{display:none !important}
   #sp-menu .sp-megamenu-parent > li.sp-has-child > a::after,#sp-menu .sp-megamenu-parent > li.sp-has-child > span::after{content:" ▾" !important;font-family:Inter,sans-serif !important;font-size:10px !important;font-weight:400 !important;margin:0 !important;position:static !important;border:0 !important;transform:none !important;display:inline !important}
-  #sp-menu .sp-megamenu-parent > li > a[href="/special-offer"]{color:#9b2c2c !important}
+  #sp-menu .sp-megamenu-parent > li > a[href^="/special-offer"]{color:#9b2c2c !important}
 
   /* υπομενού: λευκό πλαίσιο, 14px, χωρίς κεφαλαία */
   #sp-menu .sp-dropdown{left:-16px !important;margin-top:0 !important;padding-top:0 !important;width:auto !important;min-width:200px}
