@@ -117,6 +117,8 @@
     var c = root();
     if (!c) return;
     document.body.classList.add('neo-cat');
+    var fw = c.querySelector('[id^="column-id-afbd2d5a"] .addon-root-easystore-list-filter');
+    if (fw) fw.classList.add('neo-filters');
     head(c); cats(c); sizes(c); avail(c); sort(c); badges(c);
   }
 
