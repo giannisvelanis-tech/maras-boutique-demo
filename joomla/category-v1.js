@@ -18,18 +18,17 @@
     ['Κοσμήματα και ζώνες', '/accessories/jewelry']
   ];
   var ORDER = ['XS', 'S', 'S/M', 'M', 'M/L', 'L', 'XL', '2XL', 'XXL', 'XXXL', 'O/S', '36', '37', '38', '39', '40', '41'];
-  var SORT = { best_selling: 'Προτεινόμενα', 'created-desc': 'Νεότερα', 'price-asc': 'Τιμή: χαμηλή → υψηλή', 'price-desc': 'Τιμή: υψηλή → χαμηλή' };
+  var SORT = { 'created-desc': 'Νεότερα', 'price-asc': 'Τιμή: χαμηλή → υψηλή', 'price-desc': 'Τιμή: υψηλή → χαμηλή' };
 
   /* Δεδομένα από το demo (17/11/2026): χρώματα ίδιου ρούχου και οδηγοί μεγεθών */
-  var NEO_SWG = [[["/shop/knits/64-8043-black","Μαύρο"],["/shop/knits/64-8043-coffe","Καφέ"]],[["/shop/top-blouse/64-2074-black","Μαύρο"],["/shop/top-blouse/64-2074-camel","Καμηλό"]],[["/shop/pants/64-5094-coffe","Καφέ"],["/shop/pants/64-5094-black","Μαύρο"]],[["/accessories/bag/nali-kamilo-tsanta-pougki-melanie","Καμηλό"],["/accessories/bag/nali-mavri-tsanta-pougki-melanie","Μαύρο"],["/accessories/bag/nali-skoura-kafe-tsanta-pougki-melanie","Σκούρο καφέ"]],[["/accessories/bag/nali-kokkini-tsanta-pougki-lana","Κόκκινο"],["/accessories/bag/nali-mavri-tsanta-pougki-lana","Μαύρο"]],[["/accessories/jewelry/nali-mavra-skoularikia-luna","Μαύρο"],["/accessories/jewelry/nali-mporonto-skoularikia-luna","Μπορντό"]],[["/accessories/jewelry/nali-kafe-zoni-sierra","Καφέ"],["/accessories/jewelry/nali-mavri-zoni-sierra","Μαύρο"]],[["/shop/jacket-coat/moutaki-sokolati-gouna-2606114","Σοκολατί"],["/shop/jacket-coat/moutaki-xaki-gouna-2606114","Χακί"]],[["/shop/pants/moutaki-anthraki-psilomeso-panteloni-barrel-2603114","Ανθρακί"],["/shop/pants/moutaki-camel-psilomeso-panteloni-barrel-2603114","Καμηλό"]],[["/shop/pants/moutaki-stone-panteloni-opsis-dermatos-2603118","Μπεζ"],["/shop/pants/moutaki-mple-panteloni-opsis-dermatos-2603118","Μπλε"]],[["/accessories/bag/via-mail-bag-kafe-tsanta-pougki-coral-z01","Καφέ"],["/accessories/bag/via-mail-bag-mpez-tsanta-pougki-coral-z02","Μπεζ"],["/accessories/bag/via-mail-bag-mpornto-tsanta-pougki-coral-z04","Μπορντό"]],[["/shop/pants/moutaki-xaki-psilomeso-panteloni-barrel-opsis-suede-2603107","Χακί"],["/shop/pants/moutaki-mpez-psilomeso-panteloni-barrel-opsis-suede-2603107","Μπεζ"]],[["/shop/blazer/64-1029-black","Μαύρο"],["/shop/blazer/64-1029-ofwht","Εκρού"]],[["/shop/top-blouse/64-2003-black","Μαύρο"],["/shop/top-blouse/64-2003-ofwht","Εκρού"]],[["/shop/top-blouse/64-2037-bordo","Μπορντό"],["/shop/top-blouse/64-2037-olive","Λάδι"]],[["/shop/top-blouse/64-2040-black","Μαύρο"],["/shop/top-blouse/64-2040-coffe","Καφέ"]],[["/shop/top-blouse/64-2071-black","Μαύρο"],["/shop/top-blouse/64-2071-coffe","Καφέ"]],[["/shop/top-blouse/64-2100-beige","Μπεζ"],["/shop/top-blouse/64-2100-coffe","Καφέ"]],[["/shop/top-blouse/64-2226-coffe","Καφέ"],["/shop/top-blouse/64-2226-ofwht","Εκρού"]],[["/shop/dress/64-3302-black","Μαύρο"],["/shop/dress/64-3302-bordo","Μπορντό"]],[["/shop/dress/64-3303-black","Μαύρο"],["/shop/dress/64-3303-grey","Γκρι"]],[["/shop/dress/64-3308-blue","Μπλε"],["/shop/dress/64-3308-bordo","Μπορντό"]],[["/shop/pants/64-5070-black","Μαύρο"],["/shop/pants/64-5070-coffe","Καφέ"]],[["/shop/pants/64-5072-black","Μαύρο"],["/shop/pants/64-5072-plum","Δαμασκηνί"]],[["/shop/pants/64-5075-black","Μαύρο"],["/shop/pants/64-5075-ofwht","Εκρού"]],[["/shop/pants/64-5083-black","Μαύρο"],["/shop/pants/64-5083-coffe","Καφέ"]],[["/shop/skirt/64-6039-black","Μαύρο"],["/shop/skirt/64-6039-choco","Σοκολατί"]],[["/shop/top-blouse/64-7021-black","Μαύρο"],["/shop/top-blouse/64-7021-white","Λευκό"]],[["/shop/jacket-coat/64-9154-black","Μαύρο"],["/shop/jacket-coat/access-tzaket-opsis-dermatos-me-zoni","Καφέ"]],[["/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mayro-64-3038","Μαύρο"],["/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mporntw-64-3038","Μπορντό"],["/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mple-64-3038","Μπλε"]],[["/shop/jacket-coat/access-ekroy-tzaket-me-synthetiki-goyna-kai-koukoyla","Βανίλια"],["/shop/jacket-coat/access-kafe-tzaket-me-synthetiki-goyna-kai-koukoyla","Καφέ"]],[["/shop/jacket-coat/access-boufan-kafe-me-zoni-kai-goynino-giaka","Καφέ"],["/shop/jacket-coat/access-boufan-mayro-me-zoni-kai-goynino-giaka","Μαύρο"]],[["/shop/jacket-coat/access-tzaket-bez-me-peplum-kai-relia","Μπεζ"],["/shop/jacket-coat/access-tzaket-bomber-plekto-me-lurex","Καφέ"]],[["/special-offer/kafe-bloyza-me-soyra-accbl031","Καφέ"],["/special-offer/mayri-bloyza-me-soyra-accbl030","Μαύρο"]],[["/special-offer/bloyza-krouaze-xroma-mayro-accbl026","Μαύρο"],["/special-offer/bloyza-krouaze-xroma-vanila-accbl025","Βανίλια"]]];
-  var NEO_SWM = {"/shop/knits/64-8043-black":0,"/shop/knits/64-8043-coffe":0,"/shop/top-blouse/64-2074-black":1,"/shop/top-blouse/64-2074-camel":1,"/shop/pants/64-5094-coffe":2,"/shop/pants/64-5094-black":2,"/accessories/bag/nali-kamilo-tsanta-pougki-melanie":3,"/accessories/bag/nali-mavri-tsanta-pougki-melanie":3,"/accessories/bag/nali-skoura-kafe-tsanta-pougki-melanie":3,"/accessories/bag/nali-kokkini-tsanta-pougki-lana":4,"/accessories/bag/nali-mavri-tsanta-pougki-lana":4,"/accessories/jewelry/nali-mavra-skoularikia-luna":5,"/accessories/jewelry/nali-mporonto-skoularikia-luna":5,"/accessories/jewelry/nali-kafe-zoni-sierra":6,"/accessories/jewelry/nali-mavri-zoni-sierra":6,"/shop/jacket-coat/moutaki-sokolati-gouna-2606114":7,"/shop/jacket-coat/moutaki-xaki-gouna-2606114":7,"/shop/pants/moutaki-anthraki-psilomeso-panteloni-barrel-2603114":8,"/shop/pants/moutaki-camel-psilomeso-panteloni-barrel-2603114":8,"/shop/pants/moutaki-stone-panteloni-opsis-dermatos-2603118":9,"/shop/pants/moutaki-mple-panteloni-opsis-dermatos-2603118":9,"/accessories/bag/via-mail-bag-kafe-tsanta-pougki-coral-z01":10,"/accessories/bag/via-mail-bag-mpez-tsanta-pougki-coral-z02":10,"/accessories/bag/via-mail-bag-mpornto-tsanta-pougki-coral-z04":10,"/shop/pants/moutaki-xaki-psilomeso-panteloni-barrel-opsis-suede-2603107":11,"/shop/pants/moutaki-mpez-psilomeso-panteloni-barrel-opsis-suede-2603107":11,"/shop/blazer/64-1029-black":12,"/shop/blazer/64-1029-ofwht":12,"/shop/top-blouse/64-2003-black":13,"/shop/top-blouse/64-2003-ofwht":13,"/shop/top-blouse/64-2037-bordo":14,"/shop/top-blouse/64-2037-olive":14,"/shop/top-blouse/64-2040-black":15,"/shop/top-blouse/64-2040-coffe":15,"/shop/top-blouse/64-2071-black":16,"/shop/top-blouse/64-2071-coffe":16,"/shop/top-blouse/64-2100-beige":17,"/shop/top-blouse/64-2100-coffe":17,"/shop/top-blouse/64-2226-coffe":18,"/shop/top-blouse/64-2226-ofwht":18,"/shop/dress/64-3302-black":19,"/shop/dress/64-3302-bordo":19,"/shop/dress/64-3303-black":20,"/shop/dress/64-3303-grey":20,"/shop/dress/64-3308-blue":21,"/shop/dress/64-3308-bordo":21,"/shop/pants/64-5070-black":22,"/shop/pants/64-5070-coffe":22,"/shop/pants/64-5072-black":23,"/shop/pants/64-5072-plum":23,"/shop/pants/64-5075-black":24,"/shop/pants/64-5075-ofwht":24,"/shop/pants/64-5083-black":25,"/shop/pants/64-5083-coffe":25,"/shop/skirt/64-6039-black":26,"/shop/skirt/64-6039-choco":26,"/shop/top-blouse/64-7021-black":27,"/shop/top-blouse/64-7021-white":27,"/shop/jacket-coat/64-9154-black":28,"/shop/jacket-coat/access-tzaket-opsis-dermatos-me-zoni":28,"/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mayro-64-3038":29,"/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mporntw-64-3038":29,"/shop/special-occasion/forema-mini-plise-me-manikia-kampana-mple-64-3038":29,"/shop/jacket-coat/access-ekroy-tzaket-me-synthetiki-goyna-kai-koukoyla":30,"/shop/jacket-coat/access-kafe-tzaket-me-synthetiki-goyna-kai-koukoyla":30,"/shop/jacket-coat/access-boufan-kafe-me-zoni-kai-goynino-giaka":31,"/shop/jacket-coat/access-boufan-mayro-me-zoni-kai-goynino-giaka":31,"/shop/jacket-coat/access-tzaket-bez-me-peplum-kai-relia":32,"/shop/jacket-coat/access-tzaket-bomber-plekto-me-lurex":32,"/special-offer/kafe-bloyza-me-soyra-accbl031":33,"/special-offer/mayri-bloyza-me-soyra-accbl030":33,"/special-offer/bloyza-krouaze-xroma-mayro-accbl026":34,"/special-offer/bloyza-krouaze-xroma-vanila-accbl025":34};
-  var NEO_SG = {"/shop/knits/minueto-kafe-pleketo-poulover-romvoi":[["Στήθος",["94","98","102","106","112","118"]],["Μήκος",["61","62","63","64","65","66"]]],"/shop/skirt/minueto-mporonto-pleketi-midi-fousta-animal-print":[["Μέση",["68","72","76","80","86","92"]],["Περιφέρεια",["90","94","98","102","108","114"]],["Μήκος",["78","79","80","81","82","83"]]],"/shop/knits/minueto-mporonto-pleketi-zaketa-animal-print":[["Στήθος",["92","96","100","104","110","116"]],["Μέση",["84","88","92","96","102","108"]],["Μήκος",["56","57","58","59","60","61"]]],"/shop/knits/minueto-ekrou-pleketo-poulover-me-schedio":[["Στήθος",["96","100","104","108","114","120"]],["Μήκος",["60","61","62","63","64","65"]]],"/shop/knits/minueto-tirkouaz-pleketo-poulover-psilos-laimos":[["Στήθος",["86","90","94","98","104","110"]],["Μήκος",["53","54","55","56","57","58"]]],"/shop/knits/minueto-mavro-pleketo-poulover-animal-print":[["Στήθος",["86","90","94","98","104","110"]],["Μήκος",["55","56","57","58","59","60"]]],"/shop/knits/minueto-mporonto-pleketo-poulover-poua":[["Στήθος",["90","94","98","102","108","114"]],["Μήκος",["60","61","62","63","64","65"]]],"/shop/knits/minueto-mporonto-pleketo-poulover-me-volan":[["Στήθος",["86","90","94","98","104","110"]],["Μήκος",["58","59","60","61","62","63"]]],"/shop/knits/minueto-kaneli-pleketo-poulover-plexouda":[["Στήθος",["88","92","96","100","106","112"]],["Μήκος",["58","59","60","61","62","63"]]],"/shop/knits/minueto-mavro-poulover-me-kentima":[["Στήθος",["86","90","94","98","104","110"]],["Μήκος",["57","58","59","60","61","62"]]],"/shop/jacket-coat/minueto-mavro-makry-palto-me-trouks":[["Στήθος",["100","104","108","112","118","124"]],["Μήκος",["110","112","114","116","118","120"]]],"/shop/jacket-coat/minueto-kafe-gouna-animal-print":[["Στήθος",["104","108","112","116","122","128"]],["Μήκος",["86","88","90","92","94","96"]]],"/shop/shirt/minueto-mple-tzin-poukamiso-me-trouks":[["Στήθος",["100","104","108","112","118","124"]],["Μέση",["98","102","106","110","116","122"]],["Μήκος",["65","66","67","68","69","70"]]],"/shop/top-blouse/minueto-kafe-fouter-me-paggietes":[["Στήθος",["102","106","110","114","120","126"]],["Μήκος",["59","60","61","62","63","64"]]],"/shop/dress/minueto-gkri-konto-forema-me-trouks":[["Στήθος",["100","104","108","112","118","124"]],["Μέση",["94","98","102","106","112","118"]],["Μήκος",["86","88","90","92","94","96"]]],"/shop/shirt/minueto-lefko-poukamiso-me-fiogko":[["Στήθος",["116","120","124","128","134","140"]],["Μήκος",["61","62","63","64","65","66"]]],"/shop/skirt/minueto-mavri-midi-fousta-chrysa-koumpia":[["Μέση",["68","72","76","80","86","92"]],["Περιφέρεια",["90","94","98","102","108","114"]],["Μήκος",["73","74","75","76","77","78"]]],"/shop/dress/minueto-mavro-emprime-konto-forema-kampana-manikia":[["Στήθος",["87","91","95","99","105","111"]],["Μέση",["90","94","98","102","108","114"]],["Περιφέρεια",["96","100","104","108","114","120"]],["Μήκος",["86","88","90","92","94","96"]]],"/shop/dress/minueto-mavro-konto-forema-fouskota-manikia":[["Στήθος",["121","125","129","133","139","145"]],["Μέση",["87","91","95","99","105","111"]],["Περιφέρεια",["97","101","105","109","115","121"]],["Μήκος",["86","88","90","92","94","96"]]],"/shop/top-blouse/minueto-emprime-saten-mplouza-me-volan":[["Στήθος",["95","99","103","107","113","119"]],["Μήκος",["53","54","55","56","57","58"]]],"/shop/dress/minueto-emprime-konto-forema-v-laimokopsi":[["Στήθος",["97","101","105","109","115","121"]],["Μέση",["68","72","76","80","86","92"]],["Περιφέρεια",["94","98","102","106","112","118"]],["Μήκος",["93","95","97","99","101","103"]]]};
-  var NEO_SGM = ["/shop/knits/minueto-kafe-pleketo-poulover-romvoi","/shop/skirt/minueto-mporonto-pleketi-midi-fousta-animal-print","/shop/knits/minueto-mporonto-pleketi-zaketa-animal-print","/shop/knits/minueto-ekrou-pleketo-poulover-me-schedio","/shop/knits/minueto-tirkouaz-pleketo-poulover-psilos-laimos","/shop/knits/minueto-mavro-pleketo-poulover-animal-print","/shop/knits/minueto-mavro-pleketo-zivago-chrysa-koumpia","/shop/knits/minueto-mporonto-pleketo-poulover-poua","/shop/knits/minueto-mporonto-pleketo-poulover-me-volan","/shop/knits/minueto-kaneli-pleketo-poulover-plexouda","/shop/knits/minueto-mavro-poulover-me-kentima","/shop/jacket-coat/minueto-mavro-makry-palto-me-trouks","/shop/jacket-coat/minueto-kafe-gouna-animal-print","/shop/shirt/minueto-mple-tzin-poukamiso-me-trouks","/shop/top-blouse/minueto-kafe-fouter-me-paggietes","/shop/dress/minueto-gkri-konto-forema-me-trouks","/shop/shirt/minueto-lefko-poukamiso-me-fiogko","/shop/skirt/minueto-mavri-midi-fousta-chrysa-koumpia","/shop/dress/minueto-mavro-emprime-konto-forema-kampana-manikia","/shop/dress/minueto-mavro-konto-forema-fouskota-manikia","/shop/top-blouse/minueto-emprime-saten-mplouza-me-volan","/shop/dress/minueto-emprime-konto-forema-v-laimokopsi"];
-  var NEO_ACC_HTML = "<div class=\"sgm\" id=\"neo-sgm\" ><div class=\"sgb\" role=\"dialog\" aria-label=\"Οδηγός μεγεθών ACCESS\">\n<button class=\"sgx\"  aria-label=\"Κλείσιμο\">×</button>\n<h2>Οδηγός μεγεθών ACCESS</h2>\n<h3>Αντιστοιχία μεγεθών</h3>\n<div class=\"sgt\"><table><tr><th>ACCESS</th><th>XS (42)</th><th>S (44)</th><th>M (46)</th><th>L (48)</th><th>XL (50)</th><th>XXL (52)</th><th>XXXL (54)</th></tr>\n<tr><td>Ευρώπη</td><td>36</td><td>38</td><td>40</td><td>42</td><td>44</td><td>46</td><td>48</td></tr>\n<tr><td>Ιταλία</td><td>40</td><td>42</td><td>44</td><td>46</td><td>48</td><td>50</td><td>52</td></tr>\n<tr><td>Ηνωμένο Βασίλειο</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td><td>18</td></tr>\n<tr><td>Ισπανία</td><td>34</td><td>36</td><td>38</td><td>40</td><td>42</td><td>44</td><td>46</td></tr></table></div>\n<h3>Μετρήσεις σώματος (cm)</h3>\n<div class=\"sgt\"><table><tr><th>ACCESS</th><th>XS (42)</th><th>S (44)</th><th>M (46)</th><th>L (48)</th><th>XL (50)</th><th>XXL (52)</th><th>XXXL (54)</th><th>S/M</th><th>M/L</th><th>One size</th></tr>\n<tr><td>Στήθος</td><td>84-88</td><td>88-92</td><td>92-96</td><td>96-100</td><td>100-104</td><td>104-108</td><td>108-112</td><td>84-98</td><td>98-112</td><td>84-104</td></tr>\n<tr><td>Μέση</td><td>64-68</td><td>68-72</td><td>72-76</td><td>76-80</td><td>80-84</td><td>84-88</td><td>88-92</td><td>64-78</td><td>78-92</td><td>64-84</td></tr>\n<tr><td>Περιφέρεια</td><td>92-96</td><td>96-100</td><td>100-104</td><td>104-108</td><td>108-112</td><td>112-116</td><td>116-120</td><td>92-106</td><td>106-120</td><td>92-122</td></tr></table></div>\n<p class=\"sgn\">Πηγή: οδηγός μεγεθών της ACCESS Fashion.</p>\n</div></div>";
-  var NEO_MIN_HTML = "<div class=\"sgm\" id=\"neo-sgm2\" ><div class=\"sgb\" role=\"dialog\" aria-label=\"Οδηγός μεγεθών MINUETO\"><button class=\"sgx\"  aria-label=\"Κλείσιμο\">×</button><h2>Οδηγός μεγεθών MINUETO</h2><div id=\"neo-sg2m\"></div><h3>Αντιστοιχία μεγεθών</h3><div class=\"sgt\"><table><tr><th>MINUETO</th><th>Ισπανία</th><th>Ευρώπη</th><th>Ηνωμένο Βασίλειο</th><th>Ιταλία</th></tr><tr><td>XS</td><td>34</td><td>36</td><td>6</td><td>38</td></tr><tr><td>S</td><td>36</td><td>38</td><td>8</td><td>40</td></tr><tr><td>M</td><td>38</td><td>40</td><td>10</td><td>42</td></tr><tr><td>L</td><td>40</td><td>42</td><td>12</td><td>44</td></tr><tr><td>XL</td><td>42</td><td>44</td><td>14</td><td>46</td></tr><tr><td>XXL</td><td>44</td><td>46</td><td>16</td><td>48</td></tr></table></div><p class=\"sgn\">Πηγή: οδηγός μεγεθών της Minueto για το συγκεκριμένο ρούχο.</p></div></div>";
 
   /* Δεύτερες κατηγορίες από το demo (17/11/2026): κατηγορία → id προϊόντων EasyStore */
-  var NEO_EXTRA = {"/shop/special-occasion":[702,703,644,645,559,560,563,564,565,569,573,574,575,581,584,612,613,624,636,637,638],"/shop/dress":[588,593,596,542,543,544,545],"/shop/knits":[638,639],"/shop/top-blouse":[400,693,696,519,518,516]};
+
+  /* «Ολοκληρώστε το σύνολο» (αλγόριθμος του demo, 17/11/2026): διεύθυνση προϊόντος → υποψήφια id */
+
+  /* Δεδομένα: module «Mara's Neo — δεδομένα» (window.NEO_D) */
+  var NEO_SWG = [], NEO_SWM = {}, NEO_SG = {}, NEO_SGM = [], NEO_ACC_HTML = '', NEO_MIN_HTML = '', NEO_EXTRA = {}, NEO_SET = {};
+  function loadData() { var D = window.NEO_D || {}; if (D.SWG) NEO_SWG = D.SWG; if (D.SWM) NEO_SWM = D.SWM; if (D.SG) NEO_SG = D.SG; if (D.SGM) NEO_SGM = D.SGM; if (D.ACC_HTML) NEO_ACC_HTML = D.ACC_HTML; if (D.MIN_HTML) NEO_MIN_HTML = D.MIN_HTML; if (D.EXTRA) NEO_EXTRA = D.EXTRA; if (D.SET) NEO_SET = D.SET; }
 
   function txt(el) { return (el && el.textContent || '').replace(/\s+/g, ' ').trim(); }
   function root() { return document.querySelector('#sp-component .addon-root-easystore-list-filter') ? document.querySelector('#sp-component') : null; }
@@ -332,11 +331,19 @@
     var sec = wrap.closest('section.sppb-section');
     if (!k) { if (sec) sec.style.display = 'none'; return; }
     var me = location.pathname.replace(/\/+$/, '');
-    fetch(k[1], { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (h) {
+    var gi = NEO_SWM[me], sibs = {};
+    if (gi !== undefined) NEO_SWG[gi].forEach(function (x) { sibs[x[0]] = 1; });
+    var setIds = {};
+    (NEO_SET[me] || []).forEach(function (id) { setIds[id] = 1; });
+    fetch(k[1] + '?filter_sortby=created-desc', { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (h) {
       var doc = new DOMParser().parseFromString(h, 'text/html');
       var items = [].slice.call(doc.querySelectorAll('#sp-component .sppb-collection-item')).filter(function (it) {
         var a = it.querySelector('.easystore-product-title a');
-        return a && a.getAttribute('href').replace(/\/+$/, '') !== me;
+        var href = a && a.getAttribute('href').replace(/\/+$/, '');
+        var p = pid(it);
+        if (!href || href === me || sibs[href]) return false;
+        if (p && (p.b.disabled || setIds[p.id])) return false;
+        return true;
       }).slice(0, 4);
       if (!items.length) { if (sec) sec.style.display = 'none'; return; }
       var g = document.createElement('div');
@@ -452,10 +459,164 @@
     } else if (!all && n) n.remove();
   }
 
+  /* Κάρτα από τα στοιχεία του quickAdd (για το «Ολοκληρώστε το σύνολο») */
+  function quick(id) {
+    var base = (window.Joomla && Joomla.getOptions && Joomla.getOptions('easystore.base')) || '';
+    return fetch(base + '/index.php?option=com_easystore&task=product.quickAddModal&id=' + id, { credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        var d = new DOMParser().parseFromString(j.data || '', 'text/html');
+        var a = d.querySelector('.stretched-link');
+        var t = d.querySelector('[x-ref^="product_variants_"]');
+        var v = t ? JSON.parse(t.value || '[]') : null;
+        var list = v ? v.filter(function (x) { return x.visibility !== false; }).map(function (x) { return [String(x.combination), !!x.inventory_status]; }) : [['O/S', !d.querySelector('button[disabled]')]];
+        return { id: id, href: a ? a.getAttribute('href') : '', title: txt(d.querySelector('.easystore-product-title')),
+          img: (d.querySelector('img.easystore-zoom-cursor, .easystore-product-image img') || {}).getAttribute ? d.querySelector('img.easystore-zoom-cursor, .easystore-product-image img').getAttribute('src') : '',
+          price: d.querySelector('.easystore-product-price') ? d.querySelector('.easystore-product-price').innerHTML : '', sizes: list,
+          sold: list.length && list.every(function (x) { return !x[1]; }) };
+      });
+  }
+  function makeCard(q) {
+    var cat = q.href.split('/').slice(0, -1).join('/'), lbl = '';
+    CATS.forEach(function (x) { if (x[1] === cat) lbl = x[0]; });
+    var it = document.createElement('div');
+    it.className = 'sppb-collection-item neo-extra neo-made';
+    it.innerHTML = '<div class="neo-badge-pos"></div>' +
+      '<div class="sppb-addon-wrapper addon-root-easystore-list-thumbnail"><div class="clearfix"><div class="easystore-product-image"><img alt=""><a class="neo-ph-link"></a></div></div></div>' +
+      '<div class="sppb-addon-wrapper addon-root-easystore-list-category"><div class="clearfix"><div class="easystore-product-category"><a></a></div></div></div>' +
+      '<div class="sppb-addon-wrapper addon-root-easystore-list-title"><div class="clearfix"><h1 class="easystore-product-title"><a></a></h1></div></div>' +
+      '<div class="sppb-addon-wrapper addon-root-easystore-list-price"><div class="clearfix"><div class="easystore-product-price"></div></div></div>';
+    var im = it.querySelector('img'); im.src = q.img; im.alt = q.title;
+    it.querySelector('.neo-ph-link').href = q.href;
+    var ca = it.querySelector('.easystore-product-category a'); ca.href = cat; ca.textContent = lbl;
+    var ta = it.querySelector('.easystore-product-title a'); ta.href = q.href; ta.textContent = q.title;
+    it.querySelector('.easystore-product-price').innerHTML = q.price;
+    var now = num(it, '.easystore-price-current'), was = num(it, '.easystore-price-original');
+    if (now > 0 && was > now) it.querySelector('.neo-badge-pos').innerHTML = '<span class="easystore-badge is-sale" data-neo="1">-' + Math.round((1 - now / was) * 100) + '%</span>';
+    it.dataset.neoSold = '1'; it.dataset.neoSz = '1';
+    paint(it, q.sizes);
+    return it;
+  }
+  function completeLook(c) {
+    var me = location.pathname.replace(/\/+$/, '');
+    var ids = NEO_SET[me];
+    var relW = c.querySelector('.addon-root-easystore-common-productlist');
+    if (!ids || !relW || c.querySelector('.neo-set-sec')) return;
+    var sec = document.createElement('div');
+    sec.className = 'neo-set-sec';
+    sec.style.display = 'none';
+    sec.innerHTML = '<h2 class="neo-sec-h">Ολοκληρώστε το σύνολο</h2><div class="sppb-collection-addon neo-plist neo-rel-grid"></div>';
+    var host = relW.closest('.sppb-column-addons') || relW.parentNode;
+    host.insertBefore(sec, host.firstChild);
+    Promise.all(ids.map(function (id) { return quick(id).catch(function () { return null; }); })).then(function (qs) {
+      var ok = qs.filter(function (q) { return q && q.href && !q.sold; }).slice(0, 4);
+      if (!ok.length) { sec.remove(); return; }
+      var g = sec.querySelector('.neo-rel-grid');
+      ok.forEach(function (q) { g.appendChild(makeCard(q)); });
+      sec.style.display = '';
+    });
+  }
+
+  /* Μετά την προσθήκη στο καλάθι: μήνυμα «Προστέθηκε: … · L» όπως στο demo, χωρίς να ανοίγει το συρτάρι */
+  var addAt = 0, addTxt = '';
+  function toast(t) {
+    var e = document.querySelector('.neo-toast');
+    if (!e) { e = document.createElement('div'); e.className = 'neo-toast'; document.body.appendChild(e); }
+    e.textContent = t; e.classList.add('show');
+    clearTimeout(e._t); e._t = setTimeout(function () { e.classList.remove('show'); }, 2600);
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.addon-root-easystore-single-addtocart button');
+    if (!b || b.disabled) return;
+    var t = txt(document.querySelector('.addon-root-easystore-single-title'));
+    var sz = txt(document.querySelector('.easystore-option-value-name'));
+    addTxt = 'Προστέθηκε: ' + t + (sz ? ' · ' + sz : '');
+    addAt = Date.now();
+    document.body.classList.add('neo-hide-drawer');
+    setTimeout(function () { if (Date.now() - addAt >= 3900) document.body.classList.remove('neo-hide-drawer'); }, 4000);
+  }, true);
+  function drawerWatch() {
+    var w = document.querySelector('.easystore-drawer-wrapper');
+    if (!w || !addAt) return;
+    if (w.classList.contains('open') && Date.now() - addAt < 4000) {
+      addAt = 0;
+      var x = w.querySelector('.easystore-drawer-close-button');
+      if (x) x.click();
+      setTimeout(function () { document.body.classList.remove('neo-hide-drawer'); }, 400);
+      toast(addTxt);
+    }
+  }
+
+  /* Τιμές όπως στο demo: «189 €», «75,50 €» */
+  function prices() {
+    [].slice.call(document.querySelectorAll('.easystore-price-decimal')).forEach(function (d) {
+      if (d.dataset.neo) return;
+      d.dataset.neo = '1';
+      if (/^[,.]?0+$/.test(txt(d))) d.style.display = 'none';
+    });
+  }
+
+  /* Κατηγορίες ανοίγουν με «Νεότερα», όπως στο demo */
+  function sortLinks() {
+    var paths = { '/shop': 1, '/special-offer': 1 };
+    CATS.forEach(function (x) { paths[x[1]] = 1; });
+    [].slice.call(document.querySelectorAll('a[href]')).forEach(function (a) {
+      var h = a.getAttribute('href');
+      if (paths[h] || paths[h.replace(/\/+$/, '')]) a.setAttribute('href', h.replace(/\/+$/, '') + '?filter_sortby=created-desc');
+    });
+  }
+
+  /* Αριθμοί δίπλα στις κατηγορίες των φίλτρων (από το easystore.pagination κάθε σελίδας, + δεύτερες κατηγορίες) */
+  function catCounts(c) {
+    var box = c.querySelector('.neo-cats');
+    if (!box || box.dataset.cnt || !box.offsetParent) return;
+    box.dataset.cnt = '1';
+    var cache = {};
+    try { cache = JSON.parse(localStorage.getItem('neo_cc') || '{}'); } catch (e) {}
+    if (!cache.t || Date.now() - cache.t > 6 * 3600 * 1000) cache = { t: Date.now(), n: {} };
+    function show(a, n) {
+      var em = a.querySelector('em') || a.appendChild(document.createElement('em'));
+      em.textContent = n;
+    }
+    function save() { try { localStorage.setItem('neo_cc', JSON.stringify(cache)); } catch (e) {} }
+    var links = [].slice.call(box.querySelectorAll('a'));
+    var here = location.pathname.replace(/\/+$/, '');
+    var opt = window.Joomla && Joomla.getOptions && Joomla.getOptions('easystore.pagination');
+    if (opt && opt.total !== undefined && !/filter_(?!sortby)/.test(location.search)) cache.n[here] = +opt.total;
+    var q = [];
+    links.forEach(function (a) {
+      var p = (a.getAttribute('href') || '').split('?')[0].replace(/\/+$/, '');
+      var extra = (NEO_EXTRA[p] || []).length;
+      if (cache.n[p] !== undefined) show(a, cache.n[p] + extra); else q.push([a, p, extra]);
+    });
+    save();
+    function next() {
+      var job = q.shift();
+      if (!job) return;
+      fetch(job[1] + '?tmpl=component', { credentials: 'same-origin' }).then(function (r) {
+        var rd = r.body && r.body.getReader ? r.body.getReader() : null, buf = '', dec = new TextDecoder();
+        function pump2() {
+          if (!rd) return r.text().then(function (t) { return t; });
+          return rd.read().then(function (x) {
+            if (x.done) return buf;
+            buf += dec.decode(x.value, { stream: true });
+            if (/"easystore\.pagination":\{"total":\d+/.test(buf)) { try { rd.cancel(); } catch (e) {} return buf; }
+            return pump2();
+          });
+        }
+        return pump2();
+      }).then(function (t) {
+        var m = (t || '').match(/"easystore\.pagination":\{"total":(\d+)/);
+        if (m) { cache.n[job[1]] = +m[1]; save(); show(job[0], +m[1] + job[2]); }
+      }).catch(function () {}).then(next);
+    }
+    next(); next();
+  }
+
   function product(c) {
     if (!c.querySelector('.addon-root-easystore-single-title')) return false;
     document.body.classList.add('neo-prod');
-    preselect(c); crumbs(c); swatches(c); sizeGuide(c); allSold(c); perks(c); related(c);
+    preselect(c); crumbs(c); swatches(c); sizeGuide(c); allSold(c); perks(c); completeLook(c); related(c);
     return true;
   }
 
@@ -525,7 +686,7 @@
   function extras(c) {
     var path = location.pathname.replace(/\/+$/, '');
     var ids = NEO_EXTRA[path];
-    if (!ids || /filter_|search|q=/.test(location.search)) return;
+    if (!ids || /filter_(?!sortby)|search|q=/.test(location.search)) return;
     var grid = c.querySelector('.sppb-collection-addon.neo-plist') || c.querySelector('.neo-plist .sppb-collection-addon');
     var tpl = grid && grid.querySelector('.sppb-collection-item:not(.neo-extra)');
     if (!grid || !tpl || grid.dataset.neoEx) return;
@@ -603,6 +764,9 @@
   function run() {
     footer();
     cartBits();
+    prices();
+    sortLinks();
+    drawerWatch();
     var pc = document.querySelector('#sp-component');
     if (pc && product(pc)) return;
     var c = root();
@@ -610,12 +774,13 @@
     document.body.classList.add('neo-cat');
     var fw = c.querySelector('[id^="column-id-afbd2d5a"] .addon-root-easystore-list-filter');
     if (fw) fw.classList.add('neo-filters');
-    head(c); cats(c); sizes(c); avail(c); sort(c); toolbar(c); badges(c); sold(c); sizesOnCards(c); extras(c);
+    head(c); cats(c); sizes(c); avail(c); sort(c); toolbar(c); badges(c); sold(c); sizesOnCards(c); extras(c); catCounts(c);
   }
 
   var busy = false;
   function later() { if (busy) return; busy = true; setTimeout(function () { busy = false; run(); }, 60); }
   document.addEventListener('DOMContentLoaded', function () {
+    loadData();
     run();
     if (window.MutationObserver) new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
   });

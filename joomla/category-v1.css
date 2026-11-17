@@ -124,3 +124,17 @@ h1,h2,h3,.sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !impor
 .neo-plist .easystore-product-image{position:relative}
 .neo-ph-link{position:absolute;inset:0;z-index:1}
 .neo-card-sizes i{text-transform:uppercase}
+
+/* αριθμοί στις κατηγορίες των φίλτρων (όπως στο demo) */
+.neo-cats a em{margin-left:auto;font-style:normal;font-size:12px;color:#77706a}
+/* «Ολοκληρώστε το σύνολο» και κάρτες από quickAdd */
+.neo-set-sec{margin:0 0 40px}
+.neo-sec-h{font-family:'Cormorant Garamond',Georgia,serif !important;font-weight:500 !important;font-size:22px !important;margin:0 0 28px !important;color:#1c1a17 !important;text-align:left !important}
+.neo-made{position:relative}
+.neo-badge-pos{position:absolute;top:12px;left:12px;z-index:3}
+/* μήνυμα προσθήκης στο καλάθι (όπως στο demo) */
+.neo-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:#1c1a17;color:#fff;padding:12px 20px;font-family:Inter,sans-serif;font-size:14px;transition:.3s;z-index:99999;max-width:calc(100% - 32px)}
+.neo-toast.show{transform:translateX(-50%) translateY(0)}
+body.neo-hide-drawer .easystore-drawer-wrapper{visibility:hidden !important}
+/* τιμές: «189 €» με κενό πριν το € */
+.easystore-price-symbol{margin-left:.25em}
