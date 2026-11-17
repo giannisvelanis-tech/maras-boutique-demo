@@ -120,3 +120,10 @@
 .neo-prod .addon-root-easystore-single-price .easystore-product-price-block{margin:0 !important}
 .neo-prod .easystore-variant-title.neo-opt-row{justify-content:flex-start !important}
 .neo-prod .easystore-option-name-separator{margin:0 !important}
+.neo-prod .easystore-variant-title{gap:0 !important}
+/* Εξαντλημένο σε όλα τα μεγέθη: μήνυμα και μαύρο «SOLD OUT», όπως στο demo */
+.neo-soldnote{font-family:Inter,sans-serif;font-size:14px;color:#77706a;margin:18px 0 0}
+.neo-allsold .addon-root-easystore-single-addtocart{margin-top:14px !important}
+.neo-allsold .addon-root-easystore-single-addtocart button{background:#1c1a17 !important;border-color:#1c1a17 !important;color:transparent !important;position:relative;cursor:not-allowed}
+.neo-allsold .addon-root-easystore-single-addtocart button *{visibility:hidden}
+.neo-allsold .addon-root-easystore-single-addtocart button::after{content:"SOLD OUT";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;letter-spacing:.14em}
