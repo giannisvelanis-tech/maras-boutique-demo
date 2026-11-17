@@ -1,0 +1,17 @@
+/* ===== MARA'S NEO — footer v2: ακριβώς όπως στο demo (17/11/2026) ===== */
+body.neo-has-ft #sp-bottom,body.neo-has-ft #sp-footer{display:none !important}
+.neo-ft{grid-column:1 / -1;background:#f1ece5;border-top:1px solid #e7e1d9;padding:56px 0 28px;margin-top:40px;font-family:Inter,sans-serif;font-size:14px;color:#1c1a17}
+.neo-ft-wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.neo-ft-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+.neo-ft-logo{display:flex;flex-direction:column;align-items:flex-start;width:max-content;line-height:1;text-decoration:none !important}
+.neo-ft-logo img{height:52px;width:auto}
+.neo-ft-logo small{font-family:'Poiret One',Inter,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.3em;color:#5E544D;margin-top:2px;white-space:nowrap}
+.neo-ft p{margin:10px 0 0;font-size:14px;line-height:1.55;color:#1c1a17}
+.neo-ft h5{font-family:Inter,sans-serif !important;font-size:12px !important;font-weight:700 !important;letter-spacing:.12em !important;text-transform:uppercase !important;margin:0 0 12px !important;color:#1c1a17 !important}
+.neo-ft ul{margin:0;padding:0}
+.neo-ft li{list-style:none;padding:3px 0;font-size:14px;line-height:1.55}
+.neo-ft a{color:#1c1a17 !important;text-decoration:none !important}
+.neo-ft a:hover{text-decoration:underline !important}
+.neo-ft-legal{margin-top:36px;padding-top:18px;border-top:1px solid #e7e1d9;font-size:12px;color:#77706a;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.neo-ft-legal a{color:#77706a !important}
+@media (max-width:860px){.neo-ft-grid{grid-template-columns:1fr 1fr}.neo-ft-wrap{padding:0 16px}}

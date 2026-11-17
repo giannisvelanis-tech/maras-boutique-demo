@@ -484,7 +484,39 @@
     }
   }
 
+  /* Footer όπως στο demo (χωρίς τις σημειώσεις για Facebook/ΓΕΜΗ που λείπουν ακόμα) */
+  function footer() {
+    if (document.querySelector('.neo-ft')) return;
+    var anchor = document.querySelector('#sp-bottom') || document.querySelector('#sp-footer');
+    if (!anchor) return;
+    var logo = document.querySelector('#sp-logo img');
+    var src = logo ? (logo.getAttribute('src') || '') : '/images/maras_logo_transparent.png';
+    var f = document.createElement('footer');
+    f.className = 'neo-ft';
+    f.innerHTML =
+      '<div class="neo-ft-wrap"><div class="neo-ft-grid">' +
+        '<div><a class="neo-ft-logo" href="/"><img alt="Mara\'s Boutique"><small>BOUTIQUE &amp; CONCEPT STORE</small></a>' +
+        '<p>Επαμεινώνδα &amp; Ετεοκλέους<br>(Εμπορικό Κέντρο Θήβας)<br>Θήβα 322 00<br>Τηλ. 2262 023211<br>marasboutiqueboutique@gmail.com</p></div>' +
+        '<div><h5>Εξυπηρέτηση</h5><ul>' +
+          '<li><a href="/apostoli-kostos">Αποστολή &amp; κόστος</a></li>' +
+          '<li><a href="/epistrofes-allages">Επιστροφές &amp; αλλαγές</a></li>' +
+          '<li><a href="/tropoi-pliromis">Τρόποι πληρωμής</a></li>' +
+          '<li><a href="/contact">Επικοινωνία</a></li>' +
+        '</ul></div>' +
+        '<div><h5>Ακολουθήστε μας</h5><ul>' +
+          '<li><a href="https://www.instagram.com/maras_boutique_/" target="_blank" rel="noopener">Instagram</a></li>' +
+        '</ul></div>' +
+      '</div><div class="neo-ft-legal">' +
+        '<span>© ' + new Date().getFullYear() + ' Mara\'s Boutique · ΑΦΜ 124145929</span>' +
+        '<span><a href="/oroi-xrisis">Όροι χρήσης</a> · <a href="/politiki-aporritou">Πολιτική απορρήτου</a> · <a href="/cookies">Cookies</a></span>' +
+      '</div></div>';
+    f.querySelector('img').src = src;
+    anchor.parentNode.insertBefore(f, anchor);
+    document.body.classList.add('neo-has-ft');
+  }
+
   function run() {
+    footer();
     cartBits();
     var pc = document.querySelector('#sp-component');
     if (pc && product(pc)) return;
