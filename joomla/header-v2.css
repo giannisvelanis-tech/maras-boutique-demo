@@ -49,3 +49,7 @@
   /* μενού κεντραρισμένο ανάμεσα σε λογότυπο και καλάθι, όπως στο demo (+86px από τη μέση) */
   body .body-innerwrapper > #sp-mainmenu{margin-left:172px !important}
 }
+/* κινητό: το burger στο κέντρο του ύψους, στο περιθώριο των 16px */
+@media (max-width:991px){
+  #sp-logo #offcanvas-toggler{top:50% !important;transform:translateY(-50%) !important;left:1px !important}
+}
