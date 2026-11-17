@@ -118,5 +118,4 @@ h1,h2,h3,.sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !impor
 /* «32 προϊόντα» αριστερά στη γραμμή ταξινόμησης */
 .neo-toolbar{justify-content:space-between !important}
 .neo-count{font-family:Inter,sans-serif;font-size:13px;color:#77706a;margin:0 auto 22px 0}
-.neo-toolbar .neo-ftoggle + .neo-count{margin-left:14px}
 @media (max-width:991px){.neo-count{display:none}}
