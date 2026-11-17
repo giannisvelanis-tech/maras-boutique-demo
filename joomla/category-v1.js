@@ -28,6 +28,9 @@
   var NEO_ACC_HTML = "<div class=\"sgm\" id=\"neo-sgm\" ><div class=\"sgb\" role=\"dialog\" aria-label=\"Οδηγός μεγεθών ACCESS\">\n<button class=\"sgx\"  aria-label=\"Κλείσιμο\">×</button>\n<h2>Οδηγός μεγεθών ACCESS</h2>\n<h3>Αντιστοιχία μεγεθών</h3>\n<div class=\"sgt\"><table><tr><th>ACCESS</th><th>XS (42)</th><th>S (44)</th><th>M (46)</th><th>L (48)</th><th>XL (50)</th><th>XXL (52)</th><th>XXXL (54)</th></tr>\n<tr><td>Ευρώπη</td><td>36</td><td>38</td><td>40</td><td>42</td><td>44</td><td>46</td><td>48</td></tr>\n<tr><td>Ιταλία</td><td>40</td><td>42</td><td>44</td><td>46</td><td>48</td><td>50</td><td>52</td></tr>\n<tr><td>Ηνωμένο Βασίλειο</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td><td>18</td></tr>\n<tr><td>Ισπανία</td><td>34</td><td>36</td><td>38</td><td>40</td><td>42</td><td>44</td><td>46</td></tr></table></div>\n<h3>Μετρήσεις σώματος (cm)</h3>\n<div class=\"sgt\"><table><tr><th>ACCESS</th><th>XS (42)</th><th>S (44)</th><th>M (46)</th><th>L (48)</th><th>XL (50)</th><th>XXL (52)</th><th>XXXL (54)</th><th>S/M</th><th>M/L</th><th>One size</th></tr>\n<tr><td>Στήθος</td><td>84-88</td><td>88-92</td><td>92-96</td><td>96-100</td><td>100-104</td><td>104-108</td><td>108-112</td><td>84-98</td><td>98-112</td><td>84-104</td></tr>\n<tr><td>Μέση</td><td>64-68</td><td>68-72</td><td>72-76</td><td>76-80</td><td>80-84</td><td>84-88</td><td>88-92</td><td>64-78</td><td>78-92</td><td>64-84</td></tr>\n<tr><td>Περιφέρεια</td><td>92-96</td><td>96-100</td><td>100-104</td><td>104-108</td><td>108-112</td><td>112-116</td><td>116-120</td><td>92-106</td><td>106-120</td><td>92-122</td></tr></table></div>\n<p class=\"sgn\">Πηγή: οδηγός μεγεθών της ACCESS Fashion.</p>\n</div></div>";
   var NEO_MIN_HTML = "<div class=\"sgm\" id=\"neo-sgm2\" ><div class=\"sgb\" role=\"dialog\" aria-label=\"Οδηγός μεγεθών MINUETO\"><button class=\"sgx\"  aria-label=\"Κλείσιμο\">×</button><h2>Οδηγός μεγεθών MINUETO</h2><div id=\"neo-sg2m\"></div><h3>Αντιστοιχία μεγεθών</h3><div class=\"sgt\"><table><tr><th>MINUETO</th><th>Ισπανία</th><th>Ευρώπη</th><th>Ηνωμένο Βασίλειο</th><th>Ιταλία</th></tr><tr><td>XS</td><td>34</td><td>36</td><td>6</td><td>38</td></tr><tr><td>S</td><td>36</td><td>38</td><td>8</td><td>40</td></tr><tr><td>M</td><td>38</td><td>40</td><td>10</td><td>42</td></tr><tr><td>L</td><td>40</td><td>42</td><td>12</td><td>44</td></tr><tr><td>XL</td><td>42</td><td>44</td><td>14</td><td>46</td></tr><tr><td>XXL</td><td>44</td><td>46</td><td>16</td><td>48</td></tr></table></div><p class=\"sgn\">Πηγή: οδηγός μεγεθών της Minueto για το συγκεκριμένο ρούχο.</p></div></div>";
 
+  /* Δεύτερες κατηγορίες από το demo (17/11/2026): κατηγορία → id προϊόντων EasyStore */
+  var NEO_EXTRA = {"/shop/special-occasion":[702,703,644,645,559,560,563,564,565,569,573,574,575,581,584,612,613,624,636,637,638],"/shop/dress":[588,593,596,542,543,544,545],"/shop/knits":[638,639],"/shop/top-blouse":[400]};
+
   function txt(el) { return (el && el.textContent || '').replace(/\s+/g, ' ').trim(); }
   function root() { return document.querySelector('#sp-component .addon-root-easystore-list-filter') ? document.querySelector('#sp-component') : null; }
 
@@ -515,6 +518,86 @@
     document.body.classList.add('neo-has-ft');
   }
 
+  /* Δεύτερες κατηγορίες: στην (τελευταία) σελίδα της κατηγορίας προστίθενται και τα προϊόντα που στο demo
+     ανήκουν και σε αυτήν. Τίτλος, τιμή, εικόνα, μεγέθη και διαθεσιμότητα έρχονται ζωντανά από το EasyStore. */
+  function extras(c) {
+    var path = location.pathname.replace(/\/+$/, '');
+    var ids = NEO_EXTRA[path];
+    if (!ids || /filter_|search|q=/.test(location.search)) return;
+    var grid = c.querySelector('.neo-plist .sppb-collection-addon');
+    var tpl = grid && grid.querySelector('.sppb-collection-item:not(.neo-extra)');
+    if (!grid || !tpl || grid.dataset.neoEx) return;
+    var ps = c.querySelector('.addon-root-easystore-common-paginationstatus');
+    var rng = ps && txt(ps.querySelector('[x-text="pagination.range"]'));
+    var tot = ps && parseInt(txt(ps.querySelector('[x-text="pagination.total"]')).replace(/\D/g, ''), 10);
+    var end = rng ? parseInt((rng.split('-')[1] || '').replace(/\D/g, ''), 10) : NaN;
+    if (!isNaN(tot) && !isNaN(end) && end < tot) return;
+    grid.dataset.neoEx = '1';
+    var have = {};
+    [].slice.call(grid.querySelectorAll('[class*="easystore-btn-add-to-cart"]')).forEach(function (b) {
+      for (var i = 0; i < b.attributes.length; i++) { var m = b.attributes[i].name.match(/^add-to-cart-button-(\d+)$/); if (m) have[m[1]] = 1; }
+    });
+    var todo = ids.filter(function (id) { return !have[id]; });
+    var added = 0, q = todo.slice(), act = 0;
+    var base = (window.Joomla && Joomla.getOptions && Joomla.getOptions('easystore.base')) || '';
+    function one(id) {
+      act++;
+      fetch(base + '/index.php?option=com_easystore&task=product.quickAddModal&id=' + id, { credentials: 'same-origin' })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          var d = new DOMParser().parseFromString(j.data || '', 'text/html');
+          var href = (d.querySelector('.stretched-link') || {}).getAttribute ? d.querySelector('.stretched-link').getAttribute('href') : '';
+          var title = txt(d.querySelector('.easystore-product-title'));
+          var img = d.querySelector('img.easystore-zoom-cursor, .easystore-product-image img');
+          var price = d.querySelector('.easystore-product-price');
+          if (!href || !title) return;
+          var it = tpl.cloneNode(true);
+          it.classList.add('neo-extra');
+          it.removeAttribute('style');
+          delete it.dataset.neoSold; delete it.dataset.neoSz;
+          [].slice.call(it.querySelectorAll('.neo-card-sizes, .neo-soldout')).forEach(function (x) { x.remove(); });
+          it.classList.remove('neo-sold');
+          var im = it.querySelector('.easystore-product-image img');
+          if (im && img) { im.src = img.getAttribute('src'); im.removeAttribute('data-src'); im.removeAttribute('data-unveil'); im.alt = title; im.removeAttribute('srcset'); }
+          var ph = it.querySelector('.easystore-product-image');
+          if (ph && !ph.querySelector('a.neo-ph-link')) { var al = document.createElement('a'); al.className = 'neo-ph-link'; al.href = href; al.setAttribute('aria-label', title); ph.appendChild(al); }
+          var cat = href.split('/').slice(0, -1).join('/'), lbl = '';
+          CATS.forEach(function (x) { if (x[1] === cat) lbl = x[0]; });
+          var ca = it.querySelector('.easystore-product-category a');
+          if (ca) { ca.href = cat; ca.textContent = lbl || ca.textContent; }
+          var ta = it.querySelector('.easystore-product-title a');
+          if (ta) { ta.href = href; ta.textContent = title; }
+          var pr = it.querySelector('.easystore-product-price');
+          if (pr && price) pr.innerHTML = price.innerHTML;
+          var bw = it.querySelector('.addon-root-easystore-list-badge > div');
+          if (bw) {
+            var now = num(it, '.easystore-price-current'), was = num(it, '.easystore-price-original');
+            bw.innerHTML = (now > 0 && was > now) ? '<div class="easystore-badge-wrapper"><span class="easystore-badge is-sale" data-neo="1">-' + Math.round((1 - now / was) * 100) + '%</span></div>' : '';
+          }
+          var btn = it.querySelector('[class*="easystore-btn-add-to-cart"]');
+          if (btn) btn.remove();
+          var t = d.querySelector('[x-ref^="product_variants_"]');
+          var v = t ? JSON.parse(t.value || '[]') : null;
+          var list = v ? v.filter(function (x) { return x.visibility !== false; }).map(function (x) { return [String(x.combination), !!x.inventory_status]; }) : null;
+          var single = d.querySelector('button[disabled]') && !v;
+          if (!list) list = [['O/S', !single]];
+          it.dataset.neoSold = '1'; it.dataset.neoSz = '1';
+          grid.appendChild(it);
+          paint(it, list);
+          if (list.length && list.every(function (x) { return !x[1]; })) {
+            it.classList.add('neo-sold');
+            if (ph) { var so = document.createElement('div'); so.className = 'neo-soldout'; so.innerHTML = '<b>Sold out</b>'; ph.appendChild(so); }
+          }
+          added++;
+          var cnt = c.querySelector('.neo-count');
+          if (cnt && !isNaN(tot)) { var n = tot + added; cnt.textContent = n + (n === 1 ? ' προϊόν' : ' προϊόντα'); }
+        })
+        .catch(function () {})
+        .then(function () { act--; if (q.length) one(q.shift()); });
+    }
+    for (var k = 0; k < 4 && q.length; k++) one(q.shift());
+  }
+
   function run() {
     footer();
     cartBits();
@@ -525,7 +608,7 @@
     document.body.classList.add('neo-cat');
     var fw = c.querySelector('[id^="column-id-afbd2d5a"] .addon-root-easystore-list-filter');
     if (fw) fw.classList.add('neo-filters');
-    head(c); cats(c); sizes(c); avail(c); sort(c); toolbar(c); badges(c); sold(c); sizesOnCards(c);
+    head(c); cats(c); sizes(c); avail(c); sort(c); toolbar(c); badges(c); sold(c); sizesOnCards(c); extras(c);
   }
 
   var busy = false;

@@ -119,3 +119,7 @@ h1,h2,h3,.sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !impor
 .neo-toolbar{justify-content:space-between !important}
 .neo-count{font-family:Inter,sans-serif;font-size:13px;color:#77706a;margin:0 auto 22px 0}
 @media (max-width:991px){.neo-count{display:none}}
+
+/* δεύτερες κατηγορίες: όλη η φωτογραφία είναι σύνδεσμος */
+.neo-plist .easystore-product-image{position:relative}
+.neo-ph-link{position:absolute;inset:0;z-index:1}
