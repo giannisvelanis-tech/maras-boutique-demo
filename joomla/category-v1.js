@@ -460,6 +460,7 @@
       var t = txt(k).replace(/:$/, '').toLowerCase();
       if (t === 'size') k.textContent = 'Μέγεθος:';
       else if (t === 'color' || t === 'colour') k.textContent = 'Χρώμα:';
+      else if (t === 'βάρος' || t === 'weight') { var it = k.closest('.easystore-metadata-item'); if (it) it.style.display = 'none'; }
     });
     if (document.body.classList.contains('view-cart')) {
       var c = document.querySelector('#sp-component');
