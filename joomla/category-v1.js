@@ -302,7 +302,7 @@
       '<div class="neo-perks">' +
         '<div><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h14v11H1zM15 9h4l4 4v3h-8z"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="18.5" cy="18" r="1.8"/></svg><span>Παράδοση σε 1–3 εργάσιμες</span></div>' +
         '<div><img class="neo-klarna" src="https://osm.klarnaservices.com/images/badges/klarna_badge_rectangle.svg" alt="Klarna"><span>Πληρωμή σε 3 άτοκες δόσεις</span></div>' +
-        '<div><span class="neo-ret">↺</span><span>Αλλαγή ή επιστροφή εντός 14 ημερών · <a href="/epistrofes-allages">Όροι</a></span></div>' +
+        '<div><span class="neo-ret">↺</span><span>Αλλαγή ή επιστροφή εντός 10 εργάσιμων ημερών · <a href="/epistrofes-allages">Όροι</a></span></div>' +
       '</div>';
     atc.parentNode.insertBefore(box, atc.nextSibling);
     var dw = c.querySelector('.addon-root-easystore-single-description');
@@ -317,7 +317,7 @@
     sh.innerHTML = '<summary>Αποστολή &amp; επιστροφές</summary><div class="neo-acc-body"><ul>' +
       '<li>Αποστολή με SPEEDEX· οι παραγγελίες ετοιμάζονται σε 1–3 εργάσιμες ημέρες.</li>' +
       '<li>Δωρεάν αποστολή για αγορές άνω των 100 €· κάτω από 100 € το κόστος είναι 3 €.</li>' +
-      '<li>Αλλαγή ή επιστροφή εντός 14 ημερολογιακών ημερών από την παραλαβή.</li>' +
+      '<li>Αλλαγή ή επιστροφή εντός 10 εργάσιμων ημερών από την παραλαβή· επιστροφή με SPEEDEX χωρίς χρέωση για εσάς.</li>' +
       '<li><a href="/apostoli-kostos">Αποστολή &amp; κόστος</a> · <a href="/epistrofes-allages">Επιστροφές &amp; αλλαγές</a> · <a href="/tropoi-pliromis">Τρόποι πληρωμής</a></li>' +
       '</ul></div>';
     box.appendChild(sh);
