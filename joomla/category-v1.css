@@ -123,3 +123,4 @@ h1,h2,h3,.sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !impor
 /* δεύτερες κατηγορίες: όλη η φωτογραφία είναι σύνδεσμος */
 .neo-plist .easystore-product-image{position:relative}
 .neo-ph-link{position:absolute;inset:0;z-index:1}
+.neo-card-sizes i{text-transform:uppercase}
