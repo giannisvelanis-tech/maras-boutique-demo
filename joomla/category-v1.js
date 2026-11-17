@@ -328,7 +328,11 @@
       if (!items.length) { if (sec) sec.style.display = 'none'; return; }
       var g = document.createElement('div');
       g.className = 'sppb-collection-addon neo-rel-grid';
-      items.forEach(function (it) { g.appendChild(document.importNode(it, true)); });
+      items.forEach(function (it) {
+        var n = document.importNode(it, true);
+        [].slice.call(n.querySelectorAll('img[data-src]')).forEach(function (im) { im.src = im.getAttribute('data-src'); im.removeAttribute('data-unveil'); });
+        g.appendChild(n);
+      });
       rel.innerHTML = '';
       rel.appendChild(g);
       badges(wrap); sold(wrap); sizesOnCards(wrap);

@@ -92,3 +92,4 @@
 .neo-prod .addon-root-text-block,.neo-prod .addon-root-text-block *{text-align:left !important}
 .neo-prod .addon-root-text-block h1,.neo-prod .addon-root-text-block h2,.neo-prod .addon-root-text-block h3,.neo-prod .addon-root-text-block .sppb-addon-title{font-family:'Cormorant Garamond',Georgia,serif !important;font-weight:500 !important;font-size:22px !important;text-transform:none !important;letter-spacing:normal !important;color:#1c1a17 !important;margin:0 0 28px !important}
 .neo-prod .neo-plist .easystore-product-title{font-family:Inter,system-ui,sans-serif !important;font-size:12px !important;font-weight:400 !important;line-height:1.4 !important;margin:3px 0 4px !important}
+.neo-prod [id^="column-wrap-id-119f3ee0"]{padding-left:0 !important;padding-right:0 !important}
