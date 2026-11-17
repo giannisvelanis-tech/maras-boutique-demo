@@ -257,6 +257,9 @@
     });
     [].slice.call(w.querySelectorAll('.easystore-option-name')).forEach(function (n) {
       var t = txt(n).toLowerCase();
+      var sep = n.parentNode.querySelector('.easystore-option-name-separator');
+      [].slice.call(n.parentNode.childNodes).forEach(function (x) { if (x.nodeType === 3 && !x.textContent.trim()) x.parentNode.removeChild(x); });
+      if (sep) { sep.textContent = ':\u00a0'; }
       if (t === 'size') n.textContent = 'Μέγεθος';
       else if (t === 'color' || t === 'colour') n.textContent = 'Χρώμα';
     });
@@ -288,8 +291,7 @@
         '<div><span class="neo-ret">↺</span><span>Αλλαγή ή επιστροφή εντός 14 ημερών · <a href="/epistrofes-allages">Όροι</a></span></div>' +
       '</div>';
     atc.parentNode.insertBefore(box, atc.nextSibling);
-    var d = c.querySelector('.neo-desc');
-    var dw = d && d.closest('.sppb-addon-wrapper');
+    var dw = c.querySelector('.addon-root-easystore-single-description');
     var det = document.createElement('details');
     det.className = 'neo-acc';
     det.open = true;
@@ -308,10 +310,10 @@
   }
 
   function related(c) {
-    var rel = c.querySelector('.neo-rel');
-    if (!rel || rel.dataset.neo) return;
-    rel.dataset.neo = '1';
-    var wrap = rel.closest('.sppb-addon-wrapper') || rel;
+    var wrap = c.querySelector('.addon-root-easystore-common-productlist');
+    var rel = wrap && (wrap.querySelector('.sppb-addon-content') || wrap.firstElementChild);
+    if (!rel || wrap.dataset.neo) return;
+    wrap.dataset.neo = '1';
     wrap.classList.add('neo-plist');
     if (rel.querySelector('.sppb-collection-item')) { sold(wrap); sizesOnCards(wrap); return; }
     var k = catOfPath();

@@ -84,3 +84,7 @@
   .neo-prod [id^="column-wrap-id-18513f57"]{margin-top:20px}
   .neo-rel-grid{grid-template-columns:repeat(2,1fr);column-gap:12px;row-gap:28px}
 }
+/* μικρογραφίες: χωρίς το κίτρινο περίγραμμα του template */
+.neo-prod .easystore-gallery-image{border:1px solid transparent !important;border-radius:0 !important;padding:0 !important}
+.neo-prod .easystore-gallery-image.active{border-color:#1c1a17 !important}
+.neo-prod .easystore-gallery-image img{border:0 !important}
