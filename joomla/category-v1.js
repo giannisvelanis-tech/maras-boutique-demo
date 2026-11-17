@@ -110,6 +110,12 @@
     var sec = w && w.closest('section.sppb-section');
     var bar = document.createElement('div');
     bar.className = 'neo-toolbar';
+    var tg = document.createElement('button');
+    tg.type = 'button';
+    tg.className = 'neo-ftoggle';
+    tg.textContent = 'Φίλτρα';
+    tg.onclick = function () { document.body.classList.toggle('neo-fopen'); };
+    bar.appendChild(tg);
     bar.appendChild(w);
     col.insertBefore(bar, col.firstChild);
     if (sec && !sec.querySelector('.easystore-product-filter, .sppb-collection-item')) sec.style.display = 'none';
