@@ -335,8 +335,7 @@
     var me = location.pathname.replace(/\/+$/, '');
     var relIds = (window.NEO_D && NEO_D.REL || {})[me];
     if (relIds && relIds.length) {
-      Promise.all(relIds.map(function (id) { return quick(id).catch(function () { return null; }); })).then(function (qs) {
-        var ok = qs.filter(function (q) { return q && q.href && !q.sold; }).slice(0, 4);
+      firstAvail(relIds, 4).then(function (ok) {
         if (!ok.length) { if (sec) sec.style.display = 'none'; return; }
         var g = document.createElement('div');
         g.className = 'sppb-collection-addon neo-rel-grid';
@@ -491,6 +490,18 @@
           sold: list.length && list.every(function (x) { return !x[1]; }) };
       });
   }
+  function firstAvail(ids, n) {
+    var out = [], i = 0;
+    function step() {
+      if (out.length >= n || i >= ids.length) return Promise.resolve(out.slice(0, n));
+      var batch = ids.slice(i, i + 4); i += 4;
+      return Promise.all(batch.map(function (id) { return quick(id).catch(function () { return null; }); })).then(function (qs) {
+        qs.forEach(function (q) { if (q && q.href && !q.sold) out.push(q); });
+        return step();
+      });
+    }
+    return step();
+  }
   function makeCard(q) {
     var cat = q.href.split('/').slice(0, -1).join('/'), lbl = '';
     CATS.forEach(function (x) { if (x[1] === cat) lbl = x[0]; });
@@ -523,8 +534,7 @@
     sec.innerHTML = '<h2 class="neo-sec-h">Ολοκληρώστε το σύνολο</h2><div class="sppb-collection-addon neo-plist neo-rel-grid"></div>';
     var host = relW.closest('.sppb-column-addons') || relW.parentNode;
     host.insertBefore(sec, host.firstChild);
-    Promise.all(ids.map(function (id) { return quick(id).catch(function () { return null; }); })).then(function (qs) {
-      var ok = qs.filter(function (q) { return q && q.href && !q.sold; }).slice(0, 4);
+    firstAvail(ids, 4).then(function (ok) {
       if (!ok.length) { sec.remove(); return; }
       var g = sec.querySelector('.neo-rel-grid');
       ok.forEach(function (q) { g.appendChild(makeCard(q)); });
