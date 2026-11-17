@@ -42,3 +42,10 @@
   body .body-innerwrapper > #sp-logo .row,body .body-innerwrapper > #sp-section-3 .row{margin:0 !important}
   body .body-innerwrapper > #sp-logo [class*=col-],body .body-innerwrapper > #sp-logo .sp-column,body .body-innerwrapper > #sp-logo .logo,body .body-innerwrapper > #sp-section-3 [class*=col-],body .body-innerwrapper > #sp-section-3 .sp-column{padding-left:0 !important;padding-right:0 !important}
 }
+@media (min-width:992px){
+  /* μπάρα ακριβώς 38px: χωρίς διπλό περιθώριο */
+  .body-innerwrapper > #sp-carouselslider > .container{padding-top:0 !important;padding-bottom:0 !important}
+  .body-innerwrapper > #sp-carouselslider .sppb-row-container{padding-top:10px !important;padding-bottom:11px !important}
+  /* μενού κεντραρισμένο ανάμεσα σε λογότυπο και καλάθι, όπως στο demo (+86px από τη μέση) */
+  body .body-innerwrapper > #sp-mainmenu{margin-left:172px !important}
+}
