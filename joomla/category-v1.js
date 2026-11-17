@@ -524,7 +524,7 @@
     var path = location.pathname.replace(/\/+$/, '');
     var ids = NEO_EXTRA[path];
     if (!ids || /filter_|search|q=/.test(location.search)) return;
-    var grid = c.querySelector('.neo-plist .sppb-collection-addon');
+    var grid = c.querySelector('.sppb-collection-addon.neo-plist') || c.querySelector('.neo-plist .sppb-collection-addon');
     var tpl = grid && grid.querySelector('.sppb-collection-item:not(.neo-extra)');
     if (!grid || !tpl || grid.dataset.neoEx) return;
     var ps = c.querySelector('.addon-root-easystore-common-paginationstatus');
